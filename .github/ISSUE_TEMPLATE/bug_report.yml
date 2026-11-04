@@ -1,0 +1,31 @@
+name: Bug report
+description: Report an application bug without sensitive data
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "This report is public. Never share credentials, tokens, personal data, device identifiers, internal network addresses or unredacted CSV exports."
+  - type: input
+    id: app_version
+    attributes:
+      label: Application version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: android_version
+    attributes:
+      label: Android version
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
