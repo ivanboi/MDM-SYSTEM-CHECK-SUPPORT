@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Security fixes target the latest maintained Android release of the project (documented version: **1.0.0+23**). Fixes for older versions are not guaranteed.
+Security fixes target the latest maintained Android release of the project (documented version: **1.0.1+26**). Fixes for older versions are not guaranteed.
 
 ## Reporting a vulnerability privately
 
@@ -20,7 +20,8 @@ Results, preferences, and configured MDM endpoints are stored **locally, without
 
 ## Protections described in the code
 
-- Android application storage sandboxing; application backups and cleartext HTTP traffic are disabled in the generated release manifest.
+- Android application storage sandboxing; application backups are disabled. Cleartext HTTP is denied by default, except for narrowly scoped connectivity-check domains used to diagnose captive portals (`connectivitycheck.gstatic.com`, `connectivitycheck.android.com`, `captive.apple.com`, and `www.msftconnecttest.com`).
+- Production APKs and AABs use a persistent Android signing key stored securely outside Git; APK signatures are verified in CI. Signing keys and credentials must never be shared through public support channels.
 - TLS certificate validation for HTTPS and differentiation between HTTP error responses and connectivity.
 - Neutralization of CSV values that could be interpreted as spreadsheet formulas.
 - Validation of the expected source IP address and port for UDP responses; sending a UDP datagram alone does not prove IPsec connectivity.
@@ -30,7 +31,7 @@ Results, preferences, and configured MDM endpoints are stored **locally, without
 
 ## Controls still to be verified
 
-Before production distribution: temporary CSV file retention, local encryption requirements, request rate limiting, stronger UDP/NTP validation, artifact signing, and Play Integrity configuration. **These protections are not claimed to be implemented.**
+Further review is needed for temporary CSV file retention, local encryption requirements, request rate limiting, stronger UDP/NTP validation, and Play Integrity integration. **Production Android signing is implemented; Play Integrity and Google Play publication are not.** Existing installations signed with a different key may require reinstallation, which can erase locally stored data.
 
 ## Repository separation
 
