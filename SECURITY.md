@@ -1,41 +1,39 @@
-# Security Policy — MDM SystemCheck
+# Politique de sécurité — MDM SystemCheck
 
 ## Versions prises en charge
 
-Les correctifs de sécurité visent la version Android la plus récente de MDM SystemCheck, actuellement **1.0.0**. Les versions plus anciennes ne bénéficient pas nécessairement de correctifs.
+Les corrections visent la dernière version Android maintenue du projet (version documentée : **1.0.0+23**). Les versions antérieures ne bénéficient d'aucune garantie de correctif.
 
-## Signaler une vulnérabilité
+## Signaler une vulnérabilité de manière confidentielle
 
-**Ne créez pas d'issue publique pour une vulnérabilité, un secret exposé ou un problème de confidentialité.** Les issues de ce dépôt sont publiques.
+**Ne publiez jamais une vulnérabilité, un exploit, un secret ou une configuration confidentielle dans une issue publique.**
 
-Utilisez **Security → Report a vulnerability** sur ce dépôt **uniquement si l'option de signalement privé est activée**. Sinon, contactez le mainteneur par un canal privé déjà établi. En l'absence d'un canal confidentiel confirmé, ne publiez pas de détails d'exploitation dans une issue publique.
+Utilisez **Security → Report a vulnerability** sur ce dépôt **si le signalement privé est activé**. Sinon, contactez le mainteneur par un canal privé déjà établi. Si aucun canal confidentiel n'est disponible, ne publiez pas les détails techniques dans les issues publiques.
 
-Un rapport utile comprend :
-- la version de l'application et d'Android ;
-- une description du risque et de son impact ;
-- des étapes de reproduction sans données sensibles ;
-- les conditions nécessaires à la reproduction.
+Indiquez la version de l'application et d'Android, le scénario de reproduction, l'impact et les conditions préalables, en expurgeant les secrets et données personnelles. Aucun délai garanti de réponse ou de correction n'est annoncé.
 
-Aucun délai de réponse ou de correction garanti n'est annoncé.
+## Périmètre et confidentialité
 
-## Confidentialité des diagnostics
+L'application réalise des diagnostics sortants DNS, TCP, HTTP(S), NTP et, sur demande, des tests VoWiFi/ePDG. Les envois UDP 500/4500 ne prouvent pas une négociation IKE/IPsec ou un service VoWiFi fonctionnel. Une connexion TCP/HTTPS réussie ne prouve ni authentification, ni inscription MDM, ni réception d'une notification push.
 
-MDM SystemCheck effectue des tests réseau DNS, TCP, HTTP(S), NTP et, sur demande, des contrôles indicatifs VoWiFi/ePDG. Ces tests ne constituent pas une validation d'inscription MDM, d'authentification ou de tunnel IPsec.
+Les résultats, les préférences et les points de terminaison MDM configurés sont stockés **localement, sans chiffrement applicatif spécifique**. Ils ne sont pas téléversés automatiquement au support. Les exports CSV peuvent révéler des informations réseau sensibles : anonymisez-les avant partage.
 
-Les résultats de diagnostic et les paramètres de connectivité sont stockés localement. L'application ne transmet pas automatiquement ces données au dépôt GitHub ni au support. **Les exports CSV peuvent contenir des informations sensibles sur l'environnement réseau.** Ne publiez pas d'exports non anonymisés.
+## Protections décrites dans le code
 
-N'indiquez jamais de mots de passe, jetons, identifiants personnels, IMEI, numéros de série ou adresses internes confidentielles dans une issue.
+- Isolation du stockage par Android ; sauvegarde applicative et trafic HTTP en clair désactivés dans le manifeste de release généré.
+- Validation des certificats TLS pour HTTPS et distinction entre réponse HTTP en erreur et connectivité.
+- Neutralisation des valeurs CSV pouvant être interprétées comme formules par un tableur.
+- Validation de l'adresse IP et du port source attendus pour les réponses UDP ; un simple envoi UDP ne prouve aucune connectivité IPsec.
+- Tests personnalisés uniquement vers les hôtes et réseaux pour lesquels l'administrateur est autorisé.
 
-## Mesures et limites de sécurité
+**Limites :** un appareil compromis/rooté peut exposer l'historique et les préférences ; les fichiers CSV exportés sont sensibles. Ne saisissez aucun identifiant ou secret dans les champs de diagnostic.
 
-L'application s'appuie sur l'isolation Android, désactive la sauvegarde de l'application et le trafic HTTP non chiffré dans son manifeste généré, et vérifie les certificats TLS pour les tests HTTPS. Les exports CSV appliquent une protection contre l'interprétation de champs comme des formules de tableur.
+## Contrôles restant à vérifier
 
-**Limites connues :** l'historique et les préférences locales ne disposent pas de chiffrement applicatif spécifique ; un appareil compromis peut exposer ces informations. Les fichiers CSV exportés doivent être traités comme des documents potentiellement confidentiels. Les tests réseau personnalisés ne doivent viser que des infrastructures pour lesquelles vous disposez d'une autorisation.
+Avant distribution en production : rétention des fichiers CSV temporaires, besoin de chiffrement local, limitation du débit des requêtes, validation renforcée UDP/NTP, signature des livrables et configuration Play Integrity. **Ces protections ne sont pas déclarées implémentées.**
 
-La gestion des fichiers temporaires, le renforcement de certains contrôles réseau, la signature de distribution et Play Integrity font partie des points à vérifier ou à finaliser avant une distribution de production. Aucune protection non implémentée n'est présentée comme active.
+## Séparation des dépôts
 
-## Périmètre de ce dépôt
+Ce dépôt **public** contient seulement la documentation et les formulaires de support ; le code source Flutter/Android est dans un dépôt **privé**. Aucun secret, fichier de signature, configuration interne ou code source ne doit être ajouté à ce dépôt.
 
-Ce dépôt public héberge uniquement la documentation de support et les formulaires d'issues. Le code source et les éléments de compilation sont conservés dans un dépôt privé distinct.
-
-Les signalements fonctionnels ordinaires peuvent être soumis via les [formulaires publics](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose), après suppression de toute donnée confidentielle.
+Pour les problèmes fonctionnels non sensibles, utilisez les [formulaires publics](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose).
