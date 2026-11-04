@@ -1,67 +1,44 @@
 # MDM SystemCheck — Support officiel
 
-**MDM SystemCheck** est une application Android développée avec Flutter, destinée au diagnostic de connectivité réseau des terminaux et à la vérification indicative des flux nécessaires aux solutions EMM/MDM.
+**MDM SystemCheck (EMM SystemCheck)** est une application **Android Flutter** de diagnostic réseau pour les administrateurs EMM/MDM. Elle vérifie la connectivité depuis le téléphone Android, sans accéder aux API d'administration MDM ni valider une inscription ou une authentification.
 
-Ce dépôt est le **point d'entrée public pour le support**, les anomalies et les demandes d'évolution. Il ne contient **aucun code source de l'application**.
+Ce dépôt **public** héberge exclusivement le support, la documentation et les formulaires de signalement. **Le code source, les configurations de compilation et les secrets restent dans un dépôt privé distinct.** Aucun accès au dépôt privé n'est nécessaire pour obtenir du support.
 
 ## Fonctionnalités
 
-- Vérifications réseau **DNS, TCP, HTTP(S) et NTP** depuis le terminal Android.
-- Diagnostics de connectivité des services EMM/MDM sélectionnés.
-- Vérification indicative des flux **VoWiFi/ePDG**, avec saisie facultative du nom de domaine de l'opérateur.
-- Sélection de plusieurs profils de terminaux pour consulter et tester les flux réseau applicables.
-- Configuration facultative des composants réseau spécifiques à chaque déploiement MDM.
-- Historique local des diagnostics et **export CSV** pour l'analyse par les équipes IT.
+- Tests DNS, TCP, HTTP(S) et NTP (requête UDP/123 avec validation de la réponse).
+- Diagnostics des destinations accessibles depuis le terminal Android ; flux serveur-à-serveur, destinations génériques (wildcards), propres au tenant ou à la région : **référence uniquement**.
+- Profils réseau sélectionnables : **iOS/iPadOS, macOS, Android, Android AOSP pour Microsoft Teams Rooms, services Samsung Knox et Windows**. Les tests de tous les profils sélectionnés sont effectués depuis **le téléphone Android**, pas depuis les systèmes distants.
+- Plateformes MDM : **Microsoft Intune, Omnissa Workspace ONE UEM, Ivanti Neurons for MDM/EPMM, Cisco Meraki Systems Manager, Citrix Endpoint Management, BlackBerry UEM/Dynamics et Samsung Knox Manage**. Une seule plateforme MDM est testée à la fois. Knox Manage est une plateforme MDM distincte des services de terminaux Samsung Knox.
+- Composants réseau optionnels propres au déploiement (ex. AWCM/UAG/Tunnel, Sentry/Core, Intune Tunnel, Citrix Gateway, BlackBerry Proxy) : activation explicite et saisie du nom d'hôte/IP et du port par l'administrateur.
+- Contrôle VoWiFi/ePDG optionnel : résolution DNS du nom d'hôte de l'opérateur et envoi indicatif de datagrammes UDP 500/4500. **Aucune négociation IKE/IPsec ni preuve de fonctionnement VoWiFi.**
+- Contrôles FCM côté Android sur `mtalk.google.com` (TCP 443/5228/5229/5230). Une connexion TCP réussie ne prouve pas la réception d'une notification push ; `fcm.googleapis.com` est une API côté serveur et n'est pas testée comme flux push du téléphone.
+- Historique et préférences conservés localement ; exports CSV comprenant notamment version Android, identifiant de build et niveau de correctif de sécurité Android.
 
-## Profils de terminaux
+## Interprétation des résultats
 
-- Apple iOS / iPadOS
-- Apple macOS
-- Android
-- Android AOSP pour Microsoft Teams Rooms
-- Services Samsung Knox (hors Knox Manage, qui est une solution MDM distincte)
-- Windows
+Les tests mesurent une connectivité réseau **depuis le téléphone Android**. Ils ne prouvent ni inscription MDM, ni authentification, ni disponibilité d'un service distant, ni réception des notifications push. Les composants personnalisés ne doivent cibler que des infrastructures pour lesquelles vous avez une autorisation. Vérifiez les listes de destinations et ports dans la documentation officielle des éditeurs avant de définir une règle de pare-feu.
 
-**Important :** les tests sont exécutés **depuis le téléphone Android** qui héberge l'application. Ils ne prouvent pas le fonctionnement du système d'exploitation d'un autre appareil.
+## Version et distribution
 
-## Solutions MDM prises en charge
+Version documentée : **1.0.0+23** (Android versionCode 23). L'application est destinée à Android uniquement ; la présence de profils iOS/macOS/Windows ne signifie pas que l'application s'exécute sur ces plateformes. Les builds APK et AAB peuvent être produits par la CI du dépôt privé. **La publication Google Play, la signature de distribution et Play Integrity ne sont pas présentés comme déjà opérationnels.**
 
-- Microsoft Intune
-- Omnissa Workspace ONE UEM
-- Ivanti Neurons for MDM / EPMM
-- Cisco Meraki Systems Manager
-- Citrix Endpoint Management
-- BlackBerry UEM / Dynamics
-- Samsung Knox Manage
+## Support public
 
-L'application vérifie les destinations concrètes pouvant être testées depuis le terminal. Les flux serveur à serveur, adresses génériques et destinations dépendantes d'un tenant sont fournis à titre de référence et ne peuvent pas tous être testés automatiquement.
+- [Signaler un bug](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=bug_report.yml)
+- [Proposer une amélioration](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=feature_request.yml)
+- [Consulter les demandes publiques](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues)
 
-## Limites des diagnostics
+Pour un bug, fournissez la version de l'application et d'Android, les étapes de reproduction, le résultat observé et le résultat attendu **sans données sensibles**.
 
-- Une connexion TCP ou HTTPS réussie **ne prouve pas** l'inscription MDM, l'authentification ni la réception des notifications push.
-- Les contrôles VoWiFi UDP 500/4500 sont **indicatifs** : ils ne réalisent pas de négociation IKE/IPsec.
-- Les adresses et ports requis peuvent évoluer : vérifiez les exigences réseau actuelles de chaque éditeur.
-- L'application ne se connecte pas aux API d'administration MDM et **n'envoie pas automatiquement les diagnostics** à un serveur de support.
-- Les paramètres et l'historique sont stockés localement ; les exports CSV peuvent contenir des données techniques sensibles.
+**Toutes les issues sont publiques.** Ne publiez jamais mots de passe, jetons, IMEI, numéros de série, données personnelles, adresses internes confidentielles ou exports CSV non anonymisés. Pour une vulnérabilité, **n'ouvrez pas d'issue publique** : suivez la [politique de sécurité](SECURITY.md).
 
-## Version et disponibilité
+## Confidentialité
 
-Version officielle du projet : **1.0.0** (Android, versionCode 23). La distribution via Google Play et l'intégration de Play Integrity sont des étapes distinctes ; leur disponibilité ne doit pas être présumée.
+Les diagnostics et paramètres restent dans le stockage local de l'application, sans chiffrement applicatif spécifique ; ils ne sont pas envoyés automatiquement au support. Les sauvegardes Android et le trafic HTTP non chiffré sont désactivés dans le manifeste de release généré. Les exports CSV neutralisent les préfixes de formules de tableur, mais restent potentiellement confidentiels. Un appareil compromis peut exposer les données locales.
 
-## Contacter le support
+## Références éditeurs
 
-- 🐛 **[Signaler un bug](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=bug_report.yml)**
-- 💡 **[Proposer une amélioration](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=feature_request.yml)**
-- 📋 **[Consulter les issues publiques](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues)**
+[Apple](https://support.apple.com/en-us/101555) · [Android Enterprise](https://support.google.com/work/android/answer/10513641?hl=en) · [Samsung Knox](https://docs.samsungknox.com/admin/knox-admin-portal/before-you-begin/samsung-knox-firewall-exceptions/) · [Microsoft Intune](https://learn.microsoft.com/en-us/intune/fundamentals/endpoints) · [Omnissa](https://ports.omnissa.com/home/) · [Ivanti](https://help.ivanti.com/ht/help/en_US/CLOUD/vNow/platform-allowlist.htm) · [Firebase FCM](https://firebase.google.com/docs/cloud-messaging/network-configuration)
 
-Indiquez la version de l'application, la version d'Android, les étapes de reproduction et le résultat attendu. Ne joignez jamais de CSV non anonymisé.
-
-**Toutes les issues de ce dépôt sont publiques.** Ne publiez pas de mots de passe, jetons, IMEI, numéros de série, données personnelles, adresses IP internes, noms d'hôtes confidentiels ou configurations réseau sensibles.
-
-## Sécurité et divulgation responsable
-
-**Ne signalez jamais une vulnérabilité dans une issue publique.** Consultez la [politique de sécurité](SECURITY.md) pour connaître le canal de signalement confidentiel et les informations à transmettre.
-
-## Confidentialité du code
-
-Le code source de MDM SystemCheck est conservé dans un dépôt GitHub privé distinct. Ce dépôt public est réservé au support et à la documentation destinée aux utilisateurs.
+Les références réseau évoluent ; consultez toujours leur version actuelle.
