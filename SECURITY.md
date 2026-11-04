@@ -1,39 +1,39 @@
-# Politique de sécurité — MDM SystemCheck
+# Security Policy — MDM SystemCheck
 
-## Versions prises en charge
+## Supported versions
 
-Les corrections visent la dernière version Android maintenue du projet (version documentée : **1.0.0+23**). Les versions antérieures ne bénéficient d'aucune garantie de correctif.
+Security fixes target the latest maintained Android release of the project (documented version: **1.0.0+23**). Fixes for older versions are not guaranteed.
 
-## Signaler une vulnérabilité de manière confidentielle
+## Reporting a vulnerability privately
 
-**Ne publiez jamais une vulnérabilité, un exploit, un secret ou une configuration confidentielle dans une issue publique.**
+**Never disclose a vulnerability, exploit, secret, or confidential configuration in a public issue.**
 
-Utilisez **Security → Report a vulnerability** sur ce dépôt **si le signalement privé est activé**. Sinon, contactez le mainteneur par un canal privé déjà établi. Si aucun canal confidentiel n'est disponible, ne publiez pas les détails techniques dans les issues publiques.
+Use **Security → Report a vulnerability** in this repository **if private vulnerability reporting is enabled**. Otherwise, contact the maintainer through an established private channel. If no confidential channel is available, do not publish technical details in public issues.
 
-Indiquez la version de l'application et d'Android, le scénario de reproduction, l'impact et les conditions préalables, en expurgeant les secrets et données personnelles. Aucun délai garanti de réponse ou de correction n'est annoncé.
+Include the application and Android versions, reproduction scenario, impact, and prerequisites, with secrets and personal data redacted. No guaranteed response or remediation timeline is offered.
 
-## Périmètre et confidentialité
+## Scope and privacy
 
-L'application réalise des diagnostics sortants DNS, TCP, HTTP(S), NTP et, sur demande, des tests VoWiFi/ePDG. Les envois UDP 500/4500 ne prouvent pas une négociation IKE/IPsec ou un service VoWiFi fonctionnel. Une connexion TCP/HTTPS réussie ne prouve ni authentification, ni inscription MDM, ni réception d'une notification push.
+The application performs outbound DNS, TCP, HTTP(S), NTP, and optional VoWiFi/ePDG diagnostics. UDP 500/4500 transmissions do not prove IKE/IPsec negotiation or functioning VoWiFi service. Successful TCP/HTTPS connections do not prove authentication, MDM enrollment, or push notification delivery.
 
-Les résultats, les préférences et les points de terminaison MDM configurés sont stockés **localement, sans chiffrement applicatif spécifique**. Ils ne sont pas téléversés automatiquement au support. Les exports CSV peuvent révéler des informations réseau sensibles : anonymisez-les avant partage.
+Results, preferences, and configured MDM endpoints are stored **locally, without dedicated application-level encryption**. They are not automatically uploaded to support. CSV exports may reveal sensitive network information: redact them before sharing.
 
-## Protections décrites dans le code
+## Protections described in the code
 
-- Isolation du stockage par Android ; sauvegarde applicative et trafic HTTP en clair désactivés dans le manifeste de release généré.
-- Validation des certificats TLS pour HTTPS et distinction entre réponse HTTP en erreur et connectivité.
-- Neutralisation des valeurs CSV pouvant être interprétées comme formules par un tableur.
-- Validation de l'adresse IP et du port source attendus pour les réponses UDP ; un simple envoi UDP ne prouve aucune connectivité IPsec.
-- Tests personnalisés uniquement vers les hôtes et réseaux pour lesquels l'administrateur est autorisé.
+- Android application storage sandboxing; application backups and cleartext HTTP traffic are disabled in the generated release manifest.
+- TLS certificate validation for HTTPS and differentiation between HTTP error responses and connectivity.
+- Neutralization of CSV values that could be interpreted as spreadsheet formulas.
+- Validation of the expected source IP address and port for UDP responses; sending a UDP datagram alone does not prove IPsec connectivity.
+- Custom tests are restricted by policy to hosts and networks the administrator is authorized to test.
 
-**Limites :** un appareil compromis/rooté peut exposer l'historique et les préférences ; les fichiers CSV exportés sont sensibles. Ne saisissez aucun identifiant ou secret dans les champs de diagnostic.
+**Limitations:** a compromised or rooted device may expose history and preferences; exported CSV files are sensitive. Do not enter credentials or secrets in diagnostic fields.
 
-## Contrôles restant à vérifier
+## Controls still to be verified
 
-Avant distribution en production : rétention des fichiers CSV temporaires, besoin de chiffrement local, limitation du débit des requêtes, validation renforcée UDP/NTP, signature des livrables et configuration Play Integrity. **Ces protections ne sont pas déclarées implémentées.**
+Before production distribution: temporary CSV file retention, local encryption requirements, request rate limiting, stronger UDP/NTP validation, artifact signing, and Play Integrity configuration. **These protections are not claimed to be implemented.**
 
-## Séparation des dépôts
+## Repository separation
 
-Ce dépôt **public** contient seulement la documentation et les formulaires de support ; le code source Flutter/Android est dans un dépôt **privé**. Aucun secret, fichier de signature, configuration interne ou code source ne doit être ajouté à ce dépôt.
+This **public** repository contains only documentation and support forms; the Flutter/Android source code resides in a **private** repository. No secrets, signing files, internal configurations, or source code should be added to this repository.
 
-Pour les problèmes fonctionnels non sensibles, utilisez les [formulaires publics](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose).
+For non-sensitive functional issues, use the [public issue forms](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose).
