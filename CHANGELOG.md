@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.2 — Stable public distribution (build 27)
+
+November 4, 2026 · [Public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.2)
+
+- Published the signed Android APK in the public support repository, with a SHA-256 checksum in `SHA256SUMS.txt`.
+- Established separate Stable and Development release channels.
+- Kept the existing production signing key and application behavior.
+
+For an in-place update, install the stable APK over an installation signed with the same key. Uninstalling an app signed with a different key can erase local data.
+
 ## v1.0.1 — Android production signing (build 26)
 
 Release date: November 4, 2026.
@@ -9,10 +19,6 @@ Release date: November 4, 2026.
 - Added automatic APK signature verification to the continuous integration pipeline.
 - Validated the signed Android update process without changing application functionality.
 
-**Installation:** Download the signed APK from the [v1.0.1 GitHub Release](https://github.com/ivanboi/MDM-SYSTEM-CHECK/releases/tag/v1.0.1). In-place updates require the installed app to use the same signing key. If an older installation was signed with a different key, reinstalling may be required and may erase locally stored application data.
+This release was distributed through the private source repository.
 
-**Distribution:** Official release artifacts are hosted in the private source repository. Users without access should obtain the APK through an authorized distribution channel; the support repository does not expose private binaries or signing credentials.
-
-## Previous releases
-
-See the [project release history](https://github.com/ivanboi/MDM-SYSTEM-CHECK/releases) if you have repository access.
+See [public releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) for current downloads.
