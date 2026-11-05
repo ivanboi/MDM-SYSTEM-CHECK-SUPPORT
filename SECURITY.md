@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Security fixes target the latest maintained Android release of the project (documented version: **1.0.1+26**). Fixes for older versions are not guaranteed.
+Security fixes target the [latest stable Android release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest). Fixes for older versions are not guaranteed.
 
 ## Reporting a vulnerability privately
 
@@ -35,6 +35,6 @@ Further review is needed for temporary CSV file retention, local encryption requ
 
 ## Repository separation
 
-This **public** repository contains only documentation and support forms; the Flutter/Android source code resides in a **private** repository. No secrets, signing files, internal configurations, or source code should be added to this repository.
+This **public** repository contains documentation, support forms, and approved release assets; the Flutter/Android source code resides in a **private** repository. No secrets, signing files, internal configurations, or source code should be added to this repository.
 
 For non-sensitive functional issues, use the [public issue forms](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose).
