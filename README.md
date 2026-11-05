@@ -39,6 +39,8 @@ For a bug report, provide the application and Android versions, reproduction ste
 
 ## Privacy
 
+See the [Privacy Policy](PRIVACY.md) for what network probes send, what stays on the device, and what happens when you share a report.
+
 Diagnostics and settings remain in the application's local storage, without dedicated application-level encryption; they are not automatically sent to support. Android backups are disabled, and cleartext HTTP is blocked by default except for a small set of explicitly permitted captive-portal connectivity-check domains. CSV exports neutralize spreadsheet-formula prefixes but may still be confidential. A compromised device may expose locally stored data.
 
 ## Vendor references
