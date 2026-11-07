@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.0.3 — Google Play Integrity diagnostics (build 28)
+
+November 7, 2026 · [Public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.3)
+
+- Added a user-initiated Google Play Integrity check for app recognition, licensing and device integrity signals.
+- Connected the Android app to the verification service. See the [privacy policy](PRIVACY.md) for this data flow.
+- Published the signed APK and checksum from the same verified build as the AAB.
+- End-to-end Play Integrity validation requires installation through the Google Play test track.
+
 ## v1.0.2 — Stable public distribution (build 27)
 
 November 4, 2026 · [Public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.2)
