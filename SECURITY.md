@@ -31,7 +31,7 @@ Results, preferences, and configured MDM endpoints are stored **locally, without
 
 ## Controls still to be verified
 
-Further review is needed for temporary CSV file retention, local encryption requirements, request rate limiting, stronger UDP/NTP validation, and Play Integrity integration. **Production Android signing is implemented; Play Integrity and Google Play publication are not.** Existing installations signed with a different key may require reinstallation, which can erase locally stored data.
+Further review is needed for temporary CSV file retention, local encryption requirements, request rate limiting, and stronger UDP/NTP validation. Play Integrity is a user-initiated diagnostic. See the [privacy policy](PRIVACY.md) for the verification data flow. Existing installations signed with a different key may require reinstallation, which can erase locally stored data.
 
 ## Repository separation
 
