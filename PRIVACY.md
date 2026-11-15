@@ -2,7 +2,7 @@
 
 Updated November 15, 2026
 
-This policy describes how the MDM SystemCheck Android app handles data during network diagnostics, report export and support.
+This policy describes how the MDM SystemCheck Android app handles data during network diagnostics, file reputation checks, report export and support.
 
 ## What reaches a server
 
@@ -28,6 +28,14 @@ In versions that include the Google Play Integrity module, selecting **Run Play 
 - Hosting access logs can contain your source IP address, user agent, requested path, timestamps, HTTP status or request timing. Log retention depends on the hosting and logging settings. Google's processing of integrity data follows its applicable terms.
 
 The app displays the integrity result on the check screen. This flow is used for integrity diagnostics, not advertising or user tracking.
+
+## Optional File Reputation check with VirusTotal
+
+The APK distributed on GitHub starting with version 1.0.5 includes **File Reputation**. It uses the API key you enter to communicate directly with VirusTotal over HTTPS. MDM SystemCheck keeps the key in memory while this screen is open and does not send the key, file, hash, or result to the developer, OVH verifier, or GitHub.
+
+- **Check SHA-256** computes the file's fingerprint on your device and sends the fingerprint to VirusTotal to retrieve an existing report. This action does not send the file or its name.
+- **Submit file to VirusTotal** sends the complete file and its name only after you confirm permission to share it and accept the [VirusTotal Terms of Service](https://www.virustotal.com/gui/terms-of-service) for that submission. VirusTotal may retain or share submissions. Use only files you are authorized to share and that contain no personal or confidential information. VirusTotal handles submissions under its [Privacy Policy](https://www.virustotal.com/gui/privacy-policy).
+- The app does not add files or results to the diagnostic history. Android's file picker may make a temporary local copy to make the selected file available to the app. Clearing app storage cannot remove a copy already sent to VirusTotal.
 
 ## What stays on the device
 

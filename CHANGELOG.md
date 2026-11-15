@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.5 — VirusTotal File Reputation (build 30)
+
+- Add **File Reputation** below **Google Play Integrity** in the signed GitHub APK.
+- Look up existing VirusTotal reports by SHA-256 or submit a file up to 32 MB with per-upload confirmation and acceptance of VirusTotal's Terms of Service.
+- Publish the signed APK and checksum on the stable GitHub channel.
+
 ## v1.0.4 — Play Integrity server migration (build 29)
 
 - Send Play Integrity verification requests to the MDM SystemCheck server hosted on OVH.
