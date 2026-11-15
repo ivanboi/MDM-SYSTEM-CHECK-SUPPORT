@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.8 — VirusTotal file scanning on Google Play build (build 33)
+
+- Enable the existing **Scan with VirusTotal** screen in the Google Play build.
+- Open the Android document picker from the embedded VirusTotal page and offer **Open in browser** when sign-in is required.
+
 ## v1.0.7 — VirusTotal in SystemCheck (build 32)
 
 - Display the official VirusTotal page below a SystemCheck app bar.
