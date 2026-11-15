@@ -29,9 +29,15 @@ In versions that include the Google Play Integrity module, selecting **Run Play 
 
 The app displays the integrity result on the check screen. This flow is used for integrity diagnostics, not advertising or user tracking.
 
-## Optional File Reputation check with VirusTotal
+## Optional file scanning with VirusTotal
 
-The APK distributed on GitHub starting with version 1.0.5 includes **File Reputation**. It uses the API key you enter to communicate directly with VirusTotal over HTTPS. MDM SystemCheck keeps the key in memory while this screen is open and does not send the key, file, hash, or result to the developer, OVH verifier, or GitHub.
+In the GitHub APK from version 1.0.6, **Scan with VirusTotal** opens the official VirusTotal website in your browser, normally in an Android Custom Tab. Your browser may reuse its existing VirusTotal session. The website handles file selection, sign-in, any upload confirmation, and the report. MDM SystemCheck does not request an API key or access the file, fingerprint, credentials, or report. The app does not send those items to the developer, OVH verifier, or GitHub.
+
+Files you submit may be retained or shared by VirusTotal. Use only files you are authorized to share and that contain no personal or confidential information. See the [VirusTotal Terms of Service](https://www.virustotal.com/gui/terms-of-service) and [Privacy Policy](https://www.virustotal.com/gui/privacy-policy).
+
+### Version 1.0.5
+
+Version 1.0.5 of the GitHub APK includes **File Reputation**. It uses the API key you enter to communicate directly with VirusTotal over HTTPS. MDM SystemCheck keeps the key in memory while this screen is open and does not send the key, file, hash, or result to the developer, OVH verifier, or GitHub.
 
 - **Check SHA-256** computes the file's fingerprint on your device and sends the fingerprint to VirusTotal to retrieve an existing report. This action does not send the file or its name.
 - **Submit file to VirusTotal** sends the complete file and its name only after you confirm permission to share it and accept the [VirusTotal Terms of Service](https://www.virustotal.com/gui/terms-of-service) for that submission. VirusTotal may retain or share submissions. Use only files you are authorized to share and that contain no personal or confidential information. VirusTotal handles submissions under its [Privacy Policy](https://www.virustotal.com/gui/privacy-policy).

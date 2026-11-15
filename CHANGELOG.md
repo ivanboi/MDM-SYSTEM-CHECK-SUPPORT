@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.6 — VirusTotal browser integration (build 31)
+
+- Open the official VirusTotal upload page from **Scan with VirusTotal** below **Google Play Integrity**.
+- Use an Android Custom Tab when available, with the external browser as a fallback.
+- Remove the in-app API key field and direct file submission. VirusTotal handles sign-in, uploads, terms, and reports on its website.
+
 ## v1.0.5 — VirusTotal File Reputation (build 30)
 
 - Add **File Reputation** below **Google Play Integrity** in the signed GitHub APK.
