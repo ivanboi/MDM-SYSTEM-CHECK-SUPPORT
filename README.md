@@ -13,6 +13,7 @@ This **public** repository is the home for public downloads, documentation, and 
 - Optional deployment-specific network components (e.g., AWCM/UAG/Tunnel, Sentry/Core, Intune Tunnel, Citrix Gateway, BlackBerry Proxy): an administrator must explicitly enable them and enter the hostname/IP address and port.
 - Optional VoWiFi/ePDG checks: DNS resolution of the carrier's hostname and indicative UDP 500/4500 datagram transmission. **No IKE/IPsec negotiation is performed, and VoWiFi operation is not verified.**
 - Android-side FCM checks against `mtalk.google.com` (TCP 443/5228/5229/5230). A successful TCP connection does not prove that push notifications are received; `fcm.googleapis.com` is a server-side API and is not tested as a phone push flow.
+- Optional Google Play Integrity check for app recognition, Play licensing and device integrity. Version 1.0.4 uses the OVH verifier.
 - History and preferences are stored locally; CSV exports include Android version, build identifier, and Android Security Patch Level.
 
 ## Interpreting results
@@ -25,7 +26,7 @@ Tests measure network connectivity **from the Android phone**. They do not prove
 - [Development](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-dev) provides a replaceable prerelease from eligible CI builds.
 - Each release includes the APK and its SHA-256 checksum in `SHA256SUMS.txt`.
 
-See the [changelog](CHANGELOG.md) for version history and installation details. Google Play publication and Play Integrity are pending.
+See the [changelog](CHANGELOG.md) for version history and installation details. For Play licensing checks, install the app from Google Play with the account you want to test.
 
 ## Public support
 
