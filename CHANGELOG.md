@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.4 — Play Integrity server migration (build 29)
+
+- Send Play Integrity verification requests to the MDM SystemCheck server hosted on OVH.
+- Keep network diagnostic reports and CSV exports on the device unless you choose to share them. See the [privacy policy](PRIVACY.md) for the integrity data flow.
+
 ## v1.0.3 — Google Play Integrity diagnostics (build 28)
 
 November 7, 2026 · [Public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.3)
