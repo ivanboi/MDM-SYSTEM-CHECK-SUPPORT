@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.7 — VirusTotal in SystemCheck (build 32)
+
+- Display the official VirusTotal page below a SystemCheck app bar.
+- Open the Android document picker from **Choose file**.
+- Keep **Open in browser** available for external sign-in and recovery.
+
 ## v1.0.6 — VirusTotal browser integration (build 31)
 
 - Open the official VirusTotal upload page from **Scan with VirusTotal** below **Google Play Integrity**.

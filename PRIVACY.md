@@ -31,7 +31,13 @@ The app displays the integrity result on the check screen. This flow is used for
 
 ## Optional file scanning with VirusTotal
 
-In the GitHub APK from version 1.0.6, **Scan with VirusTotal** opens the official VirusTotal website in your browser, normally in an Android Custom Tab. Your browser may reuse its existing VirusTotal session. The website handles file selection, sign-in, any upload confirmation, and the report. MDM SystemCheck does not request an API key or access the file, fingerprint, credentials, or report. The app does not send those items to the developer, OVH verifier, or GitHub.
+From version 1.0.7 of the GitHub APK, **Scan with VirusTotal** opens the official VirusTotal website in an embedded Android WebView. When that page requests a file, MDM SystemCheck opens the Android document picker and hands the page a temporary read reference to the file you select. The app does not copy the file or save the selection in its diagnostic history. The VirusTotal page handles any submission, account sign-in and report. Browser and WebView sessions are separate. **Open in browser** opens the site in your browser if sign-in or a browser fallback is needed. The app does not request a VirusTotal API key or send file data to the developer, OVH verifier, or GitHub.
+
+### Version 1.0.6
+
+In version 1.0.6 of the GitHub APK, **Scan with VirusTotal** opens the official VirusTotal website in your browser, normally in an Android Custom Tab. Your browser may reuse its existing VirusTotal session. The website handles file selection, sign-in, any upload confirmation, and the report. MDM SystemCheck does not request an API key or access the file, fingerprint, credentials, or report. The app does not send those items to the developer, OVH verifier, or GitHub.
+
+### VirusTotal submissions
 
 Files you submit may be retained or shared by VirusTotal. Use only files you are authorized to share and that contain no personal or confidential information. See the [VirusTotal Terms of Service](https://www.virustotal.com/gui/terms-of-service) and [Privacy Policy](https://www.virustotal.com/gui/privacy-policy).
 

@@ -14,7 +14,7 @@ This **public** repository is the home for public downloads, documentation, and 
 - Optional VoWiFi/ePDG checks: DNS resolution of the carrier's hostname and indicative UDP 500/4500 datagram transmission. **No IKE/IPsec negotiation is performed, and VoWiFi operation is not verified.**
 - Android-side FCM checks against `mtalk.google.com` (TCP 443/5228/5229/5230). A successful TCP connection does not prove that push notifications are received; `fcm.googleapis.com` is a server-side API and is not tested as a phone push flow.
 - Optional Google Play Integrity check for app recognition, Play licensing and device integrity. Version 1.0.4 uses the OVH verifier.
-- **Scan with VirusTotal** in the GitHub APK (1.0.6+). Open the official VirusTotal website from the dashboard to choose a file and view its report. Uploads are subject to VirusTotal's Terms of Service. See the [Privacy Policy](PRIVACY.md).
+- **Scan with VirusTotal** in the GitHub APK (1.0.7+). The official upload page opens below a SystemCheck app bar. Use **Choose file** for the Android document picker or **Open in browser** if you need to sign in externally. Uploads are subject to VirusTotal's Terms of Service. See the [Privacy Policy](PRIVACY.md).
 - History and preferences are stored locally; CSV exports include Android version, build identifier, and Android Security Patch Level.
 
 ## Interpreting results
