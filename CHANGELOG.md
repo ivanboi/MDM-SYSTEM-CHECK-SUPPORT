@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.0.9 — Signed release with streamlined delivery (build 34)
+
+November 17, 2026 · [Release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.9)
+
+- Package the validated Android app with the VirusTotal WebView for Google Play.
+- Publish the matching signed APK and checksum through the combined build and publication workflow.
+- Refresh the English documentation, privacy notice and security guidance.
+- The maintainer uploads the signed AAB to Google Play and manages its production review and rollout.
+
 ## v1.0.8 — VirusTotal file scanning on Google Play build (build 33)
 
 - Enable the existing **Scan with VirusTotal** screen in the Google Play build.

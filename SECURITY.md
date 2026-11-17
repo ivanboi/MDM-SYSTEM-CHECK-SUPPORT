@@ -38,3 +38,7 @@ Further review is needed for temporary CSV file retention, local encryption requ
 This **public** repository contains documentation, support forms, and approved release assets; the Flutter/Android source code resides in a **private** repository. No secrets, signing files, internal configurations, or source code should be added to this repository.
 
 For non-sensitive functional issues, use the [public issue forms](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose).
+
+## VirusTotal WebView
+
+File scanning is user initiated. The embedded page uses HTTPS on `www.virustotal.com`, with external HTTPS navigation delegated to the browser. Direct file URL access is disabled. The Android picker returns only an authorized document reference. SystemCheck does not persist the selected document in diagnostic history. VirusTotal handles submissions under its terms and privacy notice. Browser sign-in continues outside the WebView when required.

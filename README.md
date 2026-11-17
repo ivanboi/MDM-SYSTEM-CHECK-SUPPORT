@@ -4,6 +4,8 @@
 
 This **public** repository is the home for public downloads, documentation, and support. **Source code, build configurations, and secrets remain in a separate private repository.** Access to the private repository is not required to receive support.
 
+Current packaged release: **1.0.9 (build 34)**. Download the signed APK from the [versioned release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.9). Google Play review and rollout are managed separately by the maintainer.
+
 ## Features
 
 - DNS, TCP, HTTP(S), and NTP tests (UDP/123 request with response validation).
@@ -13,8 +15,8 @@ This **public** repository is the home for public downloads, documentation, and 
 - Optional deployment-specific network components (e.g., AWCM/UAG/Tunnel, Sentry/Core, Intune Tunnel, Citrix Gateway, BlackBerry Proxy): an administrator must explicitly enable them and enter the hostname/IP address and port.
 - Optional VoWiFi/ePDG checks: DNS resolution of the carrier's hostname and indicative UDP 500/4500 datagram transmission. **No IKE/IPsec negotiation is performed, and VoWiFi operation is not verified.**
 - Android-side FCM checks against `mtalk.google.com` (TCP 443/5228/5229/5230). A successful TCP connection does not prove that push notifications are received; `fcm.googleapis.com` is a server-side API and is not tested as a phone push flow.
-- Optional Google Play Integrity check for app recognition, Play licensing and device integrity. Version 1.0.4 uses the OVH verifier.
-- **Scan with VirusTotal** in the GitHub APK (1.0.7+). The official upload page opens below a SystemCheck app bar. Use **Choose file** for the Android document picker or **Open in browser** if you need to sign in externally. Uploads are subject to VirusTotal's Terms of Service. See the [Privacy Policy](PRIVACY.md).
+- Optional Google Play Integrity check for app recognition, Play licensing and device integrity. Versions 1.0.4 and later use the OVH verifier.
+- **Scan with VirusTotal** in GitHub APKs (1.0.7+) and Google Play bundles (1.0.8+). The official upload page opens below a SystemCheck app bar. Use **Choose file** for the Android document picker or **Open in browser** if you need to sign in externally. Uploads are subject to VirusTotal's Terms of Service. See the [Privacy Policy](PRIVACY.md).
 - History and preferences are stored locally; CSV exports include Android version, build identifier, and Android Security Patch Level.
 
 ## Interpreting results

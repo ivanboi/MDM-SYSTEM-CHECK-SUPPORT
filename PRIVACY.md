@@ -1,6 +1,6 @@
 # MDM SystemCheck Privacy Policy
 
-Updated November 15, 2026
+Updated November 17, 2026
 
 This policy describes how the MDM SystemCheck Android app handles data during network diagnostics, file reputation checks, report export and support.
 
@@ -31,7 +31,7 @@ The app displays the integrity result on the check screen. This flow is used for
 
 ## Optional file scanning with VirusTotal
 
-The GitHub APK (version 1.0.7 and later) and the Google Play build (version 1.0.8 and later) include **Scan with VirusTotal**, which opens the official VirusTotal website in an embedded Android WebView. When that page requests a file, MDM SystemCheck opens the Android document picker and hands the page a temporary read reference to the file you select. The app does not copy the file or save the selection in its diagnostic history. The VirusTotal page handles any submission, account sign-in and report. Browser and WebView sessions are separate. **Open in browser** opens the site in your browser if sign-in or a browser fallback is needed. The app does not request a VirusTotal API key or send file data to the developer, OVH verifier, or GitHub.
+The current packaged release is 1.0.9 (build 34). The GitHub APK (version 1.0.7 and later) and the Google Play build (version 1.0.8 and later) include **Scan with VirusTotal**, which opens the official VirusTotal website in an embedded Android WebView. When that page requests a file, MDM SystemCheck opens the Android document picker and hands the page a temporary read reference to the file you select. The app does not copy the file or save the selection in its diagnostic history. The VirusTotal page handles any submission, account sign-in and report. Browser and WebView sessions are separate. **Open in browser** opens the site in your browser if sign-in or a browser fallback is needed. The app does not request a VirusTotal API key or send file data to the developer, OVH verifier, or GitHub.
 
 ### Version 1.0.6
 
@@ -62,6 +62,8 @@ Version 1.0.5 of the GitHub APK includes **File Reputation**. It uses the API ke
 - **Report an issue** opens GitHub in your browser. The app does not attach a diagnostic report. Information you submit to a public issue is visible to others and handled under [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). Remove sensitive data and internal network details before posting or sharing.
 
 ## Retention and deletion
+
+VirusTotal's embedded page can store its session data in Android WebView storage. Clearing the app's storage removes this local WebView data. The external browser maintains its own session and site data. Copies already submitted to VirusTotal remain subject to its policies.
 
 You can delete individual runs or clear the history in the app. To remove stored settings and other app data, clear the app's storage in Android Settings or uninstall the app. Delete any saved or shared copies separately.
 
