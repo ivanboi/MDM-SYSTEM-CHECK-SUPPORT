@@ -1,5 +1,9 @@
 # MDM SystemCheck — Official Support
 
+## Signed catalogue sync — next app release
+
+The current Flutter source implements a GitHub-hosted, Ed25519-signed network catalogue with a 24-hour update check at launch, a manual update button, and an offline fallback. The app verifies the manifest signature, SHA-256 digest and CSV schema, rejecting invalid or older versions. A warning with Retry is displayed if GitHub is unavailable. **This feature is not yet present in the published Android 1.1.0 / Windows 1.1.1 / macOS 1.1.1 binaries.** Manual CSV import remains available in those releases. The current public catalogue has 268 entries and signed manifest version 1. A future CSV revision must increment the manifest version and be signed with the offline private key.
+
 **MDM SystemCheck (EMM SystemCheck)** is a **Flutter application for Android, Windows and macOS** for network diagnostics aimed at EMM/MDM administrators. It checks connectivity from the device running the app without accessing MDM administration APIs or validating enrollment or authentication.
 
 This **public** repository is the home for public downloads, documentation, and support. **Source code, build configurations, and secrets remain in a separate private repository.** Access to the private repository is not required to receive support.
@@ -39,7 +43,7 @@ The [Android 1.1.0 public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-S
 - **Manual CSV import is implemented** in the signed public Android 1.1.0 APK, Windows 1.1.1 and macOS 1.1.1. Users select a local file, approve activation, retain the override locally and can restore bundled defaults. Manually supplied files are not cryptographically authenticated.
 - Windows 1.1.1 is [published as a portable ZIP](docs/WINDOWS_DOWNLOAD.md), with no supported MSIX or Microsoft Store alternative.
 - macOS 1.1.1 is [published as a universal app ZIP](docs/MACOS_DOWNLOAD.md), **without Developer ID signing or notarization**. No native iOS app is published.
-- Automatic signed remote catalogue synchronization is **not implemented**. Future updates require a verified signed manifest, anti-rollback protection and local fallback.
+- Automatic signed remote catalogue synchronization is implemented in source, but not yet released in public app binaries. Future updates require a verified signed manifest, anti-rollback protection and local fallback.
 - GitHub hosts public releases, reference data and support; **OVH is used only for user-initiated Android Google Play Integrity**. Diagnostic reports are not automatically uploaded to the developer.
 
 The public Android APK is **1.1.0+35**. The newer Flutter source **1.1.1+36** has a privately generated signed AAB for possible Play Console upload, but no Android 1.1.1 public stable release or Play rollout has been confirmed.
