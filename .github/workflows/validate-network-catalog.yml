@@ -16,4 +16,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python scripts/validate_network_catalog.py
+      - name: Install Ed25519 verification dependency
+        run: python -m pip install 'cryptography>=44,<48'
+      - name: Validate CSV schema and signed manifests
+        run: python scripts/validate_network_catalog.py
