@@ -4,6 +4,10 @@
 
 Security fixes target the [latest stable Android release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest). Fixes for older versions are not guaranteed.
 
+## macOS desktop security
+
+The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). This is a build under validation until its GitHub release is confirmed.
+
 ## Windows portable ZIP distribution security
 
 Windows 1.1.1 is **unsigned**. See [Windows signing and verification](docs/WINDOWS_SIGNING.md) for trusted signing options and current limitations.
