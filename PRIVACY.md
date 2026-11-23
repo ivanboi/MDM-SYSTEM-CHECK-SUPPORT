@@ -2,27 +2,27 @@
 
 Updated November 23, 2026
 
-This policy describes how the MDM SystemCheck Android app handles data during network diagnostics, file reputation checks, report export and support.
+This policy describes how MDM SystemCheck handles data on Android, Windows, and the macOS desktop build, including local network diagnostics, optional file reputation checks (Android only), report export and support.
 
 ## Platform distribution status
 
-The [Android 1.1.0 public GitHub release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) contains a signed APK and SHA-256; a Google Play rollout remains independently managed. Windows is offered as a **portable ZIP through public GitHub Releases**; the Windows Store product (Store ID `9N9Z3PCL3MG1`) remains registered but **no Microsoft Store app is live**. GitHub receives ordinary download-request metadata when an installer is downloaded; the application does not automatically transmit diagnostic results to GitHub or OVH. Windows checks run directly from the local computer and may send DNS, TCP, HTTP(S) or UDP probe traffic to the selected endpoints. Preparing a Store MSIX does not transmit diagnostic data to Microsoft; eventual installation and app downloads through Microsoft's Store are governed by Microsoft's own handling of Store traffic. No new developer-hosted service is required for Windows.
+The [Android 1.1.0 public GitHub release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) contains a signed APK and SHA-256; a Google Play rollout remains independently managed. Windows is offered as a **portable ZIP through public GitHub Releases**; the Windows Store product (Store ID `9N9Z3PCL3MG1`) remains registered but **no Microsoft Store app is live**. GitHub receives ordinary download-request metadata when an installer is downloaded; the application does not automatically transmit diagnostic results to GitHub or OVH. Windows checks run directly from the local computer and may send DNS, TCP, HTTP(S) or UDP probe traffic to the selected endpoints. Preparing a Store MSIX does not transmit diagnostic data to Microsoft; eventual installation and app downloads through Microsoft's Store are governed by Microsoft's own handling of Store traffic. No new developer-hosted service is required for Windows or macOS. The macOS GitHub ZIP is compiled as an unsigned/unnotarized universal desktop application; its publication status depends on a verified GitHub release.
 
 ## Public network catalogue and offline import
 
 A [reference-only network catalogue](data/network/README.md) is published on GitHub. **The Android application does not automatically fetch that catalogue**, so its publication does not change the network data sent by the installed application.
 
-Android 1.1.0 (build 35) source includes a manual CSV import ([merged PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25)), with public binary availability requiring verification. This feature is designed to select a file from device storage, validate the fields, explicitly confirm activation, and retain the active copy locally. Importing a file itself would not upload its contents to GitHub, OVH, or another server. Running diagnostics against imported destinations would send the usual DNS/TCP/HTTP(S)/UDP network requests to those destinations, potentially revealing source IP and connection metadata.
+Android 1.1.0 (build 35) includes manual CSV import ([merged PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25)) and its signed GitHub APK is publicly available. This feature is designed to select a file from device storage, validate the fields, explicitly confirm activation, and retain the active copy locally. Importing a file itself would not upload its contents to GitHub, OVH, or another server. Running diagnostics against imported destinations would send the usual DNS/TCP/HTTP(S)/UDP network requests to those destinations, potentially revealing source IP and connection metadata.
 
 A separately planned automatic GitHub catalogue downloader is **not implemented**. If later released, fetching it will involve normal HTTPS requests visible to GitHub and intermediaries (for example source IP and timing), and the privacy documentation will be revisited before release.
 
-Windows and macOS applications are also **not currently distributed**. This policy's current behaviour describes the released Android application.
+Windows 1.1.1 is distributed publicly as a ZIP. The macOS universal ZIP is under release validation; its code performs the same device-originating probes and local report storage on macOS. Google Play Integrity and the embedded VirusTotal WebView remain Android-only.
 
 ## What reaches a server
 
 **MDM SystemCheck does not automatically upload diagnostic results, CSV reports, device information or app settings to the developer or to GitHub.** Network reports are stored on the device. The app has no user accounts and does not send analytics, advertising data or crash reports to the developer. App versions with the optional Google Play Integrity module use a dedicated verification service when you run that check, as described below.
 
-When you run diagnostics, the app sends network probes directly from your Android device. The destination depends on the selected network profiles, MDM platform and any custom endpoints you enable.
+When you run diagnostics, the app sends network probes directly from the device executing the application (Android device, Windows PC or Mac). The destination depends on the selected network profiles, MDM platform and any custom endpoints you enable.
 
 | Check | What leaves the device |
 | --- | --- |
