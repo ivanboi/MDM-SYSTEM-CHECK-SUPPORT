@@ -1,98 +1,47 @@
-# MDM SystemCheck — Official Support
+# MDM SystemCheck — Official Downloads and Support
 
-## Signed catalogue synchronization
+Network connectivity and EMM/MDM troubleshooting for Android, Windows and macOS. Checks run from the device running MDM SystemCheck. They **do not** prove MDM enrollment, server authentication, application updates or receipt of push notifications.
 
-The current Flutter source implements a GitHub-hosted, Ed25519-signed network catalogue with a 24-hour update check at launch, a manual update button, and an offline fallback. The app verifies the manifest signature, SHA-256 digest and CSV schema, rejecting invalid or older versions. A warning with Retry is displayed if GitHub is unavailable. **This feature is available in the published Android 1.1.2 / Windows 1.1.2 / macOS 1.1.2 binaries.** Manual CSV import remains available in those releases. The current public catalogue has 434 entries and signed manifest version 5. A future CSV revision must increment the manifest version and be signed with the offline private key.
+## Official downloads
 
-**MDM SystemCheck (EMM SystemCheck)** is a **Flutter application for Android, Windows and macOS** for network diagnostics aimed at EMM/MDM administrators. It checks connectivity from the device running the app without accessing MDM administration APIs or validating enrollment or authentication.
-
-This **public** repository is the home for public downloads, documentation, and support. **Source code, build configurations, and secrets remain in a separate private repository.** Access to the private repository is not required to receive support.
-
-**Verified releases (23 November 2026):** Android **1.1.0+35** (signed APK), Windows **1.1.1** (unsigned x64 portable ZIP), and macOS **1.1.1** (unsigned, unnotarized universal Intel/Apple Silicon ZIP). Current private Flutter source is **1.1.1+36**. A private signed Android **1.1.1+36 AAB** has been generated for Play Console, but upload/review/rollout is not verified. Check assets and SHA-256 at the release pages.
-
-## Windows signatures and verified downloads
-
-The [Windows 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) and [Android 1.1.0 APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) are the currently verified stable assets. Windows is **not Authenticode-signed**; see the [signing and security guide](docs/WINDOWS_SIGNING.md). All historical stable Android and Windows releases are retained for support; older private-source CI prereleases are managed separately.
-
-## Windows 1.1.1 — updated icon and CSV export
-
-The Windows 1.1.1 portable ZIP uses the MDM SystemCheck icon rather than the default Flutter icon. CSV exports open a native **Save As** dialog starting in Downloads, allowing users to choose a different location. The Windows executable version metadata uses `ivanboi` / `MDM SystemCheck` instead of `com.example`; previously created application-data files are not automatically migrated. See [Windows installation guide](docs/WINDOWS_DOWNLOAD.md).
-
-## Download MDM SystemCheck
-
-| Platform | Official downloads | Installation |
+| Platform | Download | Important |
 | --- | --- | --- |
-| Android | [Stable Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | Install the signed APK or use Google Play when available. |
-| Windows x64 | [Windows portable ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No Microsoft Store or MSIX installer exists in the current pipeline. |
-| Windows development | [Latest Windows development build](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev) | For testing only; not a stable release. |
-| macOS (Intel / Apple Silicon) | [Universal macOS 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) | Extract the complete .app; **not Developer ID signed or notarized**, so Gatekeeper or organization policy may block launch. [Guide](docs/MACOS_DOWNLOAD.md). |
+| Android | [Latest signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | SHA-256 provided; Google Play publication is managed separately. |
+| Windows | [Windows stable portable ZIP releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
+| macOS | [macOS stable ZIP releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=macos-v) | Not Apple Developer ID signed or notarized. |
+| Development | [All releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) | Prereleases may be unstable. |
 
-The Windows ZIP is **not Authenticode signed**. Security software, Windows SmartScreen and organizational policies may block it; do not disable protection globally. Verify the ZIP with the attached `SHA256SUMS-windows.txt`. The checksum checks file integrity but is **not** a software signature. See the [Windows download and installation guide](docs/WINDOWS_DOWNLOAD.md).
+Only a published release with its downloadable assets is an installable version. GitHub source commits and successful CI tests alone do not confirm an app-store rollout. Check the [platform status](docs/PLATFORM_AND_CATALOG_STATUS.md).
 
-## Windows distribution — GitHub ZIP only (23 November 2026)
+## Device profiles and supported MDM platforms
 
-**MSIX and Microsoft Store have been discontinued.** MDM SystemCheck for Windows is published **exclusively** as the [portable Windows x64 ZIP with SHA-256 checksum](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1). The private Windows CI no longer builds MSIX or performs Store submission. Earlier unsigned MSIX files found in private historical releases are **unsupported archives** and must not be sideloaded.
+- **Android**: common Google/Android Enterprise network dependencies, maintained under `device:android`.
+- **Samsung**: common Android dependencies plus Samsung Knox manufacturer services (`device:samsung`).
+- **Motorola**: common Android dependencies plus a limited, community-documented Motorola OTA CDS DNS/TCP connectivity test (`device:motorola`).
+- **Crosscall**: common Android dependencies. Crosscall-specific OTA hosts are **not yet confirmed** (`device:crosscall`).
+- **Other profiles**: Apple iOS/iPadOS, macOS, Android AOSP Teams Rooms and Windows.
 
-The public ZIP executable is not Authenticode-signed; Windows SmartScreen or organizational policy may block it. See [installation](docs/WINDOWS_DOWNLOAD.md) and [signing](docs/WINDOWS_SIGNING.md).
+**Samsung Knox Manage** is an independent MDM product (`mdm:knox-manage`), **not** part of the standard Samsung device services. Other supported MDM profiles: Microsoft Intune, Omnissa Workspace ONE, Ivanti, Cisco Meraki Systems Manager, Citrix Endpoint Management and BlackBerry UEM.
 
-The [Android 1.1.0 public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) has a signed APK and SHA-256 checksum. A Google Play rollout must be verified separately. CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. The macOS 1.1.1 .app is available in a GitHub ZIP; no PKG or Mac App Store publication.
+The Motorola OTA endpoint `moto-cds.appspot.com` (TCP 443) is documented by a third-party community project, **not** an official Motorola firewall policy. Only the network path is checked: no firmware update check POST or identifying payload is sent. Optional OEM or region-specific services should not be treated as mandatory connectivity requirements.
 
-## Network flow catalogue and multiplatform availability
+## Signed network flow catalogue
 
-- The [public 434-entry reference CSV](data/network/network-flows.csv) is schema-validated by [GitHub Actions](.github/workflows/validate-network-catalog.yml). It is not a verified complete firewall allowlist.
-- **Manual CSV import is implemented** in the signed public Android 1.1.0 APK, Windows 1.1.1 and macOS 1.1.1. Users select a local file, approve activation, retain the override locally and can restore bundled defaults. Manually supplied files are not cryptographically authenticated.
-- Windows 1.1.1 is [published as a portable ZIP](docs/WINDOWS_DOWNLOAD.md), with no supported MSIX or Microsoft Store alternative.
-- macOS 1.1.1 is [published as a universal app ZIP](docs/MACOS_DOWNLOAD.md), **without Developer ID signing or notarization**. No native iOS app is published.
-- Automatic signed remote catalogue synchronization is implemented in source, but not yet released in public app binaries. Future updates require a verified signed manifest, anti-rollback protection and local fallback.
-- GitHub hosts public releases, reference data and support; **OVH is used only for user-initiated Android Google Play Integrity**. Diagnostic reports are not automatically uploaded to the developer.
+**Single active canonical source:** [network-flows.csv](data/network/network-flows.csv), authenticated by [network-flows.manifest.json](data/network/network-flows.manifest.json). The application validates an Ed25519 signature, SHA-256 and the strict 11-column CSV schema before accepting an automatic update. The signed catalogue version is independent of the application version.
 
-The public Android APK is **1.1.0+35**. The newer Flutter source **1.1.1+36** has a privately generated signed AAB for possible Play Console upload, but no Android 1.1.1 public stable release or Play rollout has been confirmed.
+The **480-record v6 candidate** is [staged here](data/network/network-flows-v6.csv) together with its [signed manifest](data/network/network-flows-v6.manifest.json). v6 rotates the Ed25519 public key because the previous private signing key was lost. **The v5 canonical catalogue stays active until updated application binaries containing both trusted public keys have been distributed.** Older applications cannot verify v6.
 
-See [platform and catalogue status](docs/PLATFORM_AND_CATALOG_STATUS.md).
+To add flows in the future, see [Network catalogue maintenance](data/network/README.md). Only `execution_point=DEVICE` **and** `testability=testable` rows are eligible for live checks. MDM server/administration, wildcard, tenant-specific and documentation-only entries cannot be used as terminal success indicators. Manual CSV import requires explicit approval and is not cryptographically authenticated.
 
-## Features
+## What the app does
 
-- DNS, TCP, HTTP(S), and NTP tests (UDP/123 request with response validation).
-- Diagnostics for destinations reachable from the device running SystemCheck; server-to-server flows, wildcard, tenant-specific, or region-specific destinations are **reference-only**.
-- Selectable network profiles: **iOS/iPadOS, macOS, Android, Android AOSP for Microsoft Teams Rooms, Samsung Knox services, and Windows**. Selected profiles are tested **from the current device**, not from the remote operating system named by the profile.
-- MDM platforms: **Microsoft Intune, Omnissa Workspace ONE UEM, Ivanti Neurons for MDM/EPMM, Cisco Meraki Systems Manager, Citrix Endpoint Management, BlackBerry UEM/Dynamics, and Samsung Knox Manage**. Only one MDM platform is tested at a time. Knox Manage is a separate MDM platform, distinct from Samsung Knox device services.
-- Optional deployment-specific network components (e.g., AWCM/UAG/Tunnel, Sentry/Core, Intune Tunnel, Citrix Gateway, BlackBerry Proxy): an administrator must explicitly enable them and enter the hostname/IP address and port.
-- Optional VoWiFi/ePDG checks: DNS resolution of the carrier's hostname and indicative UDP 500/4500 datagram transmission. **No IKE/IPsec negotiation is performed, and VoWiFi operation is not verified.**
-- Android-side FCM checks against `mtalk.google.com` (TCP 443/5228/5229/5230). A successful TCP connection does not prove that push notifications are received; `fcm.googleapis.com` is a server-side API and is not tested as a phone push flow.
-- Optional Google Play Integrity check for app recognition, Play licensing and device integrity. Versions 1.0.4 and later use the OVH verifier.
-- **Scan with VirusTotal** in GitHub APKs (1.0.7+) and Google Play bundles (1.0.8+). The official upload page opens below a SystemCheck app bar. Use **Choose file** for the Android document picker or **Open in browser** if you need to sign in externally. Uploads are subject to VirusTotal's Terms of Service. See the [Privacy Policy](PRIVACY.md).
-- History and preferences are stored locally. Android CSV exports include Android version, build identifier and security patch level; desktop CSV reports identify the local OS. Windows/macOS exports use native Save As dialogs.
+- DNS, TCP, HTTP(S) and NTP probes; optional indicative VoWiFi/ePDG UDP 500/4500 transmission (not an IPsec handshake).
+- Guided checks for the selected manufacturer or MDM; users can configure tenant-specific endpoints.
+- Local diagnostic history and CSV export. Windows/macOS use a native Save As dialog.
+- Android-only optional Google Play Integrity check through the OVH verifier, and VirusTotal WebView upload when explicitly requested. Network diagnostic reports are **not** automatically uploaded.
 
-## Interpreting results
+## Support, privacy and security
 
-Tests measure network connectivity **from the device running the app**. They do not prove MDM enrollment, authentication, remote service availability, or push notification delivery. Custom components must target only infrastructure you are authorized to test. Check vendor documentation for current destination and port lists before defining firewall rules.
+[Report a bug](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=bug_report.yml) · [Request a feature](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=feature_request.yml) · [Privacy policy](PRIVACY.md) · [Security policy](SECURITY.md) · [Changelog](CHANGELOG.md)
 
-## Android APK downloads
-
-- [Stable](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) provides the signed Android APK for production use.
-- [Development](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-dev) provides a replaceable prerelease from eligible CI builds.
-- Each release includes the APK and its SHA-256 checksum in `SHA256SUMS.txt`.
-
-See the [changelog](CHANGELOG.md) for version history and installation details. For Play licensing checks, install the app from Google Play with the account you want to test.
-
-## Public support
-
-- [Report a bug](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=bug_report.yml)
-- [Request a feature](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new?template=feature_request.yml)
-- [View public issues](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues)
-
-For a bug report, provide the application and operating-system versions, reproduction steps, actual behavior, and expected behavior **without sensitive information**.
-
-**All issues are public.** Never publish passwords, tokens, IMEIs, serial numbers, personal data, confidential internal addresses, or unredacted CSV exports. For vulnerabilities, **do not open a public issue**: follow the [security policy](SECURITY.md).
-
-## Privacy
-
-See the [Privacy Policy](PRIVACY.md) for what network probes send, what stays on the device, and what happens when you share a report.
-
-Diagnostics and settings remain in the application's local storage, without dedicated application-level encryption; they are not automatically sent to support. Android backups are disabled, and cleartext HTTP is blocked by default except for a small set of explicitly permitted captive-portal connectivity-check domains. CSV exports neutralize spreadsheet-formula prefixes but may still be confidential. A compromised device may expose locally stored data.
-
-## Vendor references
-
-[Apple](https://support.apple.com/en-us/101555) · [Android Enterprise](https://support.google.com/work/android/answer/10513641?hl=en) · [Samsung Knox](https://docs.samsungknox.com/admin/knox-admin-portal/before-you-begin/samsung-knox-firewall-exceptions/) · [Microsoft Intune](https://learn.microsoft.com/en-us/intune/fundamentals/endpoints) · [Omnissa](https://ports.omnissa.com/home/) · [Ivanti](https://help.ivanti.com/ht/help/en_US/CLOUD/vNow/platform-allowlist.htm) · [Firebase FCM](https://firebase.google.com/docs/cloud-messaging/network-configuration)
-
-Network references change over time; always consult the latest versions.
+Do not post credentials, private network destinations, serial numbers, IMEIs, tokens or unredacted diagnostic exports in public issues. The private Flutter source code, build/signing configurations and secrets are maintained separately from this public support repository.
