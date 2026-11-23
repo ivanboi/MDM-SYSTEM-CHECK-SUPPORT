@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 path = pathlib.Path("data/network/network-flows.csv")
 columns = ["id","category","name","host","port","protocol","execution_point","region","testability","purpose","reference"]
 protocols = {"TCP", "HTTP", "HTTPS", "NTP", "UDP"}
-testability = {"testable", "server-side flow", "wildcard required", "documentation only"}
+testability = {"testable", "server-side flow", "wildcard required", "documentation only", "base domain only; subdomains vary"}
 with path.open(encoding="utf-8-sig", newline="") as handle:
     reader = csv.DictReader(handle)
     assert reader.fieldnames == columns, "Schema mismatch"
