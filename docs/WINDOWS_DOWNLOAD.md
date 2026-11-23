@@ -1,6 +1,6 @@
 # Windows portable download and installation
 
-MDM SystemCheck is distributed for Windows as a portable **x64 ZIP**. It does not need Microsoft Store, a Microsoft user account, or an MSIX package.
+MDM SystemCheck is distributed for Windows as a portable **x64 ZIP**. It is the only supported Windows package; MSIX and Microsoft Store publication are discontinued.
 
 ## Download
 
@@ -51,8 +51,6 @@ Check [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPP
 - Windows-specific BitLocker, Defender, Entra ID, Intune enrollment, TPM and Secure Boot checks are not yet implemented.
 - Google Play Integrity and the integrated VirusTotal WebView remain Android-only.
 
-## Microsoft Store
+## No MSIX / Microsoft Store distribution
 
-The product has been registered in Microsoft Partner Center, but the Store publication is deferred. The unsigned MSIX build is kept private and is **not offered for public installation**.
-
-[Support](../README.md) · [Privacy](../PRIVACY.md) · [Security](../SECURITY.md)
+The Windows MSIX and Microsoft Store publication paths were **abandoned** on 23 November 2026. The public GitHub portable ZIP above is the **only supported Windows download**. The current workflow generates no MSIX. Older unsigned MSIX files retained in private historical releases are legacy archives, not installation options. There are no planned Microsoft Store links or Store updates.
