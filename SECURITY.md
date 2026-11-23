@@ -4,9 +4,13 @@
 
 Security fixes target the [latest stable Android release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest). Fixes for older versions are not guaranteed.
 
+## Microsoft Store identity and Windows package trust
+
+The Partner Center identity for the future Windows package is `ivanbillyjean.MDMSystemCheck`, with publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A` and Store ID `9N9Z3PCL3MG1`. The proposed [MSIX PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) creates an unsigned submission package for Microsoft's certification process. **It is not a signed sideload package, and there is no confirmed public Store release.** Download builds only from verified release channels.
+
 ## Network reference catalogue and offline local import
 
-The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. The currently released Android app **does not download or execute the public CSV**.
+The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. The Android application **does not automatically download or execute the public CSV**; Android 1.1.0 source contains an optional user-approved manual import.
 
 [Merged source PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) implements user-selected CSV files in the Android 1.1.0 (build 35) release candidate and explicit confirmation before locally overriding selected device/MDM categories. A locally imported file is **not signed/authenticated**: importing untrusted destinations could trigger probes to an attacker-controlled host. Do not import CSVs from unknown sources. The unreleased automatic GitHub synchronizer must authenticate a signed manifest, validate schema and endpoints, and retain offline rollback before enabling network updates.
 
