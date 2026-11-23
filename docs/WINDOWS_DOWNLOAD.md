@@ -25,6 +25,9 @@ Starting with Windows 1.1.1, the official SystemCheck icon appears on the execut
 
 ## Integrity and Windows security
 
+The ZIP's executable is **not Authenticode-signed**. See the [Windows signing guide](WINDOWS_SIGNING.md) for future signature verification and certificate limitations.
+
+
 The Windows ZIP is **not digitally signed**. GitHub SHA-256 checksums check integrity only; they do not authenticate the publisher or replace code signing.
 
 You can verify the download in PowerShell:
