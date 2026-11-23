@@ -4,7 +4,7 @@
 
 This **public** repository is the home for public downloads, documentation, and support. **Source code, build configurations, and secrets remain in a separate private repository.** Access to the private repository is not required to receive support.
 
-Current source version: **Android 1.1.0 (build 35)**. The [v1.1.0 GitHub release tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists, but signed APK/AAB assets and Google Play rollout have not been independently verified here. Check the release's files and SHA-256 before download; Store review and rollout remain separate.
+Current source version: **Android 1.1.0 (build 35)**. The [v1.1.0 GitHub release tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists, but the signed public APK and SHA-256 have been verified; Play Console rollout and AAB handling remain separate. Check the release's files and SHA-256 before download; Store review and rollout remain separate.
 
 ## Windows signatures and verified downloads
 
@@ -31,7 +31,7 @@ The Windows application **MDM SystemCheck** is registered in Microsoft Partner C
 
 The Windows MSIX packaging is built in the **private source repository only**, reserved for a possible future Microsoft Store submission. The **preferred Windows download is the public portable ZIP**, which requires no Store submission. There is no confirmed Store-certified listing. Do not sideload the unsigned private MSIX.
 
-Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. **The presence of a tag does not prove signed APK/AAB asset availability or Play Store rollout.** CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
+The [Android 1.1.0 public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) has a signed APK and SHA-256 checksum. A Google Play rollout must be verified separately. CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
 
 ## Shared network flow catalogue and desktop roadmap (23 November 2026)
 
