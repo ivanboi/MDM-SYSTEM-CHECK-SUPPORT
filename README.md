@@ -1,16 +1,27 @@
 # MDM SystemCheck — Official Support
 
-**MDM SystemCheck (EMM SystemCheck)** is an **Android Flutter application** for network diagnostics aimed at EMM/MDM administrators. It checks connectivity from an Android phone without accessing MDM administration APIs or validating enrollment or authentication.
+**MDM SystemCheck (EMM SystemCheck)** is a **Flutter application for Android and Windows** for network diagnostics aimed at EMM/MDM administrators. It checks connectivity from the device running the app without accessing MDM administration APIs or validating enrollment or authentication.
 
 This **public** repository is the home for public downloads, documentation, and support. **Source code, build configurations, and secrets remain in a separate private repository.** Access to the private repository is not required to receive support.
 
 Current source version: **Android 1.1.0 (build 35)**. The [v1.1.0 GitHub release tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists, but signed APK/AAB assets and Google Play rollout have not been independently verified here. Check the release's files and SHA-256 before download; Store review and rollout remain separate.
 
+## Download MDM SystemCheck
+
+| Platform | Official downloads | Installation |
+| --- | --- | --- |
+| Android | [Stable Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | Install the signed APK or use Google Play when available. |
+| Windows x64 | [Windows portable ZIP v1.1.0](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No MSIX or Microsoft Store required. |
+| Windows development | [Latest Windows development build](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev) | For testing only; not a stable release. |
+| macOS | Not released | Future target. |
+
+The Windows ZIP is **not Authenticode signed**. Security software, Windows SmartScreen and organizational policies may block it; do not disable protection globally. Verify the ZIP with the attached `SHA256SUMS-windows.txt`. The checksum checks file integrity but is **not** a software signature. See the [Windows download and installation guide](docs/WINDOWS_DOWNLOAD.md).
+
 ## Microsoft Store registration and packaging status — 23 November 2026
 
 The Windows application **MDM SystemCheck** is registered in Microsoft Partner Center with Store ID `9N9Z3PCL3MG1`. Its identity is `ivanbillyjean.MDMSystemCheck`, publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`, publisher display name `ivan_billyjean`, and package family name `ivanbillyjean.MDMSystemCheck_hgbzc83p2bnep`.
 
-The [private source PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) prepares an unsigned **Store-submission MSIX** (`1.1.0.0`, Windows x64) and validates its manifest identity. Windows build CI passed, but full PR validation and merging were still outstanding at the last check. **No Store-certified package, direct Store link or published Microsoft Store listing is confirmed.** Do not sideload the unsigned Store package as if it were a signed installer. A separate portable ZIP is available only when a build artifact is successfully uploaded and verified.
+The Windows MSIX packaging is built in the **private source repository only**, reserved for a possible future Microsoft Store submission. The **preferred Windows download is the public portable ZIP**, which requires no Store submission. There is no confirmed Store-certified listing. Do not sideload the unsigned private MSIX.
 
 Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. **The presence of a tag does not prove signed APK/AAB asset availability or Play Store rollout.** CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
 
