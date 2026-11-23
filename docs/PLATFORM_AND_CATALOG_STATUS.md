@@ -1,49 +1,31 @@
-# Platform and network catalogue status
+# Platform and catalogue status
 
 _Last reviewed: 23 November 2026._
 
-## Windows release policy — GitHub ZIP exclusively
+## Releases and distribution policy
 
-**MSIX and Microsoft Store distribution have been abandoned.** Windows is published only as a [portable x64 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) with a SHA-256 checksum on public GitHub. Windows CI no longer builds, checks or publishes MSIX; earlier experimental MSIX packages in private release history are **unsupported archives**, not supported installers. The Windows executable is currently unsigned; SmartScreen and enterprise restrictions may apply.
+- **Android:** [public stable APK releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest), signed using the project's production Android keystore and published with SHA-256. The latest verified stable before the v1.1.3 rollout is **1.1.2**. Uploading an AAB to Google Play and confirming a Play Store production rollout are separate maintainer actions.
+- **Windows:** [portable Windows x64 ZIP releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v), latest verified stable before v1.1.3 **1.1.2**. No MSIX or Microsoft Store distribution. The executable is unsigned.
+- **macOS:** [universal macOS ZIP releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=macos-v), latest verified stable before v1.1.3 **1.1.2**. The executable is neither Developer ID signed nor notarized; Gatekeeper and enterprise policies may restrict it.
+- **v1.1.3 source:** OEM device profiles, common Android + manufacturer flow composition, and dual Ed25519 public keys. Public availability must be checked on release pages once the CI release jobs complete. No native iOS build is published.
 
-## Verified current distribution and signing
+## Network catalogue
 
-[Windows 1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) is publicly available as a portable ZIP and SHA-256, **without Authenticode signing**. [Android 1.1.0](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) contains the signed APK. The [signing guide](WINDOWS_SIGNING.md) documents trusted certificate choices and SmartScreen limitations. Historic stable binaries are retained.
+| Catalogue | Contents | Signing | Status |
+| --- | --- | --- | --- |
+| [Canonical CSV](../data/network/network-flows.csv) | 434 records | Ed25519 v5, original public key | **Active** until client migration |
+| [v6 candidate](../data/network/network-flows-v6.csv) | 480 records, 16 categories | Ed25519 v6, rotated public key | Signed, staged; **not yet active** |
 
-## Current public distribution
+The signed catalogue is checked automatically at most once every 24 hours by supported clients. They verify HTTPS source, SHA-256, Ed25519 signature, strict CSV schema and version rollback. Manual import is user-approved and untrusted; a verified cached catalogue remains usable when GitHub is unavailable.
 
-Android **1.1.0 (build 35)** is published with a signed APK and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; the signed APK and SHA-256 are now confirmed publicly available. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; A [public macOS 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) and its SHA-256 are **published and verified**. The app is **universal arm64 + x86_64**; Developer ID signing and notarization are not enabled.
+v6 uses a newly generated key because the original private signing key was lost. v1.1.3 source trusts **both** keys, choosing the legacy key for v1–v5 and the rotated key for v6+. The canonical CSV and its manifest must be promoted together **only after** compatible v1.1.3 applications are available. Older clients will reject v6 and retain their last verified copy rather than trust an unfamiliar key.
 
-| Platform | Current state | Intended delivery |
-| --- | --- | --- |
-| Android | Signed public APK 1.1.0 (build 35) and checksum verified; Play rollout separate | Google Play AAB; signed public APK |
-| Windows | Public portable x64 ZIP is the sole Windows release; MSIX/Store discontinued | Portable Windows x64 ZIP and SHA-256 only |
-| macOS | [Published universal 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1), Intel and Apple Silicon, SHA-256 verified; not Developer ID signed/notarized | GitHub ZIP containing the .app; no Mac App Store or PKG publication |
-| Remote network catalogue | Reference data on public GitHub, **not consumed automatically by released app** | Future signed manifests, verified downloads, offline cache/fallback |
-| Manual network CSV import | [Merged private PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25), Android 1.1.0 signed public APK verified; available on Windows 1.1.1 and macOS 1.1.1 as well | User-selected local CSV, validation, confirmation, persistence and rollback |
+Future Android Enterprise or OEM network changes should be made once in the canonical CSV after cutover: `device:android` for common Google/Android flows, `device:samsung`, `device:motorola`, `device:crosscall` for vendor-specific flows, and `mdm:knox-manage` for Samsung's standalone MDM platform. Server-originating, regional, wildcard and documentary flows must not be treated as terminal checks. Details: [catalogue maintenance](../data/network/README.md).
 
-Windows/macOS/iOS **profile names** identify network services that can be tested *from the device running SystemCheck*. They identify remote target flows, not the platform executing the test. Native Windows and macOS desktop binaries are available; no native iOS app exists.
+## Privacy and diagnostic scope
 
-**Current handoff:** Android **1.1.0+35** has a verified signed public APK. The private signed **1.1.1+36 AAB** was generated separately, with no confirmed Play Console upload or rollout.
+Network tests originate on the device running SystemCheck. HTTP(S) response or TCP connect success does not prove MDM enrollment, update availability, authentication or successful push delivery. Optional VoWiFi sends UDP datagrams but does not establish an IPsec tunnel. Sensitive diagnostic reports remain local unless users export them. Android Google Play Integrity may contact `https://api.mdm.ivanboi.fr/verify` on explicit request; VirusTotal handles separate user-selected uploads.
 
-## CSV reference catalogue
+## Retention
 
-The public [network-flows.csv](../data/network/network-flows.csv) contains **225 contextual records**. It is managed and schema-validated by GitHub Actions; it is **not** a complete vendor firewall allowlist.
-
-- Use the full published header, unchanged field order and UTF-8 encoding.
-- `execution_point=MDM_SERVER` destinations are not to be presented as originating from a managed device.
-- `testability` and regional/vendor constraints apply; not every row is a probe.
-- The upcoming manual importer does not authenticate a file's origin, even when its format is valid.
-- Automatic updates require a signed manifest, client-pinned verification key, anti-rollback/version validation and a verified local/offline fallback; SHA-256 by itself does **not** authenticate origin.
-
-## Privacy, permissions and hosting
-
-Network checks run directly from the device. Diagnostic results, settings and the planned manually imported CSV are stored locally, without automatic diagnostic uploads. Outbound DNS/HTTP/TCP and UDP probes disclose normal connection metadata to selected network destinations.
-
-**OVH is used solely for optional Android Google Play Integrity verification** at `https://api.mdm.ivanboi.fr/verify`. The main app does not depend on OVH for its catalogue, results, VirusTotal or user support.
-
-The released unsigned/unnotarized macOS ZIP containing the .app may be blocked by Gatekeeper or company security policy. Installation or execution without administrator privileges cannot be guaranteed for managed computers.
-
-## Versioning and support
-
-Application versions and GitHub network catalogue revisions are independent. Documentation changes do not constitute a new binary release. Report problems through [GitHub Issues](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues/new/choose); do not post secrets or internal network exports publicly.
+Keep historic **stable** release tags and their checksums available for rollback. Do not publish insecure experimental MSIX packages or obsolete package instructions as supported downloads. Private CI development artifacts may be automatically pruned according to the documented retention policy; never delete customer data, stable releases, or signing key backups to tidy the project.
