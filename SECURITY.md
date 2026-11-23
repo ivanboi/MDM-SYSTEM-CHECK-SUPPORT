@@ -6,7 +6,7 @@ Security fixes target the [latest stable Android release](https://github.com/iva
 
 ## macOS desktop security
 
-The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). This is a build under validation until its GitHub release is confirmed.
+The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). The public macOS 1.1.1 ZIP and checksum have been verified in GitHub Releases.
 
 ## Windows portable ZIP distribution security
 
