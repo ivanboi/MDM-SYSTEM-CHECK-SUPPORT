@@ -4,11 +4,11 @@
 
 Security fixes target the [latest stable Android release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest). Fixes for older versions are not guaranteed.
 
-## Network reference catalogue and upcoming local import
+## Network reference catalogue and offline local import
 
 The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. The currently released Android app **does not download or execute the public CSV**.
 
-[Manual import PR #23](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/23) proposes user-selected CSV files and explicit confirmation before locally overriding selected device/MDM categories. A locally imported file is **not signed/authenticated**: importing untrusted destinations could trigger probes to an attacker-controlled host. Do not import CSVs from unknown sources. The unreleased automatic GitHub synchronizer must authenticate a signed manifest, validate schema and endpoints, and retain offline rollback before enabling network updates.
+[Merged source PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) implements user-selected CSV files in the Android 1.1.0 (build 35) release candidate and explicit confirmation before locally overriding selected device/MDM categories. A locally imported file is **not signed/authenticated**: importing untrusted destinations could trigger probes to an attacker-controlled host. Do not import CSVs from unknown sources. The unreleased automatic GitHub synchronizer must authenticate a signed manifest, validate schema and endpoints, and retain offline rollback before enabling network updates.
 
 OVH is reserved for the optional Android Play Integrity verifier. Diagnostic history and manually chosen network catalogues remain on the device; users should review destination and metadata disclosures before sharing exports.
 

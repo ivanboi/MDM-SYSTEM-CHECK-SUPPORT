@@ -1,9 +1,17 @@
 # Changelog
 
+## Android 1.1.0 (build 35) — source merged; artifact publication requires verification
+
+- Offline import of network-flow CSV files from local device storage, including schema validation, activation confirmation, category-specific overrides, persistence and restoring the built-in catalogue.
+- Initial Flutter Windows desktop foundation and CI compilation, **not** Microsoft Store distribution.
+- Preserve existing Android Play Integrity and VirusTotal flows.
+- The GitHub public CSV reference remains **manual only**: automatic remote downloads and signed-manifest synchronization are not implemented.
+- The signed Android release pipeline was requested from the source repository; availability of a public APK and AAB must be verified independently before distribution.
+
 ## Documentation and catalogue updates — 23 November 2026 (no new app release)
 
 - Published the [225-record network reference CSV](data/network/network-flows.csv) and GitHub Actions schema validation in the public support repository.
-- Documented the **unreleased** manual local CSV import ([private PR #23](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/23)), Windows desktop build ([private PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22)), macOS plans, and future signed GitHub catalogue synchronization.
+- Documented the manual local CSV import ([merged private PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25)), Windows desktop build ([merged private PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22)), macOS plans, and future signed GitHub catalogue synchronization.
 - No new Android APK/AAB, Microsoft Store package, or macOS installer is represented by this documentation update.
 
 ## v1.0.9 — Signed release with streamlined delivery (build 34)
