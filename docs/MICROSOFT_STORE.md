@@ -19,6 +19,8 @@ A Store deep link and web listing are **not available until the application is p
 
 ## Preferred Windows delivery
 
+No certificate or signing credentials are available for public Authenticode signing. The public GitHub ZIP remains unsigned. See [Windows signing status](WINDOWS_SIGNING.md).
+
 The **portable ZIP on GitHub** is the default Windows distribution, not a Microsoft Store MSIX. Download the [Windows ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) and follow the [installation instructions](WINDOWS_DOWNLOAD.md). GitHub also hosts a separate `latest-windows-dev` prerelease. Windows binaries are not Authenticode signed; Windows SmartScreen or company policy may prevent their execution.
 
 The MSIX is retained in the private source repository solely for a possible future Partner Center submission. It is unsigned and must not be distributed as a public installer.
@@ -34,7 +36,7 @@ The MSIX is retained in the private source repository solely for a possible futu
 
 ## Next steps to publish
 
-1. Wait for the full PR #27 CI suite to pass and merge the validated packaging changes.
+1. If Microsoft Store publication is resumed, use the existing private Windows MSIX packaging workflow; the packaging changes are already merged.
 2. Download a successful `mdm-systemcheck-msix-store-x64` Windows workflow artifact. A completed build may not produce a downloadable artifact when GitHub's storage quota is exceeded.
 3. Check SHA-256 and package manifest identity. The MSIX must use the exact publisher and package identity above.
 4. Test on Windows 11 and run relevant Windows App Certification Kit checks.

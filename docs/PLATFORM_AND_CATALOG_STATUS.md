@@ -10,9 +10,13 @@ Windows is distributed primarily by [public GitHub portable ZIP](https://github.
 
 Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. **The presence of a tag does not prove signed APK/AAB asset availability or Play Store rollout.** CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
 
+## Verified current distribution and signing
+
+[Windows 1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) is publicly available as a portable ZIP and SHA-256, **without Authenticode signing**. [Android 1.1.0](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) contains the signed APK. The [signing guide](WINDOWS_SIGNING.md) documents trusted certificate choices and SmartScreen limitations. Historic stable binaries are retained.
+
 ## Current public distribution
 
-Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; verify signed assets before considering it downloadable. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; macOS is not released.
+Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; the signed APK and SHA-256 are now confirmed publicly available. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; macOS is not released.
 
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |

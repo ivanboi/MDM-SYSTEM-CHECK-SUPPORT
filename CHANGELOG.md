@@ -1,5 +1,11 @@
 # Changelog
 
+## Documentation maintenance and signing clarification — 23 November 2026
+
+- Confirm current public stable binaries: Android 1.1.0 and portable Windows 1.1.1, with SHA-256 checksums.
+- Clarify that the Windows executable is unsigned and that seller verification in Partner Center is not an Authenticode code-signing certificate.
+- Correct stale release/PR references, keep historical stable release notes and direct maintenance cleanup only at redundant private CI prereleases.
+
 ## Windows v1.1.1 — official icon and accessible CSV reports
 
 - Replace Flutter's default Windows taskbar and executable icon with the SystemCheck logo.
