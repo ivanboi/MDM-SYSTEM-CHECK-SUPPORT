@@ -1,6 +1,6 @@
 # Central network flow catalogue
 
-The current catalogue contains 387 contextual flow records extracted from the current private Flutter source models. Repeated hostnames are intentional when the MDM context or originating device differs.
+The current catalogue contains 396 contextual flow records extracted from the current private Flutter source models. Repeated hostnames are intentional when the MDM context or originating device differs.
 
 Columns: `id, category, name, host, port, protocol, execution_point, region, testability, purpose, reference`.
 
@@ -18,4 +18,4 @@ Never publish tenant secrets or private hostnames here. Changes should be review
 
 ## Android Enterprise source refresh (23 November 2026)
 
-The 387-record catalogue incorporates the Google [Android Enterprise Network Requirements](https://support.google.com/work/android/answer/10513641?hl=en) device destinations, including Play services, account authentication, certificate validation, FCM/GCM messaging, connectivity checks, OEM-dependent OTA updates and Play Protect. `android.clients.google.com` was removed from all records. Wildcard families such as `*.googleapis.com` are represented by reference-only base-domain records with the wildcard explicitly retained in the name and purpose; a base-domain probe is **not** proof that wildcard children are reachable. The signed catalogue manifest is version **2**, published with the updated CSV. Clients with verified catalogue synchronization check the signed manifest during application use and retain their last verified local copy if GitHub is unavailable. Manual imports are untrusted and remain user-approved.
+The 396-record catalogue incorporates the Google [Android Enterprise Network Requirements](https://support.google.com/work/android/answer/10513641?hl=en) device destinations, including Play services, account authentication, certificate validation, FCM/GCM messaging, connectivity checks, OEM-dependent OTA updates and Play Protect. `android.clients.google.com` was removed from all records. Wildcard families such as `*.googleapis.com` are represented by reference-only base-domain records with the wildcard explicitly retained in the name and purpose; a base-domain probe is **not** proof that wildcard children are reachable. The signed catalogue manifest is version **3**, published with the updated CSV. Clients with verified catalogue synchronization check the signed manifest during application use and retain their last verified local copy if GitHub is unavailable. Manual imports are untrusted and remain user-approved.
