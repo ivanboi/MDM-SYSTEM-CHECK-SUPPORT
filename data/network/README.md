@@ -1,6 +1,6 @@
 # Central network flow catalogue
 
-The current catalogue contains 433 contextual flow records extracted from the current private Flutter source models. Repeated hostnames are intentional when the MDM context or originating device differs.
+The current catalogue contains 434 contextual flow records extracted from the current private Flutter source models. Repeated hostnames are intentional when the MDM context or originating device differs.
 
 Columns: `id, category, name, host, port, protocol, execution_point, region, testability, purpose, reference`.
 
@@ -26,4 +26,12 @@ The [Apple enterprise network reference](https://support.apple.com/fr-fr/101555)
 
 Already present flows such as Apple NTP (UDP/123), `mesu.apple.com`, Apple Account sign-in, device enrollment, APNs gateway and App Store URLs were not duplicated. Wildcard base names are represented only with `testability=wildcard required`; they cannot be actively probed as an entire wildcard family. APNs TCP/2197 is explicitly `execution_point=MDM_SERVER` and `testability=server-side flow`, not a device-level check. UDP probes only indicate network-path behavior; a reachable port is not proof of iCloud, APNs, App Store purchase processing or MDM enrollment.
 
-Signed manifest version **4** protects the 433-record CSV from tampering and rollback. The application can retrieve the updated reference catalogue through its existing signed synchronization feature, without creating a new binary release.
+Signed manifest version **5** protects the 434-record CSV from tampering and rollback. The application can retrieve the updated reference catalogue through its existing signed synchronization feature, without creating a new binary release.
+
+## Apple APNs and enrollment clarification (23 November 2026)
+
+Apple's official [enterprise network matrix](https://support.apple.com/en-us/101555) lists `*.push.apple.com` TCP **443, 80, 5223, 2197**. All four ports are now represented in the Apple device profile. Wildcard rows are reference-only, and TCP/2197 is explicitly a provider/server-side APNs flow, **not** a device connectivity test. Concrete host probes for `gateway.push.apple.com` (443 and 5223) and `courier.push.apple.com` (5223) are retained; passing them does not prove APNs push delivery or a valid provider certificate.
+
+Apple Device Enrollment (ADE), Apple Business enrollment, enrollment profile hosting, and account-driven enrollment were already listed. Their records now have explicit **MDM Enrollment** descriptions. Management-server-only operations — `mdmenrollment.apple.com`, APNs certificate portal `identity.apple.com`, `deviceservices-external.apple.com` Activation Lock operations, and `vpp.itunes.apple.com` license assignments — are marked `execution_point=MDM_SERVER` and `testability=server-side flow`. Endpoints used by an enrolling device, including `deviceenrollment.apple.com`, `iprofiles.apple.com`, and `axm-servicediscovery.apple.com`, remain testable device flows.
+
+The **v5** Ed25519-signed catalogue contains **434** records. Active probing requires both `execution_point=DEVICE` and `testability=testable`; wildcard reference rows and server-only flows must not be presented as successful live checks. Apple recommends disabling HTTPS interception for these Apple services.
