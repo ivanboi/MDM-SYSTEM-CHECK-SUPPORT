@@ -1,8 +1,8 @@
 # MDM SystemCheck — Official Support
 
-## Signed catalogue sync — next app release
+## Signed catalogue synchronization
 
-The current Flutter source implements a GitHub-hosted, Ed25519-signed network catalogue with a 24-hour update check at launch, a manual update button, and an offline fallback. The app verifies the manifest signature, SHA-256 digest and CSV schema, rejecting invalid or older versions. A warning with Retry is displayed if GitHub is unavailable. **This feature is not yet present in the published Android 1.1.0 / Windows 1.1.1 / macOS 1.1.1 binaries.** Manual CSV import remains available in those releases. The current public catalogue has 268 entries and signed manifest version 1. A future CSV revision must increment the manifest version and be signed with the offline private key.
+The current Flutter source implements a GitHub-hosted, Ed25519-signed network catalogue with a 24-hour update check at launch, a manual update button, and an offline fallback. The app verifies the manifest signature, SHA-256 digest and CSV schema, rejecting invalid or older versions. A warning with Retry is displayed if GitHub is unavailable. **This feature is available in the published Android 1.1.2 / Windows 1.1.2 / macOS 1.1.2 binaries.** Manual CSV import remains available in those releases. The current public catalogue has 387 entries and signed manifest version 2. A future CSV revision must increment the manifest version and be signed with the offline private key.
 
 **MDM SystemCheck (EMM SystemCheck)** is a **Flutter application for Android, Windows and macOS** for network diagnostics aimed at EMM/MDM administrators. It checks connectivity from the device running the app without accessing MDM administration APIs or validating enrollment or authentication.
 
@@ -39,7 +39,7 @@ The [Android 1.1.0 public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-S
 
 ## Network flow catalogue and multiplatform availability
 
-- The [public 225-entry reference CSV](data/network/network-flows.csv) is schema-validated by [GitHub Actions](.github/workflows/validate-network-catalog.yml). It is not a verified complete firewall allowlist.
+- The [public 387-entry reference CSV](data/network/network-flows.csv) is schema-validated by [GitHub Actions](.github/workflows/validate-network-catalog.yml). It is not a verified complete firewall allowlist.
 - **Manual CSV import is implemented** in the signed public Android 1.1.0 APK, Windows 1.1.1 and macOS 1.1.1. Users select a local file, approve activation, retain the override locally and can restore bundled defaults. Manually supplied files are not cryptographically authenticated.
 - Windows 1.1.1 is [published as a portable ZIP](docs/WINDOWS_DOWNLOAD.md), with no supported MSIX or Microsoft Store alternative.
 - macOS 1.1.1 is [published as a universal app ZIP](docs/MACOS_DOWNLOAD.md), **without Developer ID signing or notarization**. No native iOS app is published.
