@@ -6,6 +6,10 @@ This **public** repository is the home for public downloads, documentation, and 
 
 Current source version: **Android 1.1.0 (build 35)**. The [v1.1.0 GitHub release tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists, but signed APK/AAB assets and Google Play rollout have not been independently verified here. Check the release's files and SHA-256 before download; Store review and rollout remain separate.
 
+## Windows signatures and verified downloads
+
+The [Windows 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) and [Android 1.1.0 APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) are the currently verified stable assets. Windows is **not Authenticode-signed**; see the [signing and security guide](docs/WINDOWS_SIGNING.md). All historical stable Android and Windows releases are retained for support; older private-source CI prereleases are managed separately.
+
 ## Windows 1.1.1 — updated icon and CSV export
 
 The Windows 1.1.1 portable ZIP uses the MDM SystemCheck icon rather than the default Flutter icon. CSV exports open a native **Save As** dialog starting in Downloads, allowing users to choose a different location. The Windows executable version metadata uses `ivanboi` / `MDM SystemCheck` instead of `com.example`; previously created application-data files are not automatically migrated. See [Windows installation guide](docs/WINDOWS_DOWNLOAD.md).
