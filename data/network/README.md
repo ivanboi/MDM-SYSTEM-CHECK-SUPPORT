@@ -1,6 +1,6 @@
 # Central network flow catalogue
 
-The current catalogue contains 396 contextual flow records extracted from the current private Flutter source models. Repeated hostnames are intentional when the MDM context or originating device differs.
+The current catalogue contains 433 contextual flow records extracted from the current private Flutter source models. Repeated hostnames are intentional when the MDM context or originating device differs.
 
 Columns: `id, category, name, host, port, protocol, execution_point, region, testability, purpose, reference`.
 
@@ -18,4 +18,12 @@ Never publish tenant secrets or private hostnames here. Changes should be review
 
 ## Android Enterprise source refresh (23 November 2026)
 
-The 396-record catalogue incorporates the Google [Android Enterprise Network Requirements](https://support.google.com/work/android/answer/10513641?hl=en) device destinations, including Play services, account authentication, certificate validation, FCM/GCM messaging, connectivity checks, OEM-dependent OTA updates and Play Protect. `android.clients.google.com` was removed from all records. Wildcard families such as `*.googleapis.com` are represented by reference-only base-domain records with the wildcard explicitly retained in the name and purpose; a base-domain probe is **not** proof that wildcard children are reachable. The signed catalogue manifest is version **3**, published with the updated CSV. Clients with verified catalogue synchronization check the signed manifest during application use and retain their last verified local copy if GitHub is unavailable. Manual imports are untrusted and remain user-approved.
+The 433-record catalogue incorporates the Google [Android Enterprise Network Requirements](https://support.google.com/work/android/answer/10513641?hl=en) device destinations, including Play services, account authentication, certificate validation, FCM/GCM messaging, connectivity checks, OEM-dependent OTA updates and Play Protect. `android.clients.google.com` was removed from all records. Wildcard families such as `*.googleapis.com` are represented by reference-only base-domain records with the wildcard explicitly retained in the name and purpose; a base-domain probe is **not** proof that wildcard children are reachable. The signed catalogue manifest is version **4**, published with the updated CSV. Clients with verified catalogue synchronization check the signed manifest during application use and retain their last verified local copy if GitHub is unavailable. Manual imports are untrusted and remain user-approved.
+
+## Apple enterprise network verification (23 November 2026)
+
+The [Apple enterprise network reference](https://support.apple.com/fr-fr/101555) was compared with the existing Apple and macOS device profiles. The catalogue now includes additional device certificate-validation endpoints, Managed Apple Account directory lookup, Apple app attestation wildcard reference, APNs wildcard reference, Apple/iCloud/App Store wildcard reference families, indicative UDP 443 for documented iCloud connectivity endpoints, and selected macOS recovery, software update and content-cache paths.
+
+Already present flows such as Apple NTP (UDP/123), `mesu.apple.com`, Apple Account sign-in, device enrollment, APNs gateway and App Store URLs were not duplicated. Wildcard base names are represented only with `testability=wildcard required`; they cannot be actively probed as an entire wildcard family. APNs TCP/2197 is explicitly `execution_point=MDM_SERVER` and `testability=server-side flow`, not a device-level check. UDP probes only indicate network-path behavior; a reachable port is not proof of iCloud, APNs, App Store purchase processing or MDM enrollment.
+
+Signed manifest version **4** protects the 433-record CSV from tampering and rollback. The application can retrieve the updated reference catalogue through its existing signed synchronization feature, without creating a new binary release.
