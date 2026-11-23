@@ -2,11 +2,11 @@
 
 The macOS edition of MDM SystemCheck is distributed through GitHub as a ZIP containing the complete **MDM SystemCheck.app** bundle. It does **not** use the Mac App Store.
 
-**Release status:** **macOS 1.1.1 is published and verified**. GitHub Actions successfully compiled a universal app and verified the stable ZIP and its SHA-256.
+**Release status:** **macOS 1.1.3 is published and verified**. GitHub Actions successfully compiled a universal app and verified the stable ZIP and its SHA-256.
 
 ## Downloads
 
-- [macOS stable v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1), **published**.
+- [macOS stable v1.1.3](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.3), **published**.
 - Development builds use the `latest-macos-dev` tag when one is published; no public development assets were verified in this audit.
 - Assets: `MDM-SystemCheck-macOS.zip` and `SHA256SUMS-macos.txt`.
 
