@@ -17,12 +17,18 @@ The developer's Microsoft Partner Center profile is verified, and the Windows ap
 
 A Store deep link and web listing are **not available until the application is published**. The Package SID is unnecessary for users or package configuration.
 
+## Preferred Windows delivery
+
+The **portable ZIP on GitHub** is the default Windows distribution, not a Microsoft Store MSIX. Download the [Windows ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0) and follow the [installation instructions](WINDOWS_DOWNLOAD.md). GitHub also hosts a separate `latest-windows-dev` prerelease. Windows binaries are not Authenticode signed; Windows SmartScreen or company policy may prevent their execution.
+
+The MSIX is retained in the private source repository solely for a possible future Partner Center submission. It is unsigned and must not be distributed as a public installer.
+
 ## Status of software releases
 
 - Windows Flutter foundation is merged in [private source PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22).
-- [Private source PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) prepares an unsigned Store MSIX (`1.1.0.0`, x64) matching the product identity. The Windows CI job passed, but full PR validation/merge remained pending at the last check.
-- **No downloadable MSIX, Microsoft Store certification, accepted submission, or live listing is confirmed.**
-- A portable Windows ZIP is a separate test distribution, **not** an MSIX or certified Microsoft Store build.
+- The private source Windows workflow builds an unsigned Store-submission MSIX (`1.1.0.0`, x64) matching the product identity; Store publication is optional and deferred.
+- The MSIX is kept privately; no Microsoft Store certification, accepted submission or live listing is confirmed.
+- The portable Windows ZIP is the **primary public download**, separate from MSIX and Store certification.
 - Android source version `1.1.0+35` and public tag `v1.1.0` exist. Android APK artifacts and Google Play rollout must be verified separately.
 - macOS ZIP/APP and PKG packages are planned, not released.
 
