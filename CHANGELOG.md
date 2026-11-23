@@ -1,5 +1,12 @@
 # Changelog
 
+## Documentation verification — 23 November 2026
+
+- Verified public Android 1.1.0 signed APK and SHA-256; Android Flutter source 1.1.1+36 does not indicate a newer Google Play release.
+- Verified Windows 1.1.1 portable ZIP and SHA-256 as the public Windows distribution. The ZIP remains unsigned; MSIX is retained privately for optional Store submission.
+- Aligned version labels, platform availability and maintenance guidance across both repositories without deleting historical stable documentation.
+
+
 ## Documentation maintenance and signing clarification — 23 November 2026
 
 - Confirm current public stable binaries: Android 1.1.0 and portable Windows 1.1.1, with SHA-256 checksums.
