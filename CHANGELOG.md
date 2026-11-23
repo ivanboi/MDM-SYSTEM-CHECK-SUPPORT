@@ -1,5 +1,13 @@
 # Changelog
 
+## Windows portable distribution — v1.1.0
+
+- Publish the Flutter Windows x64 portable ZIP with SHA-256 checksums in **public support GitHub Releases**, independently from the Android APK release.
+- Separate stable `windows-v1.1.0` and development `latest-windows-dev` release channels. Windows releases do not overwrite Android's `v1.1.0` release.
+- Retain the unsigned Microsoft Store MSIX privately for future Store submission; it is not a Windows installer or public download.
+- Document ZIP extraction, Windows SmartScreen and enterprise security policy limitations, and manual update checks via GitHub Releases.
+
+
 ## Microsoft Store identity registration — 23 November 2026 (no Store release)
 
 - Verified Microsoft Partner Center product `9N9Z3PCL3MG1` and exact Windows package identity `ivanbillyjean.MDMSystemCheck`.
