@@ -6,7 +6,7 @@ This policy describes how MDM SystemCheck handles data on Android, Windows, and 
 
 ## Platform distribution status
 
-The [Android 1.1.0 public GitHub release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) contains a signed APK and SHA-256; a Google Play rollout remains independently managed. Windows is offered as a **portable ZIP through public GitHub Releases**; the Windows Store product (Store ID `9N9Z3PCL3MG1`) remains registered but **no Microsoft Store app is live**. GitHub receives ordinary download-request metadata when an installer is downloaded; the application does not automatically transmit diagnostic results to GitHub or OVH. Windows checks run directly from the local computer and may send DNS, TCP, HTTP(S) or UDP probe traffic to the selected endpoints. Preparing a Store MSIX does not transmit diagnostic data to Microsoft; eventual installation and app downloads through Microsoft's Store are governed by Microsoft's own handling of Store traffic. No new developer-hosted service is required for Windows or macOS. The macOS GitHub ZIP is compiled as an unsigned/unnotarized universal desktop application; its publication status depends on a verified GitHub release.
+The [Android 1.1.0 public GitHub release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) contains a signed APK and SHA-256; a Google Play rollout remains independently managed. Windows is offered as a **portable ZIP through public GitHub Releases**; the Windows Store product (Store ID `9N9Z3PCL3MG1`) remains registered but **no Microsoft Store app is live**. GitHub receives ordinary download-request metadata when an installer is downloaded; the application does not automatically transmit diagnostic results to GitHub or OVH. Windows checks run directly from the local computer and may send DNS, TCP, HTTP(S) or UDP probe traffic to the selected endpoints. Preparing a Store MSIX does not transmit diagnostic data to Microsoft; eventual installation and app downloads through Microsoft's Store are governed by Microsoft's own handling of Store traffic. No new developer-hosted service is required for Windows or macOS. The macOS 1.1.1 GitHub ZIP is publicly available as an **unsigned/unnotarized universal** desktop application, containing arm64 and x86_64 executable slices.
 
 ## Public network catalogue and offline import
 
@@ -16,7 +16,7 @@ Android 1.1.0 (build 35) includes manual CSV import ([merged PR #25](https://git
 
 A separately planned automatic GitHub catalogue downloader is **not implemented**. If later released, fetching it will involve normal HTTPS requests visible to GitHub and intermediaries (for example source IP and timing), and the privacy documentation will be revisited before release.
 
-Windows 1.1.1 is distributed publicly as a ZIP. The macOS universal ZIP is under release validation; its code performs the same device-originating probes and local report storage on macOS. Google Play Integrity and the embedded VirusTotal WebView remain Android-only.
+Windows 1.1.1 is distributed publicly as a ZIP. The macOS 1.1.1 universal ZIP is publicly distributed; its code performs the same device-originating probes and local report storage on macOS. Google Play Integrity and the embedded VirusTotal WebView remain Android-only.
 
 ## What reaches a server
 
