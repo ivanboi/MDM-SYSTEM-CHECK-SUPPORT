@@ -6,18 +6,18 @@ _Last reviewed: 23 November 2026._
 
 The Windows application **MDM SystemCheck** is registered in Microsoft Partner Center with Store ID `9N9Z3PCL3MG1`. Its identity is `ivanbillyjean.MDMSystemCheck`, publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`, publisher display name `ivan_billyjean`, and package family name `ivanbillyjean.MDMSystemCheck_hgbzc83p2bnep`.
 
-The [private source PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) prepares an unsigned **Store-submission MSIX** (`1.1.0.0`, Windows x64) and validates its manifest identity. Windows build CI passed, but full PR validation and merging were still outstanding at the last check. **No Store-certified package, direct Store link or published Microsoft Store listing is confirmed.** Do not sideload the unsigned Store package as if it were a signed installer. A separate portable ZIP is available only when a build artifact is successfully uploaded and verified.
+Windows is distributed primarily by [public GitHub portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0). Its checksum is published with the ZIP. The private MSIX is retained only for a possible Microsoft Store submission; no certified Store package or live listing is confirmed. The ZIP is not Authenticode signed; SmartScreen or corporate policies may block execution.
 
 Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. **The presence of a tag does not prove signed APK/AAB asset availability or Play Store rollout.** CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
 
 ## Current public distribution
 
-Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; verify signed assets before considering it downloadable. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. There are **no released native Windows or macOS packages**.
+Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; verify signed assets before considering it downloadable. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; macOS is not released.
 
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |
 | Android | Source 1.1.0 (build 35); signed artifact availability not independently verified | Google Play AAB; signed public APK |
-| Windows | Partner Center product `9N9Z3PCL3MG1` registered; [MSIX PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) in review, no Store release | Microsoft Store MSIX plus portable Windows x64 ZIP |
+| Windows | Public portable ZIP is the preferred GitHub release; Microsoft Store deferred | Microsoft Store MSIX plus portable Windows x64 ZIP |
 | macOS | Proposed, not yet implemented | GitHub ZIP with a .app (Apple Silicon and Intel), optional user-scope PKG; no paid Apple Developer program |
 | Remote network catalogue | Reference data on public GitHub, **not consumed automatically by released app** | Future signed manifests, verified downloads, offline cache/fallback |
 | Manual network CSV import | [Merged private PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25), Android 1.1.0 build 35 source; public APK availability unverified | User-selected local CSV, validation, confirmation, persistence and rollback |
