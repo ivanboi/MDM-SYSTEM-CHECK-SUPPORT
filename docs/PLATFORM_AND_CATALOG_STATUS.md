@@ -2,13 +2,9 @@
 
 _Last reviewed: 23 November 2026._
 
-## Microsoft Store registration and packaging status — 23 November 2026
+## Windows release policy — GitHub ZIP exclusively
 
-The Windows application **MDM SystemCheck** is registered in Microsoft Partner Center with Store ID `9N9Z3PCL3MG1`. Its identity is `ivanbillyjean.MDMSystemCheck`, publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`, publisher display name `ivan_billyjean`, and package family name `ivanbillyjean.MDMSystemCheck_hgbzc83p2bnep`.
-
-Windows is distributed primarily by [public GitHub portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1). Its checksum is published with the ZIP. The private MSIX is retained only for a possible Microsoft Store submission; no certified Store package or live listing is confirmed. The ZIP is not Authenticode signed; SmartScreen or corporate policies may block execution.
-
-The **Android 1.1.0+35 signed APK and checksum are verified** in the public `v1.1.0` release. Flutter source is **1.1.1+36** and a private signed AAB from [CI run 45205709549](https://github.com/ivanboi/MDM-SYSTEM-CHECK/actions/runs/45205709549) is available for manual Google Play upload. No Android 1.1.1 public stable release or Play Console rollout has been confirmed. Windows and macOS 1.1.1 ZIPs are available publicly. Automatic GitHub CSV synchronization is not implemented.
+**MSIX and Microsoft Store distribution have been abandoned.** Windows is published only as a [portable x64 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) with a SHA-256 checksum on public GitHub. Windows CI no longer builds, checks or publishes MSIX; earlier experimental MSIX packages in private release history are **unsupported archives**, not supported installers. The Windows executable is currently unsigned; SmartScreen and enterprise restrictions may apply.
 
 ## Verified current distribution and signing
 
@@ -21,7 +17,7 @@ Android **1.1.0 (build 35)** is published with a signed APK and a [public v1.1.0
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |
 | Android | Signed public APK 1.1.0 (build 35) and checksum verified; Play rollout separate | Google Play AAB; signed public APK |
-| Windows | Public portable ZIP is the preferred GitHub release; Microsoft Store deferred | Microsoft Store MSIX plus portable Windows x64 ZIP |
+| Windows | Public portable x64 ZIP is the sole Windows release; MSIX/Store discontinued | Portable Windows x64 ZIP and SHA-256 only |
 | macOS | [Published universal 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1), Intel and Apple Silicon, SHA-256 verified; not Developer ID signed/notarized | GitHub ZIP containing the .app; no Mac App Store or PKG publication |
 | Remote network catalogue | Reference data on public GitHub, **not consumed automatically by released app** | Future signed manifests, verified downloads, offline cache/fallback |
 | Manual network CSV import | [Merged private PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25), Android 1.1.0 signed public APK verified; available on Windows 1.1.1 and macOS 1.1.1 as well | User-selected local CSV, validation, confirmation, persistence and rollback |
