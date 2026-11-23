@@ -9,12 +9,14 @@ _Last reviewed: 23 November 2026._
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |
 | Android | Released 1.0.9 (build 34) | Google Play AAB; signed public APK |
-| Windows | [Private source PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22), awaiting validation | Microsoft Store MSIX plus portable Windows x64 ZIP |
+| Windows | [Merged private PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22); desktop foundation built, no Store release | Microsoft Store MSIX plus portable Windows x64 ZIP |
 | macOS | Proposed, not yet implemented | GitHub ZIP with a .app (Apple Silicon and Intel), optional user-scope PKG; no paid Apple Developer program |
 | Remote network catalogue | Reference data on public GitHub, **not consumed automatically by released app** | Future signed manifests, verified downloads, offline cache/fallback |
-| Manual network CSV import | [Private source PR #23](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/23), not released | User-selected local CSV, validation, confirmation, persistence and rollback |
+| Manual network CSV import | [Merged private PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25), Android 1.1.0 build 35 source; public APK availability unverified | User-selected local CSV, validation, confirmation, persistence and rollback |
 
 Windows/macOS/iOS **profile names inside Android** identify network services that can be tested *from the Android device*. They do not indicate native desktop/mobile binaries are already available.
+
+**Source handoff:** Android **1.1.0 (build 35)** has been merged into the private repository with a stable Android release workflow marker. A new signed public APK and Google Play rollout are distinct steps and must be confirmed separately.
 
 ## CSV reference catalogue
 
