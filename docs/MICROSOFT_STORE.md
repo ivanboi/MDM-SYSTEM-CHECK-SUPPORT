@@ -6,7 +6,7 @@ _Updated 23 November 2026. This legacy document path remains to preserve links._
 
 ## Supported Windows download
 
-The only supported format is the official [Windows 1.1.1 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1):
+The only supported format is the official [Windows 1.1.3 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.3):
 
 - `MDM-SystemCheck-Windows-x64.zip` — extract all files, then run `mdm_system_check.exe`.
 - `SHA256SUMS-windows.txt` — integrity comparison only; it does **not** authenticate the publisher.
