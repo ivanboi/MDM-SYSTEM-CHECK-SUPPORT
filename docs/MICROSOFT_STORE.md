@@ -19,7 +19,7 @@ A Store deep link and web listing are **not available until the application is p
 
 ## Preferred Windows delivery
 
-The **portable ZIP on GitHub** is the default Windows distribution, not a Microsoft Store MSIX. Download the [Windows ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0) and follow the [installation instructions](WINDOWS_DOWNLOAD.md). GitHub also hosts a separate `latest-windows-dev` prerelease. Windows binaries are not Authenticode signed; Windows SmartScreen or company policy may prevent their execution.
+The **portable ZIP on GitHub** is the default Windows distribution, not a Microsoft Store MSIX. Download the [Windows ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) and follow the [installation instructions](WINDOWS_DOWNLOAD.md). GitHub also hosts a separate `latest-windows-dev` prerelease. Windows binaries are not Authenticode signed; Windows SmartScreen or company policy may prevent their execution.
 
 The MSIX is retained in the private source repository solely for a possible future Partner Center submission. It is unsigned and must not be distributed as a public installer.
 

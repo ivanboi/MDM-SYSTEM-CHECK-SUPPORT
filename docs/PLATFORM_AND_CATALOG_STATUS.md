@@ -6,7 +6,7 @@ _Last reviewed: 23 November 2026._
 
 The Windows application **MDM SystemCheck** is registered in Microsoft Partner Center with Store ID `9N9Z3PCL3MG1`. Its identity is `ivanbillyjean.MDMSystemCheck`, publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`, publisher display name `ivan_billyjean`, and package family name `ivanbillyjean.MDMSystemCheck_hgbzc83p2bnep`.
 
-Windows is distributed primarily by [public GitHub portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0). Its checksum is published with the ZIP. The private MSIX is retained only for a possible Microsoft Store submission; no certified Store package or live listing is confirmed. The ZIP is not Authenticode signed; SmartScreen or corporate policies may block execution.
+Windows is distributed primarily by [public GitHub portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1). Its checksum is published with the ZIP. The private MSIX is retained only for a possible Microsoft Store submission; no certified Store package or live listing is confirmed. The ZIP is not Authenticode signed; SmartScreen or corporate policies may block execution.
 
 Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. **The presence of a tag does not prove signed APK/AAB asset availability or Play Store rollout.** CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
 

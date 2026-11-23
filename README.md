@@ -6,12 +6,16 @@ This **public** repository is the home for public downloads, documentation, and 
 
 Current source version: **Android 1.1.0 (build 35)**. The [v1.1.0 GitHub release tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists, but signed APK/AAB assets and Google Play rollout have not been independently verified here. Check the release's files and SHA-256 before download; Store review and rollout remain separate.
 
+## Windows 1.1.1 — updated icon and CSV export
+
+The Windows 1.1.1 portable ZIP uses the MDM SystemCheck icon rather than the default Flutter icon. CSV exports open a native **Save As** dialog starting in Downloads, allowing users to choose a different location. The Windows executable version metadata uses `ivanboi` / `MDM SystemCheck` instead of `com.example`; previously created application-data files are not automatically migrated. See [Windows installation guide](docs/WINDOWS_DOWNLOAD.md).
+
 ## Download MDM SystemCheck
 
 | Platform | Official downloads | Installation |
 | --- | --- | --- |
 | Android | [Stable Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | Install the signed APK or use Google Play when available. |
-| Windows x64 | [Windows portable ZIP v1.1.0](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No MSIX or Microsoft Store required. |
+| Windows x64 | [Windows portable ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No MSIX or Microsoft Store required. |
 | Windows development | [Latest Windows development build](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev) | For testing only; not a stable release. |
 | macOS | Not released | Future target. |
 
