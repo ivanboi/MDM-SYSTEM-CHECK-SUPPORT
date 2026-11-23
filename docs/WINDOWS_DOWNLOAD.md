@@ -4,7 +4,7 @@ MDM SystemCheck is distributed for Windows as a portable **x64 ZIP**. It does no
 
 ## Download
 
-- [Stable Windows releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.0), version 1.1.0.
+- [Stable Windows releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1), version 1.1.1.
 - [Development Windows release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev), for testing only.
 - Choose **`MDM-SystemCheck-Windows-x64.zip`** and **`SHA256SUMS-windows.txt`** under Assets. Android APK downloads remain on the separate Android release pages.
 
@@ -14,6 +14,14 @@ MDM SystemCheck is distributed for Windows as a portable **x64 ZIP**. It does no
 2. On Windows, right-click the ZIP and select **Extract All**. Keep all DLLs and the `data` directory alongside the executable; do not run the program inside the ZIP archive.
 3. Open the extracted directory and run `mdm_system_check.exe`. Administrator access is not required by the application, but organizational security policies may restrict execution.
 4. The application stores its diagnostic results and settings locally. You can export CSV reports intentionally and choose a local network-flow CSV for manual import.
+
+## Exporting CSV reports
+
+Select **Save to device** after a diagnostic. Windows opens a native **Save As** dialog starting in Downloads; save there or choose another directory. This replaces the previous behavior of saving files inside AppData. Report filenames follow `mdm_diagnostic_YYYYMMDD_HHMMSS.csv` by default.
+
+## Windows application identity
+
+Starting with Windows 1.1.1, the official SystemCheck icon appears on the executable and taskbar. Application metadata identifies `ivanboi` and `MDM SystemCheck`, replacing Flutter's generated `com.example`. Existing diagnostic history or settings in the previous AppData path are not automatically migrated or deleted.
 
 ## Integrity and Windows security
 
