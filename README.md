@@ -29,7 +29,7 @@ The Motorola OTA endpoint `moto-cds.appspot.com` (TCP 443) is documented by a th
 
 **Single active canonical source:** [network-flows.csv](data/network/network-flows.csv), authenticated by [network-flows.manifest.json](data/network/network-flows.manifest.json). The application validates an Ed25519 signature, SHA-256 and the strict 11-column CSV schema before accepting an automatic update. The signed catalogue version is independent of the application version.
 
-The **480-record v6 candidate** is [staged here](data/network/network-flows-v6.csv) together with its [signed manifest](data/network/network-flows-v6.manifest.json). v6 rotates the Ed25519 public key because the previous private signing key was lost. **The v5 canonical catalogue stays active until updated application binaries containing both trusted public keys have been distributed.** Older applications cannot verify v6.
+The **480-record v6 catalogue is now active** at the canonical CSV and manifest paths. Ed25519 verification uses a rotated public key because the original private signing key was lost. **Application v1.1.3 and newer** trust the legacy key for v1–v5 and the rotated key for v6+. Earlier 1.1.2 clients cannot verify v6, so they retain their last verified v5 cache or bundled defaults until upgraded.
 
 To add flows in the future, see [Network catalogue maintenance](data/network/README.md). Only `execution_point=DEVICE` **and** `testability=testable` rows are eligible for live checks. MDM server/administration, wildcard, tenant-specific and documentation-only entries cannot be used as terminal success indicators. Manual CSV import requires explicit approval and is not cryptographically authenticated.
 

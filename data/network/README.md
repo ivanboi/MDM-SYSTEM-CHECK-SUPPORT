@@ -1,46 +1,49 @@
-# Network Flow Catalogue — Maintainer Guide
+# Network flow catalogue — single source of truth
 
-The **single active canonical CSV** is [network-flows.csv](network-flows.csv), accompanied by the Ed25519-signed [network-flows.manifest.json](network-flows.manifest.json). MDM SystemCheck checks the manifest at launch (at most once per 24 hours) and on manual refresh; a verified local cache and bundled defaults remain available offline.
+**Production (Ed25519 signed v6):** [network-flows.csv](network-flows.csv) and [network-flows.manifest.json](network-flows.manifest.json), with **480 rows in 16 categories**, published together after Android, Windows and macOS 1.1.3 releases passed their build and test workflows.
 
-**Migration, 23 November 2026:** canonical v5 currently contains 434 rows. The 480-row signed v6 pair [network-flows-v6.csv](network-flows-v6.csv) + [v6 manifest](network-flows-v6.manifest.json) is staged until v1.1.3 clients containing both Ed25519 public keys are available. The separate `network-flows-unified.csv` and `network-flows-samsung-knox.csv` are transitional working/legacy exports, not alternative automatic-update sources; they will be removed after canonical v6 cutover.
+The previous signed v5 files (434 rows) and transitional Samsung/unified/v6 snapshot CSVs are preserved in Git history, **not** as parallel editable files. From this point forward, maintain only the canonical CSV + manifest pair.
 
-## CSV format and semantics
+## Stable CSV schema
 
-**Keep this exact UTF-8 header and order (11 columns):**
+The CSV must be UTF-8, at most 1 MiB and 5,000 rows, with this exact column order:
 
 ```csv
 id,category,name,host,port,protocol,execution_point,region,testability,purpose,reference
 ```
 
-The CSV must remain at most **1 MiB / 5,000 data rows**. Each `id` must be unique and use lowercase letters, numbers and hyphens only. The `host` field must be a concrete DNS hostname (no scheme, path or wildcard). Put the authoritative public HTTPS source in `reference`. Make `purpose` explicit about optional services, regions and whether information came from an official vendor or community repository.
+Each ID must be unique and match `[a-z0-9-]+`. `host` must be a concrete hostname without scheme/path or wildcard. The `reference` must be an HTTPS source. Explain optional services, source authority and regions in `purpose`.
 
-| Category | What belongs here |
+## Android, OEM and MDM categories
+
+| Category | Purpose |
 | --- | --- |
-| `device:android` | Shared Android Enterprise / Google Play, FCM, enrollment, updates and general Google services |
-| `device:samsung` | Samsung Knox **device** services such as KME, Knox Configure, E-FOTA and manufacturer licensing |
-| `mdm:knox-manage` | **Separate Samsung Knox Manage MDM** device communication and server-side flows |
-| `device:motorola` | Verified Motorola-specific connectivity such as the community-sourced OTA CDS host |
-| `device:crosscall` | Verified Crosscall-specific services; do not fabricate OTA endpoints |
-| `device:apple`, `device:macos`, `device:windows`, `device:rooms`, `device:vowifi` | Other device-family or optional ePDG checks |
-| `mdm:intune`, `mdm:workspace-one`, `mdm:ivanti`, `mdm:meraki`, `mdm:citrix`, `mdm:blackberry` | Independent MDM providers |
+| `device:android` | Shared Android Enterprise, Google Play, enrollment, FCM, content and Google updates |
+| `device:samsung` | Samsung Knox **device** services: KME, Knox Configure, E-FOTA, licensing, optional Asset Intelligence and Remote Support |
+| `mdm:knox-manage` | **Independent Samsung Knox Manage MDM**, with client and separate server/provider flows |
+| `device:motorola` | Motorola OEM-specific services (currently community-sourced CDS OTA DNS/TCP) |
+| `device:crosscall` | Crosscall OEM-specific services; verified OTA service hostnames are not yet available |
+| Other `device:*` | Apple, macOS, Windows, Android AOSP Teams Rooms, optional VoWiFi/ePDG |
+| Other `mdm:*` | Intune, Omnissa Workspace ONE, Ivanti, Meraki, Citrix and BlackBerry |
 
-An Android OEM profile combines `device:android` plus its own `device:<oem>` category. Do **not** duplicate shared Google entries for every manufacturer. Knox Manage is an MDM selection and must not be silently included in Samsung device tests.
+Samsung, Motorola and Crosscall device profiles combine the shared `device:android` category **plus** their own OEM category. Do not duplicate Google services unless a distinct context requires it. Knox Manage is **never** automatically part of the general Samsung device profile.
 
-### Executable versus reference-only flows
+### Client versus server and confidence
 
-Only `execution_point=DEVICE` **and** `testability=testable` entries may generate network probes. `MDM_SERVER` is for server-originated flows, administrative portals, provider APIs or license assignment; these are **never** a client result. Reference-only records include wildcards (`wildcard required`), regional or tenant-specific services and documentation-only entries. A reachable endpoint is not proof of successful enrollment, licensing, push delivery or an available OTA update. UDP transmission is not equivalent to a successful response or completed VPN/IPsec session.
+An active test requires **both** `execution_point=DEVICE` and `testability=testable`. Entries marked `MDM_SERVER`, `server-side flow`, `wildcard required`, `documentation only`, or another reference status must not generate device-side success claims.
 
-For Motorola, `moto-cds.appspot.com:443` comes from an **unofficial** community project ([FixeQD/motorola-update](https://github.com/FixeQD/motorola-update)). MDM SystemCheck performs DNS/TCP connectivity only, **never** the device-specific POST required by Motorola's update service. Crosscall-specific OTA FQDNs remain unconfirmed.
+- An admin web portal is not a handset connectivity dependency.
+- Server-to-FCM/APNs or S3 management traffic is not an outgoing device flow.
+- Region-specific, tenant-specific or optional products must not be treated as mandatory for every device.
+- TCP/DNS connectivity does not prove enrollment, actual push delivery, software-update availability or a successful HTTP API transaction.
+- Motorola `moto-cds.appspot.com:443` is documented by [a community GitHub project](https://github.com/FixeQD/motorola-update), **not by Motorola as a comprehensive firewall rule**. This app checks only network reachability: no OTA POST, IMEI, serial number or build GUID sent. Crosscall OEM OTA destinations remain unconfirmed.
 
-## Adding or changing flows (future maintenance)
+## Procedure for every future flow update
 
-1. Research the official manufacturer or MDM documentation, confirm the **originating device or server**, region and exact port/protocol. Prefer concrete endpoints; do not invent hostnames.
-2. Change **only** [network-flows.csv](network-flows.csv) once v6 cutover has completed; until then, edit the staged v6 candidate and keep its existing signed bytes unchanged until the next publication. Use stable IDs such as `device-motorola-004` or `device-crosscall-003`.
-3. Use a PR or controlled commit, run [CSV and signature validation](../../scripts/validate_network_catalog.py), review the diff, and prevent server/wildcard rows from being classed `testable`.
-4. Bump `version` in the manifest, calculate SHA-256 of the **exact CSV bytes**, and sign `<version>\\n<sha256>\\n` with the **existing encrypted offline Ed25519 private key** using the private source repo's `tool/sign_network_catalog.py`. Keep the private key and passphrase off GitHub and out of CI logs.
-5. Publish the updated **CSV and signed manifest atomically** in the same Git commit. The app rejects changed bytes without a matching Ed25519 signature and rejects older versions. Never modify a signed CSV in place while leaving the manifest unchanged.
-6. Confirm the public [GitHub Actions validation](../../.github/workflows/validate-network-catalog.yml) passes and verify a client can refresh, cache and work offline. App releases are needed only when the client schema/categories, verification key or probe implementation changes.
+1. Confirm manufacturer documentation or a credible reference, the source (device vs server), host, protocol, port, region, service applicability and confidence.
+2. Edit **only** `data/network/network-flows.csv` on an approved branch, retaining the exact schema and unique IDs. Examples: `device-motorola-004`, `device-crosscall-003`. Do not invent OEM hosts.
+3. Increment the `version` field (next **v7**), calculate SHA-256 of the **exact new CSV bytes**, and sign `<version>\\n<sha256>\\n` with the **existing encrypted v6+ Ed25519 private key** using `tool/sign_network_catalog.py` from the private repo. Never regenerate a key for ordinary CSV additions, publish the private key, or type its passphrase in CI logs.
+4. Commit **both** canonical CSV and signed manifest **atomically** in one Git commit, and let [.github/workflows/validate-network-catalog.yml](../../.github/workflows/validate-network-catalog.yml) verify the schema and Ed25519 signature.
+5. On a supported client, refresh the catalogue, verify the reported version, and test offline cache/fallback. Add a new app release only when schema, category support, security public key or probe logic changes.
 
-**Key rotation:** v1–v5 are signed with the legacy key and v6+ with a new rotated key because the prior private key was unavailable. The v1.1.3 client source recognizes both. Do not activate v6 for old app builds until compatible binaries have been released. For future updates, use the **same v6+ private key**; do not generate another key unnecessarily.
-
-Manual CSV import is supported but remains **user-approved, local and cryptographically untrusted**. Replacing a category through manual import is not a merge. No diagnostic data is uploaded to GitHub by catalogue synchronization.
+Existing v1–v5 signatures use the legacy public key; v6 and newer use the rotated one. Current application release **1.1.3** trusts both. Apps 1.1.2 and earlier cannot use v6: upgrade them, rather than weakening verification. Local manual CSV imports remain user-approved and **unsigned**; importing a category replaces rather than merges its records.
