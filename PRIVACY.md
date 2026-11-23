@@ -4,11 +4,15 @@ Updated November 23, 2026
 
 This policy describes how the MDM SystemCheck Android app handles data during network diagnostics, file reputation checks, report export and support.
 
+## Platform distribution status
+
+Android 1.1.0 (build 35) source and the `v1.1.0` Git tag exist; public signed APK asset availability and Google Play rollout require independent verification. The Windows Store product (Store ID `9N9Z3PCL3MG1`) is registered, but **no Microsoft Store app is live**. Preparing a Store MSIX does not transmit diagnostic data to Microsoft; eventual installation and app downloads through Microsoft's Store are governed by Microsoft's own handling of Store traffic. No new developer-hosted service is required for Windows.
+
 ## Public network catalogue and offline import
 
-A [reference-only network catalogue](data/network/README.md) is published on GitHub. **The current Android 1.0.9 build does not automatically fetch that catalogue**, so its publication does not change the network data sent by the installed application.
+A [reference-only network catalogue](data/network/README.md) is published on GitHub. **The Android application does not automatically fetch that catalogue**, so its publication does not change the network data sent by the installed application.
 
-Android 1.1.0 (build 35) source includes a manual CSV import ([merged PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25)), pending public artifact availability. This feature is designed to select a file from device storage, validate the fields, explicitly confirm activation, and retain the active copy locally. Importing a file itself would not upload its contents to GitHub, OVH, or another server. Running diagnostics against imported destinations would send the usual DNS/TCP/HTTP(S)/UDP network requests to those destinations, potentially revealing source IP and connection metadata.
+Android 1.1.0 (build 35) source includes a manual CSV import ([merged PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25)), with public binary availability requiring verification. This feature is designed to select a file from device storage, validate the fields, explicitly confirm activation, and retain the active copy locally. Importing a file itself would not upload its contents to GitHub, OVH, or another server. Running diagnostics against imported destinations would send the usual DNS/TCP/HTTP(S)/UDP network requests to those destinations, potentially revealing source IP and connection metadata.
 
 A separately planned automatic GitHub catalogue downloader is **not implemented**. If later released, fetching it will involve normal HTTPS requests visible to GitHub and intermediaries (for example source IP and timing), and the privacy documentation will be revisited before release.
 
