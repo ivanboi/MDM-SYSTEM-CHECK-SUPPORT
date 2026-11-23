@@ -5,10 +5,10 @@
 - Extend manufacturer diagnostics to Samsung, Motorola and Crosscall while preserving shared Android Enterprise paths.
 - Keep Samsung Knox Manage separate from Samsung device service tests.
 - Add community-documented Motorola OTA CDS host `moto-cds.appspot.com:443` as a **connectivity indicator only**, not an API-based OTA version query.
-- Prepare the 480-entry, 16-category CSV catalogue v6 and its independently verified Ed25519 signature.
+- Activate the 480-entry, 16-category signed CSV catalogue v6 at the canonical public CSV and manifest paths after successful release of 1.1.3 binaries.
 - Rotate the signing key for v6+ and preserve the legacy public key for v1–v5 validation in the updated Flutter binaries.
-- Preserve the live catalogue v5 until v1.1.3 binary availability is verified. Never promote a newly signed catalogue ahead of an app that trusts its signing key.
-- Publish Android signed APK, Windows portable ZIP and macOS ZIP through their independent CI workflows; Google Play rollout is not automatic.
+- Preserve the historical signed v5 bytes in Git history. Old apps (1.1.2 and earlier) reject v6 and retain a validated v5 cache or bundled defaults until upgraded.
+- Published Android signed APK, Windows portable ZIP and macOS ZIP 1.1.3 via successful independent CI workflows; Google Play rollout is not automatic.
 
 ## Windows ZIP-only distribution — 23 November 2026
 
