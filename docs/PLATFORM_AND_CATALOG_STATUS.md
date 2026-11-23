@@ -16,7 +16,7 @@ The **Android 1.1.0+35 signed APK and checksum are verified** in the public `v1.
 
 ## Current public distribution
 
-Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; the signed APK and SHA-256 are now confirmed publicly available. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; A [public macOS 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) and its SHA-256 are **published and verified**. The app is **universal arm64 + x86_64**; Developer ID signing and notarization are not enabled.
+Android **1.1.0 (build 35)** is published with a signed APK and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; the signed APK and SHA-256 are now confirmed publicly available. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; A [public macOS 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) and its SHA-256 are **published and verified**. The app is **universal arm64 + x86_64**; Developer ID signing and notarization are not enabled.
 
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https
 | Remote network catalogue | Reference data on public GitHub, **not consumed automatically by released app** | Future signed manifests, verified downloads, offline cache/fallback |
 | Manual network CSV import | [Merged private PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25), Android 1.1.0 signed public APK verified; available on Windows 1.1.1 and macOS 1.1.1 as well | User-selected local CSV, validation, confirmation, persistence and rollback |
 
-Windows/macOS/iOS **profile names inside Android** identify network services that can be tested *from the Android device*. They identify remote target flows, not the platform executing the test. Native Windows and macOS desktop binaries are available; no native iOS app exists.
+Windows/macOS/iOS **profile names** identify network services that can be tested *from the device running SystemCheck*. They identify remote target flows, not the platform executing the test. Native Windows and macOS desktop binaries are available; no native iOS app exists.
 
 **Current handoff:** Android **1.1.0+35** has a verified signed public APK. The private signed **1.1.1+36 AAB** was generated separately, with no confirmed Play Console upload or rollout.
 
