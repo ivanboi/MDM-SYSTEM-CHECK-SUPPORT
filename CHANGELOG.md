@@ -1,12 +1,12 @@
 # Changelog
 
-## macOS desktop port (universal build validated; public release pending)
+## macOS v1.1.1 — universal GitHub ZIP published
 
 - Add the native Flutter macOS desktop build pipeline and a ZIP containing the full application bundle with a separate SHA-256 checksum.
 - Apply the official SystemCheck icon, macOS app identity and narrow file/network sandbox entitlements.
 - Export CSV using native macOS Save As, starting in Downloads; perform local device-originating network diagnostics.
 - Keep the macOS stable/development GitHub release tags independent from Android/Windows. macOS is not Developer ID signed or Apple notarized and may be blocked by Gatekeeper.
-- macOS releases must not be announced as available until the GitHub build and assets are confirmed.
+- The macOS stable ZIP and checksum have been verified in public GitHub Releases.
 
 
 ## Documentation verification — 23 November 2026
