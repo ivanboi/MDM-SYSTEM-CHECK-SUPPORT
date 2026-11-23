@@ -45,7 +45,7 @@ Check [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPP
 
 ## Known limits
 
-- Windows x64 only. macOS desktop builds are planned.
+- Windows download is x64 only. A separate [universal macOS 1.1.1 ZIP](MACOS_DOWNLOAD.md) is also published.
 - Existing DNS/TCP/HTTP(S)/NTP tests run on the Windows computer, not on a remote phone.
 - Manual network-flow CSV import is available, but automatic GitHub catalogue synchronization is not.
 - Windows-specific BitLocker, Defender, Entra ID, Intune enrollment, TPM and Secure Boot checks are not yet implemented.

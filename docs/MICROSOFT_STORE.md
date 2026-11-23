@@ -28,11 +28,11 @@ The MSIX is retained in the private source repository solely for a possible futu
 ## Status of software releases
 
 - Windows Flutter foundation is merged in [private source PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22).
-- The private source Windows workflow builds an unsigned Store-submission MSIX (`1.1.0.0`, x64) matching the product identity; Store publication is optional and deferred.
+- The private source Windows workflow builds an unsigned Store-submission MSIX (`1.1.1.0`, x64) matching the product identity; Store publication is optional and deferred.
 - The MSIX is kept privately; no Microsoft Store certification, accepted submission or live listing is confirmed.
 - The portable Windows ZIP is the **primary public download**, separate from MSIX and Store certification.
-- Android source version `1.1.0+35` and public tag `v1.1.0` exist. Android APK artifacts and Google Play rollout must be verified separately.
-- macOS ZIP/APP and PKG packages are planned, not released.
+- The public Android 1.1.0 signed APK and SHA-256 are verified. A private signed Android 1.1.1+36 AAB exists for manual Play Console submission; no Google Play rollout is confirmed.
+- The macOS 1.1.1 universal .app ZIP and SHA-256 are publicly released; there is no PKG or Mac App Store release.
 
 ## Next steps to publish
 
