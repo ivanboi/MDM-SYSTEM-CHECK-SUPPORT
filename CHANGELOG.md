@@ -1,6 +1,6 @@
 # Changelog
 
-## macOS desktop port (CI validation pending)
+## macOS desktop port (universal build validated; public release pending)
 
 - Add the native Flutter macOS desktop build pipeline and a ZIP containing the full application bundle with a separate SHA-256 checksum.
 - Apply the official SystemCheck icon, macOS app identity and narrow file/network sandbox entitlements.
