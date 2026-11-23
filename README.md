@@ -4,13 +4,21 @@
 
 This **public** repository is the home for public downloads, documentation, and support. **Source code, build configurations, and secrets remain in a separate private repository.** Access to the private repository is not required to receive support.
 
-Current packaged release: **1.0.9 (build 34)**. Download the signed APK from the [versioned release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.9). Google Play review and rollout are managed separately by the maintainer.
+Current source version: **Android 1.1.0 (build 35)**. The [v1.1.0 GitHub release tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists, but signed APK/AAB assets and Google Play rollout have not been independently verified here. Check the release's files and SHA-256 before download; Store review and rollout remain separate.
+
+## Microsoft Store registration and packaging status — 23 November 2026
+
+The Windows application **MDM SystemCheck** is registered in Microsoft Partner Center with Store ID `9N9Z3PCL3MG1`. Its identity is `ivanbillyjean.MDMSystemCheck`, publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`, publisher display name `ivan_billyjean`, and package family name `ivanbillyjean.MDMSystemCheck_hgbzc83p2bnep`.
+
+The [private source PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) prepares an unsigned **Store-submission MSIX** (`1.1.0.0`, Windows x64) and validates its manifest identity. Windows build CI passed, but full PR validation and merging were still outstanding at the last check. **No Store-certified package, direct Store link or published Microsoft Store listing is confirmed.** Do not sideload the unsigned Store package as if it were a signed installer. A separate portable ZIP is available only when a build artifact is successfully uploaded and verified.
+
+Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. **The presence of a tag does not prove signed APK/AAB asset availability or Play Store rollout.** CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. Mac APP/PKG packaging has not been released.
 
 ## Shared network flow catalogue and desktop roadmap (23 November 2026)
 
 - The [public network reference catalogue](data/network/README.md) contains **225 contextual CSV entries** extracted from the current application models, validated by [GitHub Actions](.github/workflows/validate-network-catalog.yml). [Download the CSV](data/network/network-flows.csv).
-- **Android 1.0.9 (build 34) remains the current packaged app.** The published Android build still uses built-in endpoint definitions; it does not automatically download this CSV.
-- [Manual CSV import PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) is **merged into the private source** and part of the Android 1.1.0 build 35 release candidate. Planned behaviour: select a local UTF-8 CSV, validate all records, explicitly approve activation, persist locally, and restore bundled defaults. It is not in the current release.
+- **Android 1.1.0 (build 35) source includes manual CSV import; confirm a matching installed binary before using it.** The application does not automatically download this CSV.
+- [Manual CSV import PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) is **merged into the private source** and part of the Android 1.1.0 build 35 release candidate. Planned behaviour: select a local UTF-8 CSV, validate all records, explicitly approve activation, persist locally, and restore bundled defaults. Verify a signed 1.1.0 APK and its availability before describing the feature as released.
 - [Windows PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22) is **merged into the private source**, with a proposed Windows x64 portable build. Microsoft Store MSIX submission requires additional packaging and Partner Center details.
 - macOS Apple Silicon/Intel builds are **planned, not released**. Proposed GitHub ZIP/APP distribution and optional user-scope PKG avoid Apple subscription fees, but unsigned and unnotarized downloads may be blocked by Gatekeeper/enterprise controls.
 - Automatically fetching GitHub catalogues is **not implemented**. Secure publication must use signed manifests and offline fallback before activation.

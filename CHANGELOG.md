@@ -1,5 +1,11 @@
 # Changelog
 
+## Microsoft Store identity registration — 23 November 2026 (no Store release)
+
+- Verified Microsoft Partner Center product `9N9Z3PCL3MG1` and exact Windows package identity `ivanbillyjean.MDMSystemCheck`.
+- [PR #27](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/27) adds a Store submission MSIX (`1.1.0.0`) and manifest verification in Windows CI. No Microsoft Store listing or approved MSIX exists yet.
+- Public Git tag `v1.1.0` exists; signed APK assets and Google Play rollout require separate checks.
+
 ## Android 1.1.0 (build 35) — source merged; artifact publication requires verification
 
 - Offline import of network-flow CSV files from local device storage, including schema validation, activation confirmation, category-specific overrides, persistence and restoring the built-in catalogue.
