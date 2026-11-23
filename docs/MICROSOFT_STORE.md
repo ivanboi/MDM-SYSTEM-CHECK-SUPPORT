@@ -4,7 +4,7 @@ _Last reviewed: 23 November 2026._
 
 ## Registration
 
-The developer's Microsoft Partner Center profile is verified, and the Windows app product has been created.
+The developer's Microsoft Partner Center profile is verified, and the Windows app product has been created. The **public Windows distribution is the GitHub portable ZIP 1.1.1**, not the Microsoft Store. The unsigned Store MSIX is held privately for possible later submission.
 
 | Field | Product identity |
 | --- | --- |

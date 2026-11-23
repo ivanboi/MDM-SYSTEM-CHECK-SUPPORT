@@ -20,7 +20,7 @@ Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https
 
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |
-| Android | Source 1.1.0 (build 35); signed artifact availability not independently verified | Google Play AAB; signed public APK |
+| Android | Signed public APK 1.1.0 (build 35) and checksum verified; Play rollout separate | Google Play AAB; signed public APK |
 | Windows | Public portable ZIP is the preferred GitHub release; Microsoft Store deferred | Microsoft Store MSIX plus portable Windows x64 ZIP |
 | macOS | Proposed, not yet implemented | GitHub ZIP with a .app (Apple Silicon and Intel), optional user-scope PKG; no paid Apple Developer program |
 | Remote network catalogue | Reference data on public GitHub, **not consumed automatically by released app** | Future signed manifests, verified downloads, offline cache/fallback |
