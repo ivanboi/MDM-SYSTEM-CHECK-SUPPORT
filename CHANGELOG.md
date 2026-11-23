@@ -1,5 +1,13 @@
 # Changelog
 
+## Windows v1.1.1 — official icon and accessible CSV reports
+
+- Replace Flutter's default Windows taskbar and executable icon with the SystemCheck logo.
+- Use a native Windows **Save As** dialog, initially in Downloads, for diagnostic CSV exports; users can choose the destination and filename.
+- Update the Windows app's CompanyName / ProductName from generated `com.example` branding to `ivanboi` / `MDM SystemCheck`. Older AppData remains untouched.
+- Publish a new portable Windows ZIP and checksum under `windows-v1.1.1`. The Microsoft Store MSIX remains private, Android release tags remain separate.
+
+
 ## Windows portable distribution — v1.1.0
 
 - Publish the Flutter Windows x64 portable ZIP with SHA-256 checksums in **public support GitHub Releases**, independently from the Android APK release.
