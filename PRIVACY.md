@@ -1,8 +1,18 @@
 # MDM SystemCheck Privacy Policy
 
-Updated November 17, 2026
+Updated November 23, 2026
 
 This policy describes how the MDM SystemCheck Android app handles data during network diagnostics, file reputation checks, report export and support.
+
+## Public network catalogue and future offline import
+
+A [reference-only network catalogue](data/network/README.md) is published on GitHub. **The current Android 1.0.9 build does not automatically fetch that catalogue**, so its publication does not change the network data sent by the installed application.
+
+A **future, not yet released** manual CSV import ([PR #23](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/23)) is designed to select a file from device storage, validate the fields, explicitly confirm activation, and retain the active copy locally. Importing a file itself would not upload its contents to GitHub, OVH, or another server. Running diagnostics against imported destinations would send the usual DNS/TCP/HTTP(S)/UDP network requests to those destinations, potentially revealing source IP and connection metadata.
+
+A separately planned automatic GitHub catalogue downloader is **not implemented**. If later released, fetching it will involve normal HTTPS requests visible to GitHub and intermediaries (for example source IP and timing), and the privacy documentation will be revisited before release.
+
+Windows and macOS applications are also **not currently distributed**. This policy's current behaviour describes the released Android application.
 
 ## What reaches a server
 
