@@ -20,9 +20,9 @@ The Windows 1.1.1 portable ZIP uses the MDM SystemCheck icon rather than the def
 | --- | --- | --- |
 | Android | [Stable Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | Install the signed APK or use Google Play when available. |
 | Windows x64 | [Windows portable ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No MSIX or Microsoft Store required. |
-| macOS | [macOS ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) (on publication) | Extract the full macOS .app bundle; **not Developer ID signed or notarized**. Gatekeeper may refuse launch. |
+| macOS | [macOS ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) (published) | Extract the full macOS .app bundle; **not Developer ID signed or notarized**. Gatekeeper may refuse launch. |
 | Windows development | [Latest Windows development build](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev) | For testing only; not a stable release. |
-| macOS | [macOS ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1), CI build validated; awaiting verified public release | Complete .app ZIP; not Developer ID signed/notarized; see [installation guide](docs/MACOS_DOWNLOAD.md). |
+| macOS | [macOS ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1), **Published**: universal arm64 + x86_64 app, ZIP and SHA-256 verified | Complete .app ZIP; not Developer ID signed/notarized; see [installation guide](docs/MACOS_DOWNLOAD.md). |
 
 The Windows ZIP is **not Authenticode signed**. Security software, Windows SmartScreen and organizational policies may block it; do not disable protection globally. Verify the ZIP with the attached `SHA256SUMS-windows.txt`. The checksum checks file integrity but is **not** a software signature. See the [Windows download and installation guide](docs/WINDOWS_DOWNLOAD.md).
 
