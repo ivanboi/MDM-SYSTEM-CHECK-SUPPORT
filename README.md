@@ -10,13 +10,15 @@ Current packaged release: **1.0.9 (build 34)**. Download the signed APK from the
 
 - The [public network reference catalogue](data/network/README.md) contains **225 contextual CSV entries** extracted from the current application models, validated by [GitHub Actions](.github/workflows/validate-network-catalog.yml). [Download the CSV](data/network/network-flows.csv).
 - **Android 1.0.9 (build 34) remains the current packaged app.** The published Android build still uses built-in endpoint definitions; it does not automatically download this CSV.
-- [Manual CSV import PR #23](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/23) is **under development**. Planned behaviour: select a local UTF-8 CSV, validate all records, explicitly approve activation, persist locally, and restore bundled defaults. It is not in the current release.
-- [Windows PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22) is **under development**, with a proposed Windows x64 portable build. Microsoft Store MSIX submission requires additional packaging and Partner Center details.
+- [Manual CSV import PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) is **merged into the private source** and part of the Android 1.1.0 build 35 release candidate. Planned behaviour: select a local UTF-8 CSV, validate all records, explicitly approve activation, persist locally, and restore bundled defaults. It is not in the current release.
+- [Windows PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22) is **merged into the private source**, with a proposed Windows x64 portable build. Microsoft Store MSIX submission requires additional packaging and Partner Center details.
 - macOS Apple Silicon/Intel builds are **planned, not released**. Proposed GitHub ZIP/APP distribution and optional user-scope PKG avoid Apple subscription fees, but unsigned and unnotarized downloads may be blocked by Gatekeeper/enterprise controls.
 - Automatically fetching GitHub catalogues is **not implemented**. Secure publication must use signed manifests and offline fallback before activation.
 - GitHub hosts source, public catalogue, approved releases and support; **OVH is used only for the optional Android Google Play Integrity verifier**. Diagnostic results remain local unless the user chooses to export or share them.
 
 See [platform and catalogue status](docs/PLATFORM_AND_CATALOG_STATUS.md) for the delivery and threat-model distinctions.
+
+**Release handoff:** source version **1.1.0 (build 35)** has been merged and the stable Android release workflow requested. Do not assume a public APK exists until it appears under [Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) or that Google Play has completed its separate review.
 
 ## Features
 
