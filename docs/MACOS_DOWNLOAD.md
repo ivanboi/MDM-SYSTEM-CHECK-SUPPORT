@@ -2,7 +2,7 @@
 
 The macOS edition of MDM SystemCheck is distributed through GitHub as a ZIP containing the complete **MDM SystemCheck.app** bundle. It does **not** use the Mac App Store.
 
-**Release status:** The macOS port is being compiled and validated. The stable link below should only be treated as live once its two assets are present on GitHub.
+**Build status:** macOS GitHub Actions has successfully compiled the app and verified its ZIP checksum. The public stable release link is usable only after the GitHub release assets have been confirmed.
 
 ## Downloads
 
@@ -41,6 +41,6 @@ The computed hex digest must match the release checksum.
 - Google Play Integrity and the embedded VirusTotal WebView are Android-only; neither is available in the macOS app.
 - No macOS MDM enrollment audit, FileVault, Secure Enclave, or local endpoint security compliance assessment is implemented.
 - In-app automatic updates and notarization are not yet implemented.
-- Check the CI release notes for architecture information; do not assume that every release is Universal (Intel + Apple Silicon) unless both architectures are explicitly verified.
+- The initial CI build was verified with `lipo -archs` and contains **x86_64 and arm64**, i.e. a universal application for Intel and Apple Silicon Macs.
 
 [Public support](../README.md) · [Security](../SECURITY.md) · [Privacy](../PRIVACY.md)
