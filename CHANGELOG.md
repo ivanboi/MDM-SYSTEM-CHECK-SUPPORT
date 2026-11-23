@@ -1,5 +1,15 @@
 # Changelog
 
+## Android / Windows / macOS 1.1.3 — OEM profiles and signed catalogue migration
+
+- Extend manufacturer diagnostics to Samsung, Motorola and Crosscall while preserving shared Android Enterprise paths.
+- Keep Samsung Knox Manage separate from Samsung device service tests.
+- Add community-documented Motorola OTA CDS host `moto-cds.appspot.com:443` as a **connectivity indicator only**, not an API-based OTA version query.
+- Prepare the 480-entry, 16-category CSV catalogue v6 and its independently verified Ed25519 signature.
+- Rotate the signing key for v6+ and preserve the legacy public key for v1–v5 validation in the updated Flutter binaries.
+- Preserve the live catalogue v5 until v1.1.3 binary availability is verified. Never promote a newly signed catalogue ahead of an app that trusts its signing key.
+- Publish Android signed APK, Windows portable ZIP and macOS ZIP through their independent CI workflows; Google Play rollout is not automatic.
+
 ## Windows ZIP-only distribution — 23 November 2026
 
 - Discontinue Windows MSIX generation and Microsoft Store publication; remove MSIX package/dependency, manifest checks and duplicate private Windows release publication from the private source workflow.
