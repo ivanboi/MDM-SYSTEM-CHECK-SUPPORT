@@ -1,5 +1,11 @@
 # Changelog
 
+## Documentation and catalogue updates — 23 November 2026 (no new app release)
+
+- Published the [225-record network reference CSV](data/network/network-flows.csv) and GitHub Actions schema validation in the public support repository.
+- Documented the **unreleased** manual local CSV import ([private PR #23](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/23)), Windows desktop build ([private PR #22](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/22)), macOS plans, and future signed GitHub catalogue synchronization.
+- No new Android APK/AAB, Microsoft Store package, or macOS installer is represented by this documentation update.
+
 ## v1.0.9 — Signed release with streamlined delivery (build 34)
 
 November 17, 2026 · [Release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.0.9)
