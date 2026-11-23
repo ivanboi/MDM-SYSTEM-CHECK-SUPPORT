@@ -1,5 +1,14 @@
 # Changelog
 
+## macOS desktop port (CI validation pending)
+
+- Add the native Flutter macOS desktop build pipeline and a ZIP containing the full application bundle with a separate SHA-256 checksum.
+- Apply the official SystemCheck icon, macOS app identity and narrow file/network sandbox entitlements.
+- Export CSV using native macOS Save As, starting in Downloads; perform local device-originating network diagnostics.
+- Keep the macOS stable/development GitHub release tags independent from Android/Windows. macOS is not Developer ID signed or Apple notarized and may be blocked by Gatekeeper.
+- macOS releases must not be announced as available until the GitHub build and assets are confirmed.
+
+
 ## Documentation verification — 23 November 2026
 
 - Verified public Android 1.1.0 signed APK and SHA-256; Android Flutter source 1.1.1+36 does not indicate a newer Google Play release.
