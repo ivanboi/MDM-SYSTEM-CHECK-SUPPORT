@@ -15,11 +15,11 @@ Yes. The maintainer can sign the compiled Windows executable with an Authenticod
 - **Self-signed certificates:** suitable for controlled internal testing only; not trusted automatically on public computers.
 - **Azure Artifact Signing:** managed signing for qualifying organizations in the EU/USA/Canada/UK and qualifying individuals in the USA/Canada; Public Trust enrollment for individual applicants in France is not currently offered.
 - **Traditional CA code-signing certificate:** an OV/individual-validation option may be appropriate for an individual developer in France, subject to issuer verification, cost and hardware/HSM key controls.
-- **Microsoft Store signing:** only applies after successful Store certification; the Store route is deferred and is separate from the GitHub ZIP.
+- **Microsoft Store/MSIX:** discontinued for this project; signing the portable executable is an independent potential improvement.
 
 Signing does not guarantee an immediate absence of SmartScreen warnings; software/publisher reputation grows over time.
 
-**No trusted signing certificate has been configured for the published Windows binaries.** Do not interpret the Microsoft Partner Center seller verification as certificate issuance.
+**No trusted signing certificate has been configured for the published Windows binaries.** Historical Microsoft Partner Center account verification does not constitute an Authenticode signing certificate.
 
 ## Checking signatures in future releases
 

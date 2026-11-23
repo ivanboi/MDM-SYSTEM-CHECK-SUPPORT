@@ -19,17 +19,17 @@ The Windows 1.1.1 portable ZIP uses the MDM SystemCheck icon rather than the def
 | Platform | Official downloads | Installation |
 | --- | --- | --- |
 | Android | [Stable Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | Install the signed APK or use Google Play when available. |
-| Windows x64 | [Windows portable ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No MSIX or Microsoft Store required. |
+| Windows x64 | [Windows portable ZIP v1.1.1](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) | Download and extract **the entire** `MDM-SystemCheck-Windows-x64.zip`; run `mdm_system_check.exe`. No Microsoft Store or MSIX installer exists in the current pipeline. |
 | Windows development | [Latest Windows development build](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev) | For testing only; not a stable release. |
 | macOS (Intel / Apple Silicon) | [Universal macOS 1.1.1 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.1) | Extract the complete .app; **not Developer ID signed or notarized**, so Gatekeeper or organization policy may block launch. [Guide](docs/MACOS_DOWNLOAD.md). |
 
 The Windows ZIP is **not Authenticode signed**. Security software, Windows SmartScreen and organizational policies may block it; do not disable protection globally. Verify the ZIP with the attached `SHA256SUMS-windows.txt`. The checksum checks file integrity but is **not** a software signature. See the [Windows download and installation guide](docs/WINDOWS_DOWNLOAD.md).
 
-## Microsoft Store registration and packaging status — 23 November 2026
+## Windows distribution — GitHub ZIP only (23 November 2026)
 
-The Windows application **MDM SystemCheck** is registered in Microsoft Partner Center with Store ID `9N9Z3PCL3MG1`. Its identity is `ivanbillyjean.MDMSystemCheck`, publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`, publisher display name `ivan_billyjean`, and package family name `ivanbillyjean.MDMSystemCheck_hgbzc83p2bnep`.
+**MSIX and Microsoft Store have been discontinued.** MDM SystemCheck for Windows is published **exclusively** as the [portable Windows x64 ZIP with SHA-256 checksum](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1). The private Windows CI no longer builds MSIX or performs Store submission. Earlier unsigned MSIX files found in private historical releases are **unsupported archives** and must not be sideloaded.
 
-The Windows MSIX packaging is built in the **private source repository only**, reserved for a possible future Microsoft Store submission. The **preferred Windows download is the public portable ZIP**, which requires no Store submission. There is no confirmed Store-certified listing. Do not sideload the unsigned private MSIX.
+The public ZIP executable is not Authenticode-signed; Windows SmartScreen or organizational policy may block it. See [installation](docs/WINDOWS_DOWNLOAD.md) and [signing](docs/WINDOWS_SIGNING.md).
 
 The [Android 1.1.0 public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) has a signed APK and SHA-256 checksum. A Google Play rollout must be verified separately. CSV manual import was merged in [PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25); automatic GitHub CSV synchronization remains planned. The macOS 1.1.1 .app is available in a GitHub ZIP; no PKG or Mac App Store publication.
 
@@ -37,7 +37,7 @@ The [Android 1.1.0 public release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-S
 
 - The [public 225-entry reference CSV](data/network/network-flows.csv) is schema-validated by [GitHub Actions](.github/workflows/validate-network-catalog.yml). It is not a verified complete firewall allowlist.
 - **Manual CSV import is implemented** in the signed public Android 1.1.0 APK, Windows 1.1.1 and macOS 1.1.1. Users select a local file, approve activation, retain the override locally and can restore bundled defaults. Manually supplied files are not cryptographically authenticated.
-- Windows 1.1.1 is [published as a portable ZIP](docs/WINDOWS_DOWNLOAD.md), with an unsigned MSIX retained privately for optional Store submission.
+- Windows 1.1.1 is [published as a portable ZIP](docs/WINDOWS_DOWNLOAD.md), with no supported MSIX or Microsoft Store alternative.
 - macOS 1.1.1 is [published as a universal app ZIP](docs/MACOS_DOWNLOAD.md), **without Developer ID signing or notarization**. No native iOS app is published.
 - Automatic signed remote catalogue synchronization is **not implemented**. Future updates require a verified signed manifest, anti-rollback protection and local fallback.
 - GitHub hosts public releases, reference data and support; **OVH is used only for user-initiated Android Google Play Integrity**. Diagnostic reports are not automatically uploaded to the developer.

@@ -14,9 +14,9 @@ Windows 1.1.1 is **unsigned**. See [Windows signing and verification](docs/WINDO
 
 The official Windows x64 release uses a portable ZIP available from this public repository's [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1). It is **not code signed** and has not passed Microsoft Store certification. Download only from this repository, validate the accompanying SHA-256 checksum and keep Windows SmartScreen, antivirus and enterprise protections enabled. SHA-256 is an integrity check, not proof of publisher identity. Windows may warn or block unsigned apps; enterprise-managed devices may prohibit running them entirely.
 
-## Microsoft Store identity and Windows package trust
+## Retired Windows MSIX packages
 
-The Partner Center identity for the future Windows package is `ivanbillyjean.MDMSystemCheck`, with publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A` and Store ID `9N9Z3PCL3MG1`. The private Windows build process creates an unsigned submission package for Microsoft's certification process. **It is not distributed as a signed sideload package, and there is no confirmed public Store release.** Download builds only from verified release channels.
+Microsoft Store/MSIX distribution is **discontinued**, and no new MSIX files are generated or published. Older unsigned MSIX files from historical private releases are **unsupported archives**; they are not trusted installers and should not be sideloaded. Download the Windows portable ZIP only from verified [public GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1). SHA-256 is an integrity check, not publisher authentication. Keep SmartScreen and enterprise protections enabled.
 
 ## Network reference catalogue and offline local import
 
