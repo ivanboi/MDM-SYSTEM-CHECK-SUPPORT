@@ -1,5 +1,13 @@
 # Changelog
 
+## Windows ZIP-only distribution — 23 November 2026
+
+- Discontinue Windows MSIX generation and Microsoft Store publication; remove MSIX package/dependency, manifest checks and duplicate private Windows release publication from the private source workflow.
+- Continue Windows x64 releases **only** as portable ZIP and SHA-256 in public GitHub Releases, independent from Android APK and macOS universal ZIP.
+- Older experimental private MSIX assets are **unsupported legacy archives** and have not been deleted; historical release notes are retained.
+- Windows executable signing is still not configured; SmartScreen and enterprise policies may block execution.
+
+
 ## macOS v1.1.1 — universal GitHub ZIP published
 
 - Add the native Flutter macOS desktop build pipeline and a ZIP containing the full application bundle with a separate SHA-256 checksum.
