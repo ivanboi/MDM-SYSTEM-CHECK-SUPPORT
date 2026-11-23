@@ -16,7 +16,7 @@ Android source is **1.1.0 (build 35)** and the public `v1.1.0` Git tag exists. *
 
 ## Current public distribution
 
-Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; the signed APK and SHA-256 are now confirmed publicly available. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; macOS is not released.
+Android **1.1.0 (build 35)** is merged in source and a [public v1.1.0 tag](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.0) exists; the signed APK and SHA-256 are now confirmed publicly available. Publishing a GitHub APK does not itself complete Play Console review or Google Play rollout. Windows ZIP distribution is configured independently of Android; A macOS build and GitHub ZIP release workflow is under validation; macOS binaries must not be claimed published until CI assets are confirmed.
 
 | Platform | Current state | Intended delivery |
 | --- | --- | --- |
