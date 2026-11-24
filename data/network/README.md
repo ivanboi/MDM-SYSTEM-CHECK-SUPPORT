@@ -38,6 +38,14 @@ An active test requires **both** `execution_point=DEVICE` and `testability=testa
 - TCP/DNS connectivity does not prove enrollment, actual push delivery, software-update availability or a successful HTTP API transaction.
 - Motorola `moto-cds.appspot.com:443` is documented by [a community GitHub project](https://github.com/FixeQD/motorola-update), **not by Motorola as a comprehensive firewall rule**. This app checks only network reachability: no OTA POST, IMEI, serial number or build GUID sent. Crosscall OEM OTA destinations remain unconfirmed.
 
+## Diagnostic engine handling since app 1.1.4
+
+The signed v6 CSV is an auditable **reference catalogue**, not a promise that every documented port will accept a generic TCP probe. App 1.1.4 does not execute the misleading `TCP/5228–5230` combinations on `android.apis.google.com` or `*.googleapis.com` REST API hosts. FCM device push transport checks against `mtalk.google.com` remain active. It also deduplicates Android common services when users select Android alongside Samsung, Motorola or Crosscall.
+
+A TCP timeout is an **inconclusive WARN**, not proof of a carrier/firewall block; TLS handshake failures are warnings with the actual exception detail; HTTP 4xx after valid TLS confirms network reachability but **not** an application-level success. CSV diagnostic exports include the active catalogue source and verified remote catalogue version.
+
+When preparing the next signed catalogue v7, review currently documented API/FCM-port pairings against authoritative endpoint/port requirements, and classify inapplicable combinations as documentation-only or remove them. **Do not modify the already signed canonical v6 file without an incremented, correctly signed manifest.**
+
 ## Procedure for every future flow update
 
 1. Confirm manufacturer documentation or a credible reference, the source (device vs server), host, protocol, port, region, service applicability and confidence.
