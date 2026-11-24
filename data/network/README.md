@@ -44,25 +44,25 @@ An active test requires **both** `execution_point=DEVICE` and `testability=testa
 
 - **497 rows in 18 categories**: 15 new testable Google-documented `device:chromeos` hosts; 2 documentation-only `device:fairphone` references. No unverified proprietary Fairphone Gen. 6 or Crosscall OTA host is treated as an active destination.
 - Motorola OTA connectivity to `moto-cds.appspot.com:443` was actually exercised in the 1.1.4 network diagnostic export: DNS and TCP passed. This does not authenticate or execute the OTA update check.
-- Manufacturer profiles are explicitly **specific servers**; select the `Android` device profile separately to test shared Android Enterprise/Google dependencies.
+- Motorola and Crosscall profiles are explicitly **specific servers**; select the `Android` device profile separately for shared Android Enterprise/Google dependencies. Samsung intentionally includes its shared Android Enterprise checks plus Knox manufacturer services.
 - Thirty `device:android` rows for generic Google REST API endpoints on FCM-style ports 5228–5230 are now `documentation only`. Their active use produced false-positive timeouts; appropriate FCM device messaging remains under `mtalk.google.com`.
 - The v7 manifest was signed offline using the existing rotated Ed25519 private key; the CSV and manifest were committed in one atomic Git tree update. No private key or passphrase is stored in GitHub.
 - Keep all future platform endpoints supported by authoritative sources. Unknown/legacy manufacturer URLs should be documentation-only or omitted rather than tested as mandatory.
 
 ## Diagnostic engine handling since app 1.1.4
 
-The signed v6 CSV is an auditable **reference catalogue**, not a promise that every documented port will accept a generic TCP probe. App 1.1.4 does not execute the misleading `TCP/5228–5230` combinations on `android.apis.google.com` or `*.googleapis.com` REST API hosts. FCM device push transport checks against `mtalk.google.com` remain active. It also deduplicates Android common services when users select Android alongside Samsung, Motorola or Crosscall.
+The signed v7 CSV is an auditable **reference catalogue**, not a promise that every documented port will accept a generic TCP probe. App 1.1.4 does not execute the misleading `TCP/5228–5230` combinations on `android.apis.google.com` or `*.googleapis.com` REST API hosts. FCM device push transport checks against `mtalk.google.com` remain active. It also deduplicates Android common services when profiles overlap. As of 1.1.5, Motorola and Crosscall do not automatically inherit Android, while Samsung retains common Android checks.
 
 A TCP timeout is an **inconclusive WARN**, not proof of a carrier/firewall block; TLS handshake failures are warnings with the actual exception detail; HTTP 4xx after valid TLS confirms network reachability but **not** an application-level success. CSV diagnostic exports include the active catalogue source and verified remote catalogue version.
 
-When preparing the next signed catalogue v8, review currently documented API/FCM-port pairings against authoritative endpoint/port requirements, and classify inapplicable combinations as documentation-only or remove them. **Do not modify the already signed canonical v6 file without an incremented, correctly signed manifest.**
+When preparing the next signed catalogue v8, review currently documented API/FCM-port pairings against authoritative endpoint/port requirements, and classify inapplicable combinations as documentation-only or remove them. **Do not modify the already signed canonical v7 file without an incremented, correctly signed manifest.**
 
 ## Procedure for every future flow update
 
 1. Confirm manufacturer documentation or a credible reference, the source (device vs server), host, protocol, port, region, service applicability and confidence.
 2. Edit **only** `data/network/network-flows.csv` on an approved branch, retaining the exact schema and unique IDs. Examples: `device-motorola-004`, `device-crosscall-003`. Do not invent OEM hosts.
-3. Increment the `version` field (next **v7**), calculate SHA-256 of the **exact new CSV bytes**, and sign `<version>\\n<sha256>\\n` with the **existing encrypted v6+ Ed25519 private key** using `tool/sign_network_catalog.py` from the private repo. Never regenerate a key for ordinary CSV additions, publish the private key, or type its passphrase in CI logs.
+3. Increment the `version` field (next **v8**), calculate SHA-256 of the **exact new CSV bytes**, and sign `<version>\\n<sha256>\\n` with the **existing encrypted v6+ Ed25519 private key** using `tool/sign_network_catalog.py` from the private repo. Never regenerate a key for ordinary CSV additions, publish the private key, or type its passphrase in CI logs.
 4. Commit **both** canonical CSV and signed manifest **atomically** in one Git commit, and let [.github/workflows/validate-network-catalog.yml](../../.github/workflows/validate-network-catalog.yml) verify the schema and Ed25519 signature.
 5. On a supported client, refresh the catalogue, verify the reported version, and test offline cache/fallback. Add a new app release only when schema, category support, security public key or probe logic changes.
 
-Existing v1–v5 signatures use the legacy public key; v6 and newer use the rotated one. Current application release **1.1.3** trusts both. Apps 1.1.2 and earlier cannot use v6: upgrade them, rather than weakening verification. Local manual CSV imports remain user-approved and **unsigned**; importing a category replaces rather than merges its records.
+Existing v1–v5 signatures use the legacy public key; v6 and newer use the rotated one. Current application release **1.1.5** trusts both and recognizes all 18 catalogue categories. Apps 1.1.3–1.1.4 lack v7's new categories and preserve a last-good catalogue. Apps 1.1.2 and earlier cannot use v6+: upgrade them, rather than weakening verification. Local manual CSV imports remain user-approved and **unsigned**; importing a category replaces rather than merges its records.
