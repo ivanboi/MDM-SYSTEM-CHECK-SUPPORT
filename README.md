@@ -102,3 +102,7 @@ The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 ret
 ## Android distribution policy — 24 November 2026
 
 The independent Android test APK and production AAB workflows both passed analysis, tests, signature verification and private artifact upload (run 45429919328). Future test APKs are private; production AABs are private and uploaded manually to Google Play. Existing historical public APK releases remain available, but are not the production update channel. Windows, macOS and Linux distribution is unchanged. The public releases.json manifest is refreshed by a metadata-only workflow; Android APK metadata describes historical public releases, not Google Play rollout. Linux runtime acceptance is pending.
+
+## Linux OpenPGP release signing
+
+The dedicated Ed25519 public release key and its primary fingerprint (`22DDA2AC2133E3A88761A375F4A9039C27F8CCEA`) are available in [security/](security/README.md). The Linux signing pipeline has passed private validation. Existing public Linux 1.1.6 packages remain unchanged; detached signatures have not yet been published for those packages. See the [verification instructions](security/README.md).
