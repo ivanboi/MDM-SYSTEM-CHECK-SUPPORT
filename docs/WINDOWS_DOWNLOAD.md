@@ -4,7 +4,7 @@ MDM SystemCheck is distributed for Windows as a portable **x64 ZIP**. It is the 
 
 ## Download
 
-- [Stable Windows releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4), version 1.1.4.
+- [Stable Windows releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5), version 1.1.5.
 - [Development Windows release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev), for testing only.
 - Choose **`MDM-SystemCheck-Windows-x64.zip`** and **`SHA256SUMS-windows.txt`** under Assets. Android APK downloads remain on the separate Android release pages.
 
@@ -41,11 +41,11 @@ The hashes should match (case-insensitive). If SmartScreen or antivirus blocks t
 
 ## Updating
 
-Check [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v) for a newer stable version. Download and extract the new ZIP into a new folder; close the previous application before replacing files. In-app automatic updates are not implemented yet. The [Windows v1.1.1 public ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4) remains unsigned; a release SHA-256 is an integrity check, not an Authenticode signature.
+Check [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v) for a newer stable version. Download and extract the new ZIP into a new folder; close the previous application before replacing files. In-app automatic updates are not implemented yet. The [Windows v1.1.1 public ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5) remains unsigned; a release SHA-256 is an integrity check, not an Authenticode signature.
 
 ## Known limits
 
-- Windows download is x64 only. A separate [universal macOS 1.1.1 ZIP](MACOS_DOWNLOAD.md) is also published.
+- Windows download is x64 only. A separate [universal macOS 1.1.5 ZIP](MACOS_DOWNLOAD.md) is also published.
 - Existing DNS/TCP/HTTP(S)/NTP tests run on the Windows computer, not on a remote phone.
 - Manual network-flow CSV import is available, but automatic GitHub catalogue synchronization is not.
 - Windows-specific BitLocker, Defender, Entra ID, Intune enrollment, TPM and Secure Boot checks are not yet implemented.
