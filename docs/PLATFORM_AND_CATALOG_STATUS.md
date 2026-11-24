@@ -4,7 +4,7 @@ _Last reviewed: 24 November 2026._
 
 | Platform | Public stable | Distribution |
 | --- | --- | --- |
-| Android | [1.1.3 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.3) | APK + SHA-256; AAB generated privately, Google Play rollout **not confirmed** |
+| Android | [1.1.4 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.4) | APK + SHA-256; AAB generated privately, Google Play rollout **not confirmed** |
 | Windows | [1.1.4 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4) | ZIP + SHA-256; unsigned executable, **no MSIX or Microsoft Store** |
 | macOS | [1.1.4 universal portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.4) | ZIP + SHA-256; not Developer ID signed or notarized |
 | iOS | Not published | iOS/iPadOS network destinations are profile references, not a native iOS application |
@@ -23,4 +23,4 @@ Maintain historical stable releases and checksums for rollback; do not revive de
 
 ## Diagnostic reliability release 1.1.4
 
-macOS and Windows 1.1.4 GitHub binaries have been verified on the public support releases. Android 1.1.4 is being built and must be verified independently before replacing the Android 1.1.3 download reference above. The release deduplicates shared Android/OEM probes, skips misapplied Google REST API push-port probes, treats TCP timeouts and TLS handshake failures as inconclusive warnings, recognizes TLS-verified HTTP 4xx as network-reachable and includes the verified network catalogue version in exported reports. The signed canonical v6 catalogue and its Ed25519 signature remain unchanged.
+Android, macOS and Windows 1.1.4 GitHub binaries have been verified on the public support releases. Android 1.1.4 was also published with signed APK and SHA-256 after passing CI validation; its AAB is available privately for Play Console submission. Google Play rollout remains unconfirmed. The release deduplicates shared Android/OEM probes, skips misapplied Google REST API push-port probes, treats TCP timeouts and TLS handshake failures as inconclusive warnings, recognizes TLS-verified HTTP 4xx as network-reachable and includes the verified network catalogue version in exported reports. The signed canonical v6 catalogue and its Ed25519 signature remain unchanged.
