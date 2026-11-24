@@ -23,7 +23,7 @@ CATEGORIES = {
     "mdm:meraki", "mdm:citrix", "mdm:blackberry",
     "device:apple", "device:android", "device:rooms", "device:samsung",
     "device:windows", "device:macos", "device:vowifi",
-    "device:motorola", "device:crosscall",
+    "device:motorola", "device:crosscall", "device:chromeos", "device:fairphone",
 }
 KEYS = {
     "legacy": "FB35t95FFpMxnYEMNuaP9w4d2XXbN2K0zO9GB7vlGhA=",
