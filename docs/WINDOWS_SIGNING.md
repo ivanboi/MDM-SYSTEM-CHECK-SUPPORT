@@ -4,7 +4,7 @@ _Last reviewed: 23 November 2026._
 
 ## Current download
 
-The official [Windows 1.1.1 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.1) is **not Authenticode-signed**. The published `SHA256SUMS-windows.txt` lets you check that your downloaded archive matches the release, but SHA-256 alone does not prove who published or built the application.
+The official [Windows 1.1.5 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5) is **not Authenticode-signed**. The published `SHA256SUMS-windows.txt` lets you check that your downloaded archive matches the release, but SHA-256 alone does not prove who published or built the application.
 
 Windows SmartScreen, antivirus, and corporate policies may block unsigned executables. Do **not** disable your security protections to run MDM SystemCheck. If you are using a managed device, ask your IT administrator before proceeding.
 
