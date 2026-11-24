@@ -10,7 +10,7 @@ The [Android 1.1.5 public GitHub release](https://github.com/ivanboi/MDM-SYSTEM-
 
 ## Public network catalogue and offline import
 
-An [Ed25519-signed v7 network catalogue](data/network/README.md) (497 entries, 18 categories) is published on GitHub. Version 1.1.5 automatically checks this public catalogue over HTTPS on launch (at most once every 24 hours), or when you explicitly request an update. The application verifies the manifest signature, file hash and CSV schema and caches the last valid version. GitHub and network intermediaries may observe the usual download-request metadata, including the source IP and time; catalogue downloads do not contain diagnostic reports, device identifiers or settings. Subsequent diagnostic probes use the destinations in the verified active catalogue.
+An [Ed25519-signed v8 network catalogue](data/network/README.md) (507 entries, 18 categories) is published on GitHub. Version 1.1.5 automatically checks this public catalogue over HTTPS on launch (at most once every 24 hours), or when you explicitly request an update. The application verifies the manifest signature, file hash and CSV schema and caches the last valid version. GitHub and network intermediaries may observe the usual download-request metadata, including the source IP and time; catalogue downloads do not contain diagnostic reports, device identifiers or settings. Subsequent diagnostic probes use the destinations in the verified active catalogue.
 
 Manual CSV import was introduced in Android 1.1.0 (build 35) and remains available in 1.1.5 ([merged PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25)) and its signed GitHub APK is publicly available. This feature is designed to select a file from device storage, validate the fields, explicitly confirm activation, and retain the active copy locally. Importing a file itself would not upload its contents to GitHub, OVH, or another server. Running diagnostics against imported destinations would send the usual DNS/TCP/HTTP(S)/UDP network requests to those destinations, potentially revealing source IP and connection metadata.
 
@@ -84,3 +84,7 @@ You can delete individual runs or clear the history in the app. To remove stored
 ## Contact
 
 For general privacy questions, use the [public support page](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/issues) without posting personal or confidential information. For a private security report, follow the [security policy](SECURITY.md).
+
+## Catalogue v8 operational status
+
+Catalogue v8 (24 November 2026): 507 records in 18 categories, published automatically with the existing Ed25519 key. Android confirmed verified GitHub catalogue v8 with zero manual entries. Windows/macOS runtime refresh and new OEM reachability tests remain pending. Four maintainer-provided Crosscall FOTA records (two active, two historical) and six Motorola additions (five active, one staging reference) are included. Carrier applicability varies. These are connectivity checks, not OTA transactions or independently verified vendor allowlists.
