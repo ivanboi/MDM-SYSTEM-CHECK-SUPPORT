@@ -11,7 +11,7 @@ RULES = {
     "android": (r"v(\d+\.\d+\.\d+)", {"MDM-SystemCheck.apk", "SHA256SUMS.txt"}),
     "windows": (r"windows-v(\d+\.\d+\.\d+)", {"MDM-SystemCheck-Windows-x64.zip", "SHA256SUMS-windows.txt"}),
     "macos": (r"macos-v(\d+\.\d+\.\d+)", {"MDM-SystemCheck-macOS.zip", "SHA256SUMS-macos.txt"}),
-    "linux": (r"linux-v(\d+\.\d+\.\d+)", {"MDM-SystemCheck-Linux-x64.AppImage", "MDM-SystemCheck-Linux-x64.deb", "MDM-SystemCheck-Linux-x64.tar.gz", "SHA256SUMS-linux.txt"}),
+    "linux": (r"linux-v(\d+\.\d+\.\d+)", {"MDM-SystemCheck-Linux-x64.AppImage", "MDM-SystemCheck-Linux-x64.deb", "MDM-SystemCheck-Linux-x64.tar.gz", "SHA256SUMS-linux.txt", "SHA256SUMS-linux.txt.asc", "MDM-SystemCheck-public.asc"}),
 }
 
 def version(value):
@@ -44,7 +44,7 @@ def refresh(current, releases):
                 raise ValueError(f"Unexpected URL: {name}")
             selected.append(dict(name=name, url=expected, size=a["size"], digest=a["digest"]))
         if v == old["version"]:
-            if {a["name"]: a["digest"] for a in selected} != {a["name"]: a["digest"] for a in old["assets"]}:
+            if {a["name"]: (a["digest"], a["size"], a["url"]) for a in selected} != {a["name"]: (a["digest"], a["size"], a["url"]) for a in old["assets"]}:
                 raise ValueError(f"Existing stable asset changed: {platform}")
             continue
         # Build numbers cannot be inferred reliably from a semantic version.

@@ -8,7 +8,7 @@ The MDM SystemCheck release signing identity uses an Ed25519 certification prima
 - Public key: [MDM-SystemCheck-public.asc](MDM-SystemCheck-public.asc)
 - Fingerprint: [fingerprint.txt](fingerprint.txt)
 
-The signing workflow was successfully validated on private Linux 1.1.6 build artifacts on 24 November 2026. The existing public Linux 1.1.6 binaries have not been replaced or retroactively signed by this documentation change. Do not assume a release is signed unless its detached signature is present and valid.
+The signing workflow was successfully validated on private Linux 1.1.6 build artifacts on 24 November 2026. The [public Linux 1.1.6 release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6) now includes the verified detached signature of its original checksum manifest. All original binaries remain byte-for-byte unchanged. Do not assume a release is signed unless its detached signature is present and valid.
 
 For a signed release, download the public key above and the release's packages, SHA256SUMS-linux.txt and SHA256SUMS-linux.txt.asc. Compare the primary fingerprint with an independently trusted maintainer source before importing.
 

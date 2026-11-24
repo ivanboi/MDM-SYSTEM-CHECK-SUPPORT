@@ -9,7 +9,7 @@ Network connectivity and EMM/MDM troubleshooting for Android, Windows, macOS and
 | Android | [1.1.6 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6) | SHA-256 provided; Google Play publication is managed separately. |
 | Windows | [1.1.6 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
 | macOS | [1.1.6 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6) | Not Apple Developer ID signed or notarized. |
-| Linux | [1.1.6 x64 stable](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6) | AppImage, DEB and TAR.GZ; unsigned; manual validation pending. |
+| Linux | [1.1.6 x64 stable](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6) | AppImage, DEB and TAR.GZ; OpenPGP-signed checksum manifest; manual validation pending. |
 | Development | [All releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) | Prereleases may be unstable. |
 
 Only a published release with its downloadable assets is an installable version. GitHub source commits and successful CI tests alone do not confirm an app-store rollout. Check the [platform status](docs/PLATFORM_AND_CATALOG_STATUS.md).
@@ -72,7 +72,7 @@ Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically sig
 
 ## Linux x86-64 stable (1.1.6+42)
 
-The initial isolated Linux build was superseded by the successful build on private `main`. It does not change the Android, Windows or macOS release channels. Published assets: AppImage, Debian package and portable tar.gz bundle with SHA-256 checksums. Packages are unsigned; GPG signing is not yet configured. CI publication and stable promotion succeeded; manual Linux validation remains pending. Check [public releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=linux-v) before downloading. Ubuntu 22.04+ and compatible Debian/Linux Mint x86-64 environments are initial test targets, not certified compatibility. Verify checksums using `sha256sum -c SHA256SUMS-linux.txt`; run AppImage after `chmod +x`, or install the DEB with `sudo apt install ./MDM-SystemCheck-Linux-x64.deb`. Google Play Integrity and embedded VirusTotal are Android-only. Linux CSV export, catalogue v9 retrieval and desktop functionality remain to be tested. No Linux-specific device catalogue changes are included.
+The initial isolated Linux build was superseded by the successful build on private `main`. It does not change the Android, Windows or macOS release channels. Published assets: AppImage, Debian package and portable tar.gz bundle with SHA-256 checksums. The checksum manifest is OpenPGP-signed; packages do not carry embedded signatures. CI publication and stable promotion succeeded; manual Linux validation remains pending. Check [public releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=linux-v) before downloading. Ubuntu 22.04+ and compatible Debian/Linux Mint x86-64 environments are initial test targets, not certified compatibility. Verify checksums using `sha256sum -c SHA256SUMS-linux.txt`; run AppImage after `chmod +x`, or install the DEB with `sudo apt install ./MDM-SystemCheck-Linux-x64.deb`. Google Play Integrity and embedded VirusTotal are Android-only. Linux CSV export, catalogue v9 retrieval and desktop functionality remain to be tested. No Linux-specific device catalogue changes are included.
 
 ## Platform release workflow split
 
@@ -82,7 +82,7 @@ Verified public 1.1.6 downloads: [Android APK](https://github.com/ivanboi/MDM-SY
 
 ## Current release status — 1.1.6+42 (24 November 2026)
 
-Android, Windows, macOS and Linux stable 1.1.6 releases are verified on GitHub. Linux x86-64 1.1.6 preview has passed analysis, tests, native build, packaging and publication; its AppImage, DEB, portable tar.gz and SHA-256 file are available. Stable promotion succeeded using the same verified binaries without rebuilding; the stable tag and all four assets are verified. Linux packages are unsigned and manual desktop compatibility, CSV export and catalogue retrieval remain unverified.
+Android, Windows, macOS and Linux stable 1.1.6 releases are verified on GitHub. Linux x86-64 1.1.6 preview has passed analysis, tests, native build, packaging and publication; its AppImage, DEB, portable tar.gz and SHA-256 file are available. Stable promotion succeeded using the same verified binaries without rebuilding; the stable tag and all four assets are verified. The Linux checksum manifest is OpenPGP-signed; manual desktop compatibility, CSV export and catalogue retrieval remain unverified.
 
 | Platform | Verified download |
 | --- | --- |
@@ -96,7 +96,7 @@ Android AAB is signed and available privately from CI run 45411459034; Google Pl
 
 ## Maintainer validation and CI status
 
-The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 retrieval on macOS (24 November 2026). Linux desktop acceptance remains pending. The release manager now supports independent APK and AAB inputs, dynamic Linux version and development/stable channels, and optional Linux publication (default false); no platform distribution builds are triggered by ordinary pushes. Linux validation-only and separate Android APK/AAB workflows passed. Future Linux publication remains to be tested. The public [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records verified stable public assets; it has a metadata-only refresh workflow, pending first execution, and existing clients are unchanged.
+The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 retrieval on macOS (24 November 2026). Linux desktop acceptance remains pending. The release manager now supports independent APK and AAB inputs, dynamic Linux version and development/stable channels, and optional Linux publication (default false); no platform distribution builds are triggered by ordinary pushes. Linux validation-only and separate Android APK/AAB workflows passed. Detached signing and publication of the existing Linux release succeeded. The public [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records verified stable public assets; it has a metadata-only refresh workflow, first execution succeeded, and existing clients are unchanged.
 
 
 ## Android distribution policy — 24 November 2026
@@ -105,4 +105,4 @@ The independent Android test APK and production AAB workflows both passed analys
 
 ## Linux OpenPGP release signing
 
-The dedicated Ed25519 public release key and its primary fingerprint (`22DDA2AC2133E3A88761A375F4A9039C27F8CCEA`) are available in [security/](security/README.md). The Linux signing pipeline has passed private validation. Existing public Linux 1.1.6 packages remain unchanged; detached signatures have not yet been published for those packages. See the [verification instructions](security/README.md).
+The dedicated Ed25519 public release key and its primary fingerprint (`22DDA2AC2133E3A88761A375F4A9039C27F8CCEA`) are available in [security/](security/README.md). The Linux signing pipeline has passed private validation. The original public Linux 1.1.6 packages remain byte-for-byte unchanged. The detached checksum signature and public key are published and verified. See the [verification instructions](security/README.md).

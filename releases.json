@@ -87,10 +87,22 @@
           "digest": "sha256:f48535754d650dcde0527c8b4776168bf20d54cfacdf2fcab9f03e892a76af04"
         },
         {
+          "name": "MDM-SystemCheck-public.asc",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/MDM-SystemCheck-public.asc",
+          "size": 803,
+          "digest": "sha256:25092e3de5dd280ec891ea21b40e2484ddc1f95626b1ae3aa2f921de17ccf0d2"
+        },
+        {
           "name": "SHA256SUMS-linux.txt",
           "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/SHA256SUMS-linux.txt",
           "size": 296,
           "digest": "sha256:909d659eda940db50119555bedc32db3f00bb69a99767a13de223b3a14328713"
+        },
+        {
+          "name": "SHA256SUMS-linux.txt.asc",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/SHA256SUMS-linux.txt.asc",
+          "size": 228,
+          "digest": "sha256:86a44ea095cdde15d40d6c2e9b4dd3a4f1de803193bd2985387239d159ee40c9"
         }
       ]
     }
