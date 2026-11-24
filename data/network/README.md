@@ -40,9 +40,9 @@ An active test requires **both** `execution_point=DEVICE` and `testability=testa
 - TCP/DNS connectivity does not prove enrollment, actual push delivery, software-update availability or a successful HTTP API transaction.
 - Motorola `moto-cds.appspot.com:443` is documented by [a community GitHub project](https://github.com/FixeQD/motorola-update), **not by Motorola as a comprehensive firewall rule**. This app checks only network reachability: no OTA POST, IMEI, serial number or build GUID sent. Additional Motorola and Crosscall destinations are maintainer-provided; independent vendor verification remains pending.
 
-## New in signed catalogue v7
+## Historical changes in signed catalogue v7 (superseded by v8)
 
-- **497 rows in 18 categories**: 15 new testable Google-documented `device:chromeos` hosts; 2 documentation-only `device:fairphone` references. No unverified proprietary Fairphone Gen. 6 or Crosscall OTA host is treated as an active destination.
+- **497 rows in 18 categories**: 15 new testable Google-documented `device:chromeos` hosts; 2 documentation-only `device:fairphone` references. In v7, no proprietary Fairphone Gen. 6 or Crosscall OTA host was treated as an active destination; v8 subsequently added maintainer-provided Crosscall checks.
 - Motorola OTA connectivity to `moto-cds.appspot.com:443` was actually exercised in the 1.1.4 network diagnostic export: DNS and TCP passed. This does not authenticate or execute the OTA update check.
 - Motorola and Crosscall profiles are explicitly **specific servers**; select the `Android` device profile separately for shared Android Enterprise/Google dependencies. Samsung intentionally includes its shared Android Enterprise checks plus Knox manufacturer services.
 - Thirty `device:android` rows for generic Google REST API endpoints on FCM-style ports 5228–5230 are now `documentation only`. Their active use produced false-positive timeouts; appropriate FCM device messaging remains under `mtalk.google.com`.
