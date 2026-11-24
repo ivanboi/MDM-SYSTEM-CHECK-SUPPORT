@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "channel": "stable",
+  "platforms": {
+    "android": {
+      "version": "1.1.6",
+      "build": 42,
+      "tag": "v1.1.6",
+      "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6",
+      "assets": [
+        {
+          "name": "MDM-SystemCheck.apk",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/v1.1.6/MDM-SystemCheck.apk",
+          "size": 55707301,
+          "digest": "sha256:f4bee59e1666339d007da1fdd43976671ac6c7e553149458d15af46e4481c4d4"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/v1.1.6/SHA256SUMS.txt",
+          "size": 86,
+          "digest": "sha256:cec3611671c69ed22e035487b42eeaad06d0635c975dabab15d1be94913cb4ad"
+        }
+      ]
+    },
+    "windows": {
+      "version": "1.1.6",
+      "build": 42,
+      "tag": "windows-v1.1.6",
+      "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6",
+      "assets": [
+        {
+          "name": "MDM-SystemCheck-Windows-x64.zip",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/windows-v1.1.6/MDM-SystemCheck-Windows-x64.zip",
+          "size": 13038295,
+          "digest": "sha256:964e2a4d98517d509738298d5c67e8eab7107d8934033aafcbe8a55a5ad8b78f"
+        },
+        {
+          "name": "SHA256SUMS-windows.txt",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/windows-v1.1.6/SHA256SUMS-windows.txt",
+          "size": 99,
+          "digest": "sha256:46848859603d37dd09fe403e8c3cbaba57172b896870eecccd5d108a9ff874d6"
+        }
+      ]
+    },
+    "macos": {
+      "version": "1.1.6",
+      "build": 42,
+      "tag": "macos-v1.1.6",
+      "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6",
+      "assets": [
+        {
+          "name": "MDM-SystemCheck-macOS.zip",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/macos-v1.1.6/MDM-SystemCheck-macOS.zip",
+          "size": 22052811,
+          "digest": "sha256:09f683a8ac3bb2234af65a3141b2e75b70051d9b5d513d836b301052396fadde"
+        },
+        {
+          "name": "SHA256SUMS-macos.txt",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/macos-v1.1.6/SHA256SUMS-macos.txt",
+          "size": 92,
+          "digest": "sha256:6646a754293df026bcf97e40d1a00572e401ece34d1720d7a7d7a404532e4818"
+        }
+      ]
+    },
+    "linux": {
+      "version": "1.1.6",
+      "build": 42,
+      "tag": "linux-v1.1.6",
+      "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6",
+      "assets": [
+        {
+          "name": "MDM-SystemCheck-Linux-x64.AppImage",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/MDM-SystemCheck-Linux-x64.AppImage",
+          "size": 10537464,
+          "digest": "sha256:d418d4cbe92ad666f46aff0dda5806bbf0ff920fca64a1b29c1db72afbc643f7"
+        },
+        {
+          "name": "MDM-SystemCheck-Linux-x64.deb",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/MDM-SystemCheck-Linux-x64.deb",
+          "size": 8894716,
+          "digest": "sha256:d14eb160a0de6177ff2872efda9c51047af3bab4bb9ad30529347df0a42c0695"
+        },
+        {
+          "name": "MDM-SystemCheck-Linux-x64.tar.gz",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/MDM-SystemCheck-Linux-x64.tar.gz",
+          "size": 10509806,
+          "digest": "sha256:f48535754d650dcde0527c8b4776168bf20d54cfacdf2fcab9f03e892a76af04"
+        },
+        {
+          "name": "SHA256SUMS-linux.txt",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.6/SHA256SUMS-linux.txt",
+          "size": 296,
+          "digest": "sha256:909d659eda940db50119555bedc32db3f00bb69a99767a13de223b3a14328713"
+        }
+      ]
+    }
+  },
+  "catalogue": {
+    "version": 9,
+    "independent": true
+  }
+}
