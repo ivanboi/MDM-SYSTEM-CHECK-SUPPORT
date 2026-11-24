@@ -11,7 +11,7 @@ _Last reviewed: 24 November 2026._
 
 ## Active signed network catalogue
 
-**Version 6, 480 flows across 16 categories** is active on [network-flows.csv](../data/network/network-flows.csv) with its [Ed25519 manifest](../data/network/network-flows.manifest.json). Production app v1.1.3 adds dual verification: old public key for catalogues v1–v5, rotated public key for v6+. Previous v5 CSV and manifest are retained in Git history, not as alternate production filenames. App builds 1.1.2 and older will reject v6 and keep their last validated v5 cache/bundled defaults until upgraded.
+**Version 7, 497 flows across 18 categories** is active on [network-flows.csv](../data/network/network-flows.csv) with its [Ed25519 manifest](../data/network/network-flows.manifest.json). Production app v1.1.3 adds dual verification: old public key for catalogues v1–v5, rotated public key for v6+. App v1.1.5+41 adds parser support for two new categories (ChromeOS and Fairphone) introduced in v7. Previous v5 CSV and manifest are retained in Git history, not as alternate production filenames. App builds 1.1.2 and older will reject v6+. Apps 1.1.3 and 1.1.4 may verify v7's signature but cannot parse the new categories and will safely retain their last verified v6 cache or bundled defaults until upgrading to 1.1.5.
 
 For new Motorola, Crosscall, Samsung or other vendor flows, see [single-source CSV maintenance](../data/network/README.md). Shared Android Enterprise services belong to `device:android`, manufacturer destinations to `device:samsung`, `device:motorola` or `device:crosscall`; **Samsung Knox Manage** is an independent `mdm:knox-manage` platform. Server-side, portal, wildcard, regionally irrelevant and documentation-only records are not active client checks.
 
@@ -24,3 +24,9 @@ Maintain historical stable releases and checksums for rollback; do not revive de
 ## Diagnostic reliability release 1.1.4
 
 Android, macOS and Windows 1.1.4 GitHub binaries have been verified on the public support releases. Android 1.1.4 was also published with signed APK and SHA-256 after passing CI validation; its AAB is available privately for Play Console submission. Google Play rollout remains unconfirmed. The release deduplicates shared Android/OEM probes, skips misapplied Google REST API push-port probes, treats TCP timeouts and TLS handshake failures as inconclusive warnings, recognizes TLS-verified HTTP 4xx as network-reachable and includes the verified network catalogue version in exported reports. The signed canonical v6 catalogue and its Ed25519 signature remain unchanged.
+
+## ChromeOS, Fairphone, Motorola and Crosscall in v1.1.5
+
+The Motorola and Crosscall profile labels explicitly say **specific servers**. The Motorola `moto-cds.appspot.com:443` DNS and TCP probes both passed in the Android 1.1.4 5G CSV (44 ms, 32 ms); this does not query OTA update availability. Crosscall has no verified proprietary OTA endpoint, so only documentation-only rows remain. ChromeOS has 15 Google-documented device/enterprise/update destinations tested from the phone as network paths, **not** as verified Chromebook enrollment. Fairphone has two historical/shared endpoint references marked **documentation only**; none establish a modern Fairphone Gen. 6 OEM-specific OTA server. Select Android separately for common Google/Android Enterprise network requirements.
+
+TLS problems explicitly reported by the OS are classified in 1.1.5 as hostname mismatch, expired/not-yet-valid certificate, untrusted chain or generic handshake error. The app does not bypass certificate validation and will not infer a particular certificate cause when the OS returns only a generic handshake failure.
