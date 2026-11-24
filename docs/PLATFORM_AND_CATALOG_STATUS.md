@@ -4,9 +4,9 @@ _Last reviewed: 24 November 2026._
 
 | Platform | Public stable | Distribution |
 | --- | --- | --- |
-| Android | [1.1.4 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.4) | APK + SHA-256; AAB generated privately, Google Play rollout **not confirmed** |
-| Windows | [1.1.4 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4) | ZIP + SHA-256; unsigned executable, **no MSIX or Microsoft Store** |
-| macOS | [1.1.4 universal portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.4) | ZIP + SHA-256; not Developer ID signed or notarized |
+| Android | [1.1.5 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.5) | APK + SHA-256; AAB generated privately, Google Play rollout **not confirmed** |
+| Windows | [1.1.5 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5) | ZIP + SHA-256; unsigned executable, **no MSIX or Microsoft Store** |
+| macOS | [1.1.5 universal portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.5) | ZIP + SHA-256; not Developer ID signed or notarized |
 | iOS | Not published | iOS/iPadOS network destinations are profile references, not a native iOS application |
 
 ## Active signed network catalogue
@@ -31,7 +31,8 @@ The Motorola and Crosscall profile labels explicitly say **specific servers**. T
 
 TLS problems explicitly reported by the OS are classified in 1.1.5 as hostname mismatch, expired/not-yet-valid certificate, untrusted chain or generic handshake error. The app does not bypass certificate validation and will not infer a particular certificate cause when the OS returns only a generic handshake failure.
 
-## 1.1.5 release candidate status (24 November 2026)
+## Verified stable release 1.1.5 (24 November 2026)
 
-The signed **catalogue v7** is published and validated. The private `main` source has version `1.1.5+41` with the final manufacturer-profile behavior (Samsung retains merged Android checks). The public `windows-v1.1.5` and `macos-v1.1.5` ZIPs currently belong to an earlier source revision, `ed18cc34e44caa2ea7c5ecfa2199aaf5d8755b0f`, and **must not be described as the final corrective build**. The final source revision `a6fe9a5421be531a52267cd9a9624c2c34c2b26c` has not yet produced verified public release assets because newer GitHub-hosted workflow jobs failed before runner assignment. The last confirmed fully validated public stable remains 1.1.4 until final 1.1.5 assets are checked.
+All three GitHub Actions release workflows completed successfully for source commit `a6fe9a5421be531a52267cd9a9624c2c34c2b26c` and uploaded production release assets with SHA-256 files: [Android signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.5), [Windows x64 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5), and [macOS universal ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.5). The Android 1.1.5 APK was installed and confirmed working by the maintainer. An AAB is available in the [successful private Android build](https://github.com/ivanboi/MDM-SYSTEM-CHECK/actions/runs/45342707315) for manual Play Console upload. **Google Play 1.1.5 publication is not confirmed and is maintainer-managed.**
 
+The standalone ChromeOS and Fairphone entries are network-profile checks/reference data, **not** native ChromeOS/iOS applications or app-store publications. Windows remains unsigned (no MSIX / Microsoft Store), and macOS is not Developer ID signed or notarized.
