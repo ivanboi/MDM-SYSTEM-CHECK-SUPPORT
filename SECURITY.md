@@ -6,17 +6,17 @@ Security fixes target the [latest stable Android release](https://github.com/iva
 
 ## macOS desktop security
 
-The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). The public macOS 1.1.3 ZIP and checksum have been verified in GitHub Releases.
+The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). The public macOS 1.1.4 ZIP and checksum have been verified in GitHub Releases.
 
 ## Windows portable ZIP distribution security
 
-Windows 1.1.3 is **unsigned**. See [Windows signing and verification](docs/WINDOWS_SIGNING.md) for trusted signing options and current limitations.
+Windows 1.1.4 is **unsigned**. See [Windows signing and verification](docs/WINDOWS_SIGNING.md) for trusted signing options and current limitations.
 
-The official Windows x64 release uses a portable ZIP available from this public repository's [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.3). It is **not code signed** and has not passed Microsoft Store certification. Download only from this repository, validate the accompanying SHA-256 checksum and keep Windows SmartScreen, antivirus and enterprise protections enabled. SHA-256 is an integrity check, not proof of publisher identity. Windows may warn or block unsigned apps; enterprise-managed devices may prohibit running them entirely.
+The official Windows x64 release uses a portable ZIP available from this public repository's [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4). It is **not code signed** and has not passed Microsoft Store certification. Download only from this repository, validate the accompanying SHA-256 checksum and keep Windows SmartScreen, antivirus and enterprise protections enabled. SHA-256 is an integrity check, not proof of publisher identity. Windows may warn or block unsigned apps; enterprise-managed devices may prohibit running them entirely.
 
 ## Retired Windows MSIX packages
 
-Microsoft Store/MSIX distribution is **discontinued**, and no new MSIX files are generated or published. Older unsigned MSIX files from historical private releases are **unsupported archives**; they are not trusted installers and should not be sideloaded. Download the Windows portable ZIP only from verified [public GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.3). SHA-256 is an integrity check, not publisher authentication. Keep SmartScreen and enterprise protections enabled.
+Microsoft Store/MSIX distribution is **discontinued**, and no new MSIX files are generated or published. Older unsigned MSIX files from historical private releases are **unsupported archives**; they are not trusted installers and should not be sideloaded. Download the Windows portable ZIP only from verified [public GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4). SHA-256 is an integrity check, not publisher authentication. Keep SmartScreen and enterprise protections enabled.
 
 ## Network reference catalogue and offline local import
 
