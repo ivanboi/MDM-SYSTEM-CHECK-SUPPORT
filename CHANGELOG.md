@@ -1,5 +1,16 @@
 # Changelog
 
+## Android / Windows / macOS 1.1.5 — TLS diagnostics and manufacturer-specific profiles
+
+- Distinguish TLS errors that **explicitly report** certificate hostname mismatch, expiry/not-yet-valid, untrusted certificate chain and other handshake failures. The OS error is preserved verbatim except for control-character sanitization; no TLS verification bypass is introduced.
+- Restore the letters lost by an overly broad regex in the 1.1.4 TLS error reporting. Unknown handshake causes remain generic instead of asserting that a Microsoft server has a bad certificate.
+- Rename the Motorola and Crosscall platform labels to `Motorola (specific servers)` and `Crosscall (specific servers)`.
+- Add `ChromeOS (specific servers)` with official Google-documented enrollment, attestation and update checks; add `Fairphone (specific servers)` but do **not** perform unsupported Fairphone Gen. 6 OTA probes.
+- Manufacturer-only profiles do not repeat the shared Android profile automatically. Select Android explicitly if shared Google/Android Enterprise requirements are relevant.
+- Motorola OTA CDS `moto-cds.appspot.com:443` actually returned DNS PASS and TCP PASS in the 1.1.4 diagnostic export; this is connectivity only, not an OTA upgrade check.
+- Catalogue **v7 signed Ed25519**: 497 rows in 18 categories. Adds 15 ChromeOS checks, two Fairphone documentation-only references and reclassifies 30 non-applicable Google API FCM-port combinations.
+- The Android 1.1.5 signed APK can update a production-signed 1.1.4 APK; Google Play distribution of AAB remains a separate manual action.
+
 ## Android / Windows / macOS 1.1.4 — network diagnostic reliability
 
 - Deduplicate shared Android Enterprise checks across multiple selected device profiles; Android and Motorola no longer repeat identical network-path probes.
