@@ -1,12 +1,12 @@
 # Platform and signed catalogue status
 
-_Last reviewed: 23 November 2026._
+_Last reviewed: 24 November 2026._
 
 | Platform | Public stable | Distribution |
 | --- | --- | --- |
 | Android | [1.1.3 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.3) | APK + SHA-256; AAB generated privately, Google Play rollout **not confirmed** |
-| Windows | [1.1.3 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.3) | ZIP + SHA-256; unsigned executable, **no MSIX or Microsoft Store** |
-| macOS | [1.1.3 universal portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.3) | ZIP + SHA-256; not Developer ID signed or notarized |
+| Windows | [1.1.4 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4) | ZIP + SHA-256; unsigned executable, **no MSIX or Microsoft Store** |
+| macOS | [1.1.4 universal portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.4) | ZIP + SHA-256; not Developer ID signed or notarized |
 | iOS | Not published | iOS/iPadOS network destinations are profile references, not a native iOS application |
 
 ## Active signed network catalogue
@@ -20,3 +20,7 @@ For new Motorola, Crosscall, Samsung or other vendor flows, see [single-source C
 Tests originate on the actual device running SystemCheck; a reachable TCP port does not validate OS compliance, MDM enrollment, push delivery or firmware availability. No OTA API POST or identifying payload is sent to the community-sourced Motorola CDS host. Optional Android Google Play Integrity uses the OVH verifier when initiated. The app does not automatically upload diagnostic results. User-selected local CSV imports are not cryptographically authenticated.
 
 Maintain historical stable releases and checksums for rollback; do not revive deprecated MSIX or claim a Google Play rollout from GitHub publication.
+
+## Diagnostic reliability release 1.1.4
+
+macOS and Windows 1.1.4 GitHub binaries have been verified on the public support releases. Android 1.1.4 is being built and must be verified independently before replacing the Android 1.1.3 download reference above. The release deduplicates shared Android/OEM probes, skips misapplied Google REST API push-port probes, treats TCP timeouts and TLS handshake failures as inconclusive warnings, recognizes TLS-verified HTTP 4xx as network-reachable and includes the verified network catalogue version in exported reports. The signed canonical v6 catalogue and its Ed25519 signature remain unchanged.
