@@ -6,23 +6,23 @@ Security fixes target the [latest stable Android release](https://github.com/iva
 
 ## macOS desktop security
 
-The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). The public macOS 1.1.4 ZIP and checksum have been verified in GitHub Releases.
+The macOS ZIP is **not** Apple Developer ID signed or notarized. Gatekeeper, XProtect and managed-device policies should remain enabled. The build sandbox requests only network-client/server functions for diagnostics and read/write access to files explicitly selected through the native picker. There is no Apple Store publication. See [macOS installation and security guidance](docs/MACOS_DOWNLOAD.md). The public macOS 1.1.5 ZIP and checksum have been verified in GitHub Releases.
 
 ## Windows portable ZIP distribution security
 
-Windows 1.1.4 is **unsigned**. See [Windows signing and verification](docs/WINDOWS_SIGNING.md) for trusted signing options and current limitations.
+Windows 1.1.5 is **unsigned**. See [Windows signing and verification](docs/WINDOWS_SIGNING.md) for trusted signing options and current limitations.
 
-The official Windows x64 release uses a portable ZIP available from this public repository's [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4). It is **not code signed** and has not passed Microsoft Store certification. Download only from this repository, validate the accompanying SHA-256 checksum and keep Windows SmartScreen, antivirus and enterprise protections enabled. SHA-256 is an integrity check, not proof of publisher identity. Windows may warn or block unsigned apps; enterprise-managed devices may prohibit running them entirely.
+The official Windows x64 release uses a portable ZIP available from this public repository's [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5). It is **not code signed** and has not passed Microsoft Store certification. Download only from this repository, validate the accompanying SHA-256 checksum and keep Windows SmartScreen, antivirus and enterprise protections enabled. SHA-256 is an integrity check, not proof of publisher identity. Windows may warn or block unsigned apps; enterprise-managed devices may prohibit running them entirely.
 
 ## Retired Windows MSIX packages
 
-Microsoft Store/MSIX distribution is **discontinued**, and no new MSIX files are generated or published. Older unsigned MSIX files from historical private releases are **unsupported archives**; they are not trusted installers and should not be sideloaded. Download the Windows portable ZIP only from verified [public GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4). SHA-256 is an integrity check, not publisher authentication. Keep SmartScreen and enterprise protections enabled.
+Microsoft Store/MSIX distribution is **discontinued**, and no new MSIX files are generated or published. Older unsigned MSIX files from historical private releases are **unsupported archives**; they are not trusted installers and should not be sideloaded. Download the Windows portable ZIP only from verified [public GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5). SHA-256 is an integrity check, not publisher authentication. Keep SmartScreen and enterprise protections enabled.
 
 ## Network reference catalogue and offline local import
 
-The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. The Android application **does not automatically download or execute the public CSV**; Android 1.1.0 public APK includes an optional user-approved manual import.
+The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. Version 1.1.5 authenticates and can automatically synchronize the signed v7 CSV catalogue from public GitHub on launch (at most once every 24 hours) or explicit refresh, and retains the last verified copy on failure. Manual CSV import remains user-approved and unsigned.
 
-[Merged source PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) implements user-selected CSV files in the verified Android 1.1.0 (build 35) public APK and explicit confirmation before locally overriding selected device/MDM categories. A locally imported file is **not signed/authenticated**: importing untrusted destinations could trigger probes to an attacker-controlled host. Do not import CSVs from unknown sources. The unreleased automatic GitHub synchronizer must authenticate a signed manifest, validate schema and endpoints, and retain offline rollback before enabling network updates.
+[Merged source PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) implements user-selected CSV files originally in the Android 1.1.0 (build 35) APK and explicit confirmation before locally overriding selected device/MDM categories. A locally imported file is **not signed/authenticated**: importing untrusted destinations could trigger probes to an attacker-controlled host. Do not import CSVs from unknown sources. The released synchronizer verifies the manifest's Ed25519 signature, CSV SHA-256 and schema, and retains offline rollback. Clients 1.1.3–1.1.4 cannot parse the new v7 categories; version 1.1.5 is required.
 
 OVH is reserved for the optional Android Play Integrity verifier. Diagnostic history and manually chosen network catalogues remain on the device; users should review destination and metadata disclosures before sharing exports.
 
@@ -44,7 +44,7 @@ Results, preferences, and configured MDM endpoints are stored **locally, without
 
 - Android application storage sandboxing; application backups are disabled. Cleartext HTTP is denied by default, except for narrowly scoped connectivity-check domains used to diagnose captive portals (`connectivitycheck.gstatic.com`, `connectivitycheck.android.com`, `captive.apple.com`, and `www.msftconnecttest.com`).
 - Production APKs and AABs use a persistent Android signing key stored securely outside Git; APK signatures are verified in CI. Signing keys and credentials must never be shared through public support channels.
-- TLS certificate validation for HTTPS and differentiation between HTTP error responses and connectivity.
+- TLS certificate and hostname validation for HTTPS; 1.1.5 distinguishes platform-reported hostname mismatch, expired/not-yet-valid certificates, untrusted chains and generic handshake errors without disabling verification.
 - Neutralization of CSV values that could be interpreted as spreadsheet formulas.
 - Validation of the expected source IP address and port for UDP responses; sending a UDP datagram alone does not prove IPsec connectivity.
 - Custom tests are restricted by policy to hosts and networks the administrator is authorized to test.
