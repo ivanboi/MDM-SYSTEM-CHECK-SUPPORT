@@ -6,9 +6,9 @@ Network connectivity and EMM/MDM troubleshooting for Android, Windows and macOS.
 
 | Platform | Download | Important |
 | --- | --- | --- |
-| Android | [1.1.5 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.5) | SHA-256 provided; Google Play publication is managed separately. |
-| Windows | [1.1.5 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
-| macOS | [1.1.5 universal ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.5) | Not Apple Developer ID signed or notarized. |
+| Android | [1.1.6 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6) | SHA-256 provided; Google Play publication is managed separately. |
+| Windows | [1.1.6 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
+| macOS | [1.1.6 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6) | Not Apple Developer ID signed or notarized. |
 | Development | [All releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) | Prereleases may be unstable. |
 
 Only a published release with its downloadable assets is an installable version. GitHub source commits and successful CI tests alone do not confirm an app-store rollout. Check the [platform status](docs/PLATFORM_AND_CATALOG_STATUS.md).
@@ -72,3 +72,9 @@ Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically sig
 ## Linux x86-64 preview (1.1.6+42)
 
 An isolated Linux build has been requested on the private `linux-build` branch. It does not change the Android, Windows or macOS release channels. Planned assets: AppImage, Debian package and portable tar.gz bundle with SHA-256 checksums. Packages are unsigned; GPG signing is not yet configured. Availability is pending successful CI publication and manual Linux validation. Check [public releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=linux-v) before downloading. Ubuntu 22.04+ and compatible Debian/Linux Mint x86-64 environments are initial test targets, not certified compatibility. Verify checksums using `sha256sum -c SHA256SUMS-linux.txt`; run AppImage after `chmod +x`, or install the DEB with `sudo apt install ./MDM-SystemCheck-Linux-x64.deb`. Google Play Integrity and embedded VirusTotal are Android-only. Linux CSV export, catalogue v9 retrieval and desktop functionality remain to be tested. No Linux-specific device catalogue changes are included.
+
+## Platform release workflow split
+
+The private main branch now contains a manual Release Manager (`.github/workflows/release-manager.yml`) with independent Android, Windows, macOS and Linux selections, all disabled by default. Android AAB selection builds both the APK and a private AAB; it is not AAB-only. Android, Windows and macOS no longer build on ordinary pushes. PR CI runs analysis and tests only. The signed catalogue workflow remains independent. Linux currently also triggers when its own workflow changes, to bootstrap the first x64 preview; its publication is fixed to 1.1.6+42 preview until general channel/version support is implemented. The release manager's development/stable selection currently applies to Android, Windows and macOS only. Do not treat Linux preview as stable or assume a successful build until release assets exist.
+
+Verified public 1.1.6 downloads: [Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6), [Windows ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6), [macOS ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6). Signed Android AAB is available in the private CI artifact; Play Store rollout is separate. Linux preview publication remains pending. Existing stable releases and catalogue v9 are unchanged.
