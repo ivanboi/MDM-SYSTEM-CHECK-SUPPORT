@@ -1,5 +1,15 @@
 # Changelog
 
+## Network catalogue v9 — 24 November 2026 (data-only)
+
+Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval and post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v8 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; public 1.1.6 binaries and Google Play rollout are not yet confirmed.
+
+## Application 1.1.6+42 — source update (build publication pending verification)
+
+- Bypass stale HTTP cache entries, retry the manifest/CSV pair once on checksum mismatch and expose specific error reasons.
+- Preserve Ed25519 signature, SHA-256, schema and rollback checks and the last verified catalogue.
+- Android APK, Windows portable ZIP and macOS universal ZIP release builds have been requested; Google Play AAB submission remains separate.
+
 ## Network catalogue v8 — 24 November 2026 (data-only)
 
 Catalogue v8 (24 November 2026): 507 records in 18 categories, published automatically with the existing Ed25519 key. Android confirmed verified GitHub catalogue v8 with zero manual entries. Windows/macOS runtime refresh and new OEM reachability tests remain pending. Four maintainer-provided Crosscall FOTA records (two active, two historical) and six Motorola additions (five active, one staging reference) are included. Carrier applicability varies. These are connectivity checks, not OTA transactions or independently verified vendor allowlists.

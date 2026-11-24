@@ -11,7 +11,7 @@ _Last reviewed: 24 November 2026._
 
 ## Active signed network catalogue
 
-**Version 8, 507 flows across 18 categories** is active on [network-flows.csv](../data/network/network-flows.csv) with its [Ed25519 manifest](../data/network/network-flows.manifest.json). Production app v1.1.3 adds dual verification: old public key for catalogues v1–v5, rotated public key for v6+. App v1.1.5+41 adds parser support for two new categories (ChromeOS and Fairphone) introduced in v7. Previous v5 CSV and manifest are retained in Git history, not as alternate production filenames. App builds 1.1.2 and older will reject v6+. Apps 1.1.3 and 1.1.4 may verify v7/v8 signatures but cannot parse the categories introduced in v7 and will safely retain their last verified v6 cache or bundled defaults until upgrading to 1.1.5.
+**Version 9, 522 flows across 18 categories** is active on [network-flows.csv](../data/network/network-flows.csv) with its [Ed25519 manifest](../data/network/network-flows.manifest.json). Production app v1.1.3 adds dual verification: old public key for catalogues v1–v5, rotated public key for v6+. App v1.1.5+41 adds parser support for two new categories (ChromeOS and Fairphone) introduced in v7. Previous v5 CSV and manifest are retained in Git history, not as alternate production filenames. App builds 1.1.2 and older will reject v6+. Apps 1.1.3 and 1.1.4 may verify v7–v9 signatures but cannot parse the categories introduced in v7 and will safely retain their last verified v6 cache or bundled defaults until upgrading to 1.1.5.
 
 For new Motorola, Crosscall, Samsung or other vendor flows, see [single-source CSV maintenance](../data/network/README.md). Shared Android Enterprise services belong to `device:android`, manufacturer destinations to `device:samsung`, `device:motorola` or `device:crosscall`; **Samsung Knox Manage** is an independent `mdm:knox-manage` platform. Server-side, portal, wildcard, regionally irrelevant and documentation-only records are not active client checks.
 
@@ -37,6 +37,11 @@ All three GitHub Actions release workflows completed successfully for source com
 
 The standalone ChromeOS and Fairphone entries are network-profile checks/reference data, **not** native ChromeOS/iOS applications or app-store publications. Windows remains unsigned (no MSIX / Microsoft Store), and macOS is not Developer ID signed or notarized.
 
-## Catalogue v8 operational status
+## Catalogue v9 operational status
 
-Catalogue v8 (24 November 2026): 507 records in 18 categories, published automatically with the existing Ed25519 key. Android confirmed verified GitHub catalogue v8 with zero manual entries. Windows/macOS runtime refresh and new OEM reachability tests remain pending. Four maintainer-provided Crosscall FOTA records (two active, two historical) and six Motorola additions (five active, one staging reference) are included. Carrier applicability varies. These are connectivity checks, not OTA transactions or independently verified vendor allowlists.
+Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval and post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v9 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; public 1.1.6 binaries and Google Play rollout are not yet confirmed.
+
+
+## Current catalogue and release status
+
+Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval and post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v8 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; public 1.1.6 binaries and Google Play rollout are not yet confirmed.

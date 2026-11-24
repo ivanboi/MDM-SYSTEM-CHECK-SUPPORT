@@ -24,3 +24,8 @@ Earlier private GitHub Windows releases have experimental unsigned MSIX files. T
 The Microsoft Store registration historically used product ID `9N9Z3PCL3MG1`, package identity `ivanbillyjean.MDMSystemCheck` and publisher `CN=E87ADF9C-1FB7-4617-B741-0F0E1BE2C80A`. These values are preserved here solely for historical traceability and should not be used as current installation instructions.
 
 Other platform distribution remains unchanged: Android signed APK / manually uploaded Google Play AAB, and an unnotarized universal macOS ZIP on GitHub.
+
+
+## Current catalogue and release status
+
+Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval and post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v8 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; public 1.1.6 binaries and Google Play rollout are not yet confirmed.

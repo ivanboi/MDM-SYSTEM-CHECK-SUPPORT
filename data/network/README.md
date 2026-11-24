@@ -1,6 +1,6 @@
 # Network flow catalogue — single source of truth
 
-**Production (Ed25519 signed v8):** [network-flows.csv](network-flows.csv) and [network-flows.manifest.json](network-flows.manifest.json), with **507 rows in 18 categories**, published atomically and verified by the Android client. Android app 1.1.5+41 is required to recognize the new ChromeOS and Fairphone categories.
+**Production (Ed25519 signed v9):** [network-flows.csv](network-flows.csv) and [network-flows.manifest.json](network-flows.manifest.json), with **522 rows in 18 categories**, published atomically and retrieval confirmed on Android and Windows. Android app 1.1.5+41 is required to recognize the new ChromeOS and Fairphone categories.
 
 The previous signed v5 files (434 rows) and transitional Samsung/unified/v6 snapshot CSVs are preserved in Git history, **not** as parallel editable files. From this point forward, maintain only the canonical CSV + manifest pair.
 
@@ -46,12 +46,12 @@ An active test requires **both** `execution_point=DEVICE` and `testability=testa
 - Motorola OTA connectivity to `moto-cds.appspot.com:443` was actually exercised in the 1.1.4 network diagnostic export: DNS and TCP passed. This does not authenticate or execute the OTA update check.
 - Motorola and Crosscall profiles are explicitly **specific servers**; select the `Android` device profile separately for shared Android Enterprise/Google dependencies. Samsung intentionally includes its shared Android Enterprise checks plus Knox manufacturer services.
 - Thirty `device:android` rows for generic Google REST API endpoints on FCM-style ports 5228–5230 are now `documentation only`. Their active use produced false-positive timeouts; appropriate FCM device messaging remains under `mtalk.google.com`.
-- The v7 manifest was signed offline using the existing rotated Ed25519 private key; the CSV and manifest were committed in one atomic Git tree update. At that time no private key or passphrase was stored in GitHub; v8 introduced private-repository Actions secrets.
+- The v7 manifest was signed offline using the existing rotated Ed25519 private key; the CSV and manifest were committed in one atomic Git tree update. At that time no private key or passphrase was stored in GitHub; v9 introduced private-repository Actions secrets.
 - Keep all future platform endpoints supported by authoritative sources. Unknown/legacy manufacturer URLs should be documentation-only or omitted rather than tested as mandatory.
 
 ## Diagnostic engine handling since app 1.1.4
 
-The signed v8 CSV is an auditable **reference catalogue**, not a promise that every documented port will accept a generic TCP probe. App 1.1.4 does not execute the misleading `TCP/5228–5230` combinations on `android.apis.google.com` or `*.googleapis.com` REST API hosts. FCM device push transport checks against `mtalk.google.com` remain active. It also deduplicates Android common services when profiles overlap. As of 1.1.5, Motorola and Crosscall do not automatically inherit Android, while Samsung retains common Android checks.
+The signed v9 CSV is an auditable **reference catalogue**, not a promise that every documented port will accept a generic TCP probe. App 1.1.4 does not execute the misleading `TCP/5228–5230` combinations on `android.apis.google.com` or `*.googleapis.com` REST API hosts. FCM device push transport checks against `mtalk.google.com` remain active. It also deduplicates Android common services when profiles overlap. As of 1.1.5, Motorola and Crosscall do not automatically inherit Android, while Samsung retains common Android checks.
 
 A TCP timeout is an **inconclusive WARN**, not proof of a carrier/firewall block; TLS handshake failures are warnings with the actual exception detail; HTTP 4xx after valid TLS confirms network reachability but **not** an application-level success. CSV diagnostic exports include the active catalogue source and verified remote catalogue version.
 
@@ -67,6 +67,11 @@ Do not edit the live signed CSV independently of its manifest.
 
 Existing v1–v5 signatures use the legacy public key; v6 and newer use the rotated one. Current application release **1.1.5** trusts both and recognizes all 18 catalogue categories. Apps 1.1.3–1.1.4 lack v7's new categories and preserve a last-good catalogue. Apps 1.1.2 and earlier cannot use v6+: upgrade them, rather than weakening verification. Local manual CSV imports remain user-approved and **unsigned**; importing a category replaces rather than merges its records.
 
-## Signed catalogue v8
+## Signed catalogue v8 (historical)
 
 Catalogue v8 (24 November 2026): 507 records in 18 categories, published automatically with the existing Ed25519 key. Android confirmed verified GitHub catalogue v8 with zero manual entries. Windows/macOS runtime refresh and new OEM reachability tests remain pending. Four maintainer-provided Crosscall FOTA records (two active, two historical) and six Motorola additions (five active, one staging reference) are included. Carrier applicability varies. These are connectivity checks, not OTA transactions or independently verified vendor allowlists.
+
+
+## Current catalogue and release status
+
+Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval and post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v8 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; public 1.1.6 binaries and Google Play rollout are not yet confirmed.

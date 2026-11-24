@@ -44,3 +44,8 @@ The computed hex digest must match the release checksum.
 - The initial CI build was verified with `lipo -archs` and contains **x86_64 and arm64**, i.e. a universal application for Intel and Apple Silicon Macs.
 
 [Public support](../README.md) · [Security](../SECURITY.md) · [Privacy](../PRIVACY.md)
+
+
+## Current catalogue and release status
+
+Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval and post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v8 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; public 1.1.6 binaries and Google Play rollout are not yet confirmed.
