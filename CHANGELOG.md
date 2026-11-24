@@ -1,5 +1,10 @@
 # Changelog
 
+## Network catalogue v8 — 24 November 2026 (data-only)
+
+Catalogue v8 (24 November 2026): 507 records in 18 categories, published automatically with the existing Ed25519 key. Android confirmed verified GitHub catalogue v8 with zero manual entries. Windows/macOS runtime refresh and new OEM reachability tests remain pending. Four maintainer-provided Crosscall FOTA records (two active, two historical) and six Motorola additions (five active, one staging reference) are included. Carrier applicability varies. These are connectivity checks, not OTA transactions or independently verified vendor allowlists.
+
+
 ## Android / Windows / macOS 1.1.5 — TLS diagnostics and manufacturer-specific profiles
 
 - Distinguish TLS errors that **explicitly report** certificate hostname mismatch, expiry/not-yet-valid, untrusted certificate chain and other handshake failures. The OS error is preserved verbatim except for control-character sanitization; no TLS verification bypass is introduced.
