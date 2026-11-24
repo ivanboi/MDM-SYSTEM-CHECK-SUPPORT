@@ -1,6 +1,6 @@
 # Network flow catalogue — single source of truth
 
-**Production (Ed25519 signed v6):** [network-flows.csv](network-flows.csv) and [network-flows.manifest.json](network-flows.manifest.json), with **480 rows in 16 categories**, published together after Android, Windows and macOS 1.1.3 releases passed their build and test workflows.
+**Production (Ed25519 signed v7):** [network-flows.csv](network-flows.csv) and [network-flows.manifest.json](network-flows.manifest.json), with **497 rows in 18 categories**, published atomically and validated by the public GitHub Actions signature and schema workflow. Android app 1.1.5+41 is required to recognize the new ChromeOS and Fairphone categories.
 
 The previous signed v5 files (434 rows) and transitional Samsung/unified/v6 snapshot CSVs are preserved in Git history, **not** as parallel editable files. From this point forward, maintain only the canonical CSV + manifest pair.
 
@@ -23,6 +23,8 @@ Each ID must be unique and match `[a-z0-9-]+`. `host` must be a concrete hostnam
 | `mdm:knox-manage` | **Independent Samsung Knox Manage MDM**, with client and separate server/provider flows |
 | `device:motorola` | Motorola OEM-specific services (currently community-sourced CDS OTA DNS/TCP) |
 | `device:crosscall` | Crosscall OEM-specific services; verified OTA service hostnames are not yet available |
+| `device:chromeos` | Google-documented ChromeOS enterprise enrollment, device attestation, update metadata and download hosts (15 testable targets) |
+| `device:fairphone` | Fairphone Gen. 6-specific OTA host not verified; two documentation-only records, including a legacy FP2 warning; do not probe as Gen. 6 OTA |
 | Other `device:*` | Apple, macOS, Windows, Android AOSP Teams Rooms, optional VoWiFi/ePDG |
 | Other `mdm:*` | Intune, Omnissa Workspace ONE, Ivanti, Meraki, Citrix and BlackBerry |
 
@@ -38,13 +40,22 @@ An active test requires **both** `execution_point=DEVICE` and `testability=testa
 - TCP/DNS connectivity does not prove enrollment, actual push delivery, software-update availability or a successful HTTP API transaction.
 - Motorola `moto-cds.appspot.com:443` is documented by [a community GitHub project](https://github.com/FixeQD/motorola-update), **not by Motorola as a comprehensive firewall rule**. This app checks only network reachability: no OTA POST, IMEI, serial number or build GUID sent. Crosscall OEM OTA destinations remain unconfirmed.
 
+## New in signed catalogue v7
+
+- **497 rows in 18 categories**: 15 new testable Google-documented `device:chromeos` hosts; 2 documentation-only `device:fairphone` references. No unverified proprietary Fairphone Gen. 6 or Crosscall OTA host is treated as an active destination.
+- Motorola OTA connectivity to `moto-cds.appspot.com:443` was actually exercised in the 1.1.4 network diagnostic export: DNS and TCP passed. This does not authenticate or execute the OTA update check.
+- Manufacturer profiles are explicitly **specific servers**; select the `Android` device profile separately to test shared Android Enterprise/Google dependencies.
+- Thirty `device:android` rows for generic Google REST API endpoints on FCM-style ports 5228–5230 are now `documentation only`. Their active use produced false-positive timeouts; appropriate FCM device messaging remains under `mtalk.google.com`.
+- The v7 manifest was signed offline using the existing rotated Ed25519 private key; the CSV and manifest were committed in one atomic Git tree update. No private key or passphrase is stored in GitHub.
+- Keep all future platform endpoints supported by authoritative sources. Unknown/legacy manufacturer URLs should be documentation-only or omitted rather than tested as mandatory.
+
 ## Diagnostic engine handling since app 1.1.4
 
 The signed v6 CSV is an auditable **reference catalogue**, not a promise that every documented port will accept a generic TCP probe. App 1.1.4 does not execute the misleading `TCP/5228–5230` combinations on `android.apis.google.com` or `*.googleapis.com` REST API hosts. FCM device push transport checks against `mtalk.google.com` remain active. It also deduplicates Android common services when users select Android alongside Samsung, Motorola or Crosscall.
 
 A TCP timeout is an **inconclusive WARN**, not proof of a carrier/firewall block; TLS handshake failures are warnings with the actual exception detail; HTTP 4xx after valid TLS confirms network reachability but **not** an application-level success. CSV diagnostic exports include the active catalogue source and verified remote catalogue version.
 
-When preparing the next signed catalogue v7, review currently documented API/FCM-port pairings against authoritative endpoint/port requirements, and classify inapplicable combinations as documentation-only or remove them. **Do not modify the already signed canonical v6 file without an incremented, correctly signed manifest.**
+When preparing the next signed catalogue v8, review currently documented API/FCM-port pairings against authoritative endpoint/port requirements, and classify inapplicable combinations as documentation-only or remove them. **Do not modify the already signed canonical v6 file without an incremented, correctly signed manifest.**
 
 ## Procedure for every future flow update
 
