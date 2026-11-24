@@ -17,13 +17,21 @@ Only a published release with its downloadable assets is an installable version.
 
 - **Android**: common Google/Android Enterprise network dependencies, maintained under `device:android`.
 - **Samsung**: common Android dependencies plus Samsung Knox manufacturer services (`device:samsung`).
-- **Motorola**: common Android dependencies plus a limited, community-documented Motorola OTA CDS DNS/TCP connectivity test (`device:motorola`).
-- **Crosscall**: common Android dependencies. Crosscall-specific OTA hosts are **not yet confirmed** (`device:crosscall`).
+- **Motorola (specific servers)**: community-documented Motorola OTA CDS DNS/TCP 443 test (`device:motorola`); select Android separately for common Google requirements.
+- **Crosscall (specific servers)**: no verified proprietary Crosscall OTA endpoint; diagnostic metadata only (`device:crosscall`). Select Android separately for shared services.
+- **ChromeOS (specific servers)**: Google-documented enterprise management, attestation, Omaha update and download hosts (`device:chromeos`), tested as remote network paths from the active device.
+- **Fairphone (specific servers)**: current Gen. 6 OTA hostnames are not verified, so no unsubstantiated OEM-only test is executed (`device:fairphone`, documentation-only).
 - **Other profiles**: Apple iOS/iPadOS, macOS, Android AOSP Teams Rooms and Windows.
 
 **Samsung Knox Manage** is an independent MDM product (`mdm:knox-manage`), **not** part of the standard Samsung device services. Other supported MDM profiles: Microsoft Intune, Omnissa Workspace ONE, Ivanti, Cisco Meraki Systems Manager, Citrix Endpoint Management and BlackBerry UEM.
 
 The Motorola OTA endpoint `moto-cds.appspot.com` (TCP 443) is documented by a third-party community project, **not** an official Motorola firewall policy. Only the network path is checked: no firmware update check POST or identifying payload is sent. Optional OEM or region-specific services should not be treated as mandatory connectivity requirements.
+
+## Version 1.1.5 and catalogue v7
+
+Version `1.1.5+41` interprets platform-reported certificate errors as hostname mismatch, expired/not-yet-valid certificate, untrusted chain or generic TLS handshake warning; unknown causes are not guessed, and certificate validation remains enabled. Error messages are no longer damaged by the old sanitizer.
+
+The **Ed25519-signed v7** catalogue has **497 records across 18 categories**. It includes 15 Google-documented ChromeOS targets and two Fairphone documentation-only records, and reclassifies 30 invalid Google API push-port checks as documentation-only. Version 1.1.5 is required to parse the new categories; older apps safely retain their last verified catalogue. Motorola's `moto-cds.appspot.com:443` DNS/TCP check was verified as executed in the 1.1.4 export; no Motorola OTA POST or device identifier is sent.
 
 ## Diagnostic reliability improvements in version 1.1.4
 
