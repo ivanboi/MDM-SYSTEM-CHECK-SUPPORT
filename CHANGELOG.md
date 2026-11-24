@@ -1,5 +1,15 @@
 # Changelog
 
+## Android / Windows / macOS 1.1.4 — network diagnostic reliability
+
+- Deduplicate shared Android Enterprise checks across multiple selected device profiles; Android and Motorola no longer repeat identical network-path probes.
+- Stop treating Google API hosts on TCP/5228–5230 as standalone FCM-device socket destinations. Preserve valid `mtalk.google.com` push transport checks.
+- Report non-conclusive TCP connection timeouts as **WARN**; they are not sufficient evidence of blocked firewall ports.
+- Treat HTTP 4xx after a verified TLS session as proof of endpoint connectivity (**PASS**, but not proof of service/application availability); HTTP 5xx stays **WARN**.
+- Display TLS handshake errors with their underlying diagnostic detail and without asserting that SSL interception has occurred.
+- Add the verified network catalogue version and the active catalogue source to exported diagnostics.
+- Keep the Ed25519-signed 480-row v6 catalogue and Android release keystore unchanged; no new key or CSV re-signing required.
+
 ## Android / Windows / macOS 1.1.3 — OEM profiles and signed catalogue migration
 
 - Extend manufacturer diagnostics to Samsung, Motorola and Crosscall while preserving shared Android Enterprise paths.
