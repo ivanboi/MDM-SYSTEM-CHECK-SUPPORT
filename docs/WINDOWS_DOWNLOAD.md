@@ -4,7 +4,7 @@ MDM SystemCheck is distributed for Windows as a portable **x64 ZIP**. It is the 
 
 ## Download
 
-- [Stable Windows releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.3), version 1.1.3.
+- [Stable Windows releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4), version 1.1.4.
 - [Development Windows release](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/latest-windows-dev), for testing only.
 - Choose **`MDM-SystemCheck-Windows-x64.zip`** and **`SHA256SUMS-windows.txt`** under Assets. Android APK downloads remain on the separate Android release pages.
 
@@ -41,7 +41,7 @@ The hashes should match (case-insensitive). If SmartScreen or antivirus blocks t
 
 ## Updating
 
-Check [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v) for a newer stable version. Download and extract the new ZIP into a new folder; close the previous application before replacing files. In-app automatic updates are not implemented yet. The [Windows v1.1.1 public ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.3) remains unsigned; a release SHA-256 is an integrity check, not an Authenticode signature.
+Check [Windows GitHub Releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v) for a newer stable version. Download and extract the new ZIP into a new folder; close the previous application before replacing files. In-app automatic updates are not implemented yet. The [Windows v1.1.1 public ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.4) remains unsigned; a release SHA-256 is an integrity check, not an Authenticode signature.
 
 ## Known limits
 
