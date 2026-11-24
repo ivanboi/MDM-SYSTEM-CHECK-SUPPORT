@@ -1,0 +1,32 @@
+name: Refresh public release manifest
+on:
+  workflow_dispatch:
+  release:
+    types: [published, edited]
+  schedule:
+    - cron: '23 5 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: public-release-manifest
+  cancel-in-progress: false
+jobs:
+  refresh:
+    if: github.repository == 'ivanboi/MDM-SYSTEM-CHECK-SUPPORT'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Refresh verified release metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/refresh_releases.py
+      - name: Commit only manifest changes
+        run: |
+          git diff --quiet -- releases.json && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add releases.json
+          git commit -m 'Refresh verified public release manifest'
+          git push origin HEAD:main
