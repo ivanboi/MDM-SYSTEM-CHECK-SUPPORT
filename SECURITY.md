@@ -20,7 +20,7 @@ Microsoft Store/MSIX distribution is **discontinued**, and no new MSIX files are
 
 ## Network reference catalogue and offline local import
 
-The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. Version 1.1.5 authenticates and can automatically synchronize the signed v7 CSV catalogue from public GitHub on launch (at most once every 24 hours) or explicit refresh, and retains the last verified copy on failure. Manual CSV import remains user-approved and unsigned.
+The [public CSV catalogue](data/network/network-flows.csv) contains vendor-referenced network destinations, **not** a fully verified firewall allowlist. GitHub Actions validates its CSV schema, not the trustworthiness of every destination. Version 1.1.5 authenticates and can automatically synchronize the signed v8 CSV catalogue from public GitHub on launch (at most once every 24 hours) or explicit refresh, and retains the last verified copy on failure. Manual CSV import remains user-approved and unsigned.
 
 [Merged source PR #25](https://github.com/ivanboi/MDM-SYSTEM-CHECK/pull/25) implements user-selected CSV files originally in the Android 1.1.0 (build 35) APK and explicit confirmation before locally overriding selected device/MDM categories. A locally imported file is **not signed/authenticated**: importing untrusted destinations could trigger probes to an attacker-controlled host. Do not import CSVs from unknown sources. The released synchronizer verifies the manifest's Ed25519 signature, CSV SHA-256 and schema, and retains offline rollback. Clients 1.1.3–1.1.4 cannot parse the new v7 categories; version 1.1.5 is required.
 
@@ -64,3 +64,7 @@ For non-sensitive functional issues, use the [public issue forms](https://github
 ## VirusTotal WebView
 
 File scanning is user initiated. The embedded page uses HTTPS on `www.virustotal.com`, with external HTTPS navigation delegated to the browser. Direct file URL access is disabled. The Android picker returns only an authorized document reference. SystemCheck does not persist the selected document in diagnostic history. VirusTotal handles submissions under its terms and privacy notice. Browser sign-in continues outside the WebView when required.
+
+## Catalogue v8 operational status
+
+Catalogue v8 (24 November 2026): 507 records in 18 categories, published automatically with the existing Ed25519 key. Android confirmed verified GitHub catalogue v8 with zero manual entries. Windows/macOS runtime refresh and new OEM reachability tests remain pending. Four maintainer-provided Crosscall FOTA records (two active, two historical) and six Motorola additions (five active, one staging reference) are included. Carrier applicability varies. These are connectivity checks, not OTA transactions or independently verified vendor allowlists.
