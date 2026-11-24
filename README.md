@@ -6,9 +6,9 @@ Network connectivity and EMM/MDM troubleshooting for Android, Windows and macOS.
 
 | Platform | Download | Important |
 | --- | --- | --- |
-| Android | [Latest signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/latest) | SHA-256 provided; Google Play publication is managed separately. |
-| Windows | [Windows stable portable ZIP releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=windows-v) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
-| macOS | [macOS stable ZIP releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=macos-v) | Not Apple Developer ID signed or notarized. |
+| Android | [1.1.5 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.5) | SHA-256 provided; Google Play publication is managed separately. |
+| Windows | [1.1.5 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
+| macOS | [1.1.5 universal ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.5) | Not Apple Developer ID signed or notarized. |
 | Development | [All releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) | Prereleases may be unstable. |
 
 Only a published release with its downloadable assets is an installable version. GitHub source commits and successful CI tests alone do not confirm an app-store rollout. Check the [platform status](docs/PLATFORM_AND_CATALOG_STATUS.md).
@@ -37,13 +37,13 @@ The **Ed25519-signed v7** catalogue has **497 records across 18 categories**. It
 
 Version 1.1.4 removes duplicated Android network probes when multiple OEM profiles are selected. It excludes non-applicable TCP 5228–5230 probes against Google REST API hosts while preserving device FCM transport checks for `mtalk.google.com`. A connection timeout is reported as an inconclusive **WARN**, not definitive evidence of a firewall block. A verified TLS connection followed by HTTP 400 or other 4xx responses confirms reachability (**PASS**) but **not** a successful management API request. TLS handshake warnings include the underlying exception instead of presuming SSL inspection.
 
-Diagnostic CSV exports identify the signed remote catalogue version and whether the app used bundled, verified GitHub or manually imported data. The signed Ed25519 v6 network catalogue is unchanged; version 1.1.4 is a diagnostic-engine update, not a data release.
+Diagnostic CSV exports identify the signed remote catalogue version and whether the app used bundled, verified GitHub or manually imported data. The signed Ed25519 v6 network catalogue was unchanged during release 1.1.4; 1.1.5 now uses the separate signed v7 data release.
 
 ## Signed network flow catalogue
 
 **Single active canonical source:** [network-flows.csv](data/network/network-flows.csv), authenticated by [network-flows.manifest.json](data/network/network-flows.manifest.json). The application validates an Ed25519 signature, SHA-256 and the strict 11-column CSV schema before accepting an automatic update. The signed catalogue version is independent of the application version.
 
-The **480-record v6 catalogue is now active** at the canonical CSV and manifest paths. Ed25519 verification uses a rotated public key because the original private signing key was lost. **Application v1.1.3 and newer** trust the legacy key for v1–v5 and the rotated key for v6+. Earlier 1.1.2 clients cannot verify v6, so they retain their last verified v5 cache or bundled defaults until upgraded.
+The **497-record v7 catalogue is now active**, with 18 categories, at the canonical CSV and manifest paths. Ed25519 verification uses a rotated public key because the original private signing key was lost. **Application v1.1.5** trusts the legacy key for v1–v5 and the rotated key for v6+, and understands v7's ChromeOS/Fairphone categories. Builds 1.1.3 and 1.1.4 lack these categories and safely retain the last valid catalogue or bundled defaults; older 1.1.2 clients cannot verify v6+.
 
 To add flows in the future, see [Network catalogue maintenance](data/network/README.md). Only `execution_point=DEVICE` **and** `testability=testable` rows are eligible for live checks. MDM server/administration, wildcard, tenant-specific and documentation-only entries cannot be used as terminal success indicators. Manual CSV import requires explicit approval and is not cryptographically authenticated.
 
