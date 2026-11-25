@@ -6,6 +6,8 @@ Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK an
 
 ## Unreleased — next platform release
 
+- Correct Motorola and Crosscall profile descriptions across Android, Windows, macOS and Linux to reflect manufacturer-provided OTA/FOTA endpoints in signed catalogue v9; Motorola DNS/TCP 443 and 8443, Crosscall active DNS/TCP reachability only. Select Android separately for shared services. Fairphone remains unchanged. These are not OTA transactions or a complete vendor firewall policy. Updated source is not yet a verified published binary.
+
 - Android release CI requires local MobSF 4.6.9 static analysis of signed APK/AAB before distribution; successful APK/AAB scans completed; detailed findings review and automated comparison remain pending.
 - Desktop platforms retain their platform-specific security and integrity checks. No iOS IPA is distributed.
 
