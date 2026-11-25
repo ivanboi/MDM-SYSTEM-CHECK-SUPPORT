@@ -1,6 +1,11 @@
 name: Refresh public release manifest
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/refresh_releases.py
+      - .github/workflows/refresh-releases.yml
   release:
     types: [published, edited]
   schedule:
