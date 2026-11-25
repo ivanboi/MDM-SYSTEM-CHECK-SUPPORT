@@ -4,12 +4,13 @@
 
 Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK and AAB builds completed with local MobSF analysis; the maintainer reviewed the APK report and reports that it matches 1.1.7. Google Play production availability of Android 1.1.8+44 is confirmed by the maintainer on 25 November 2026. Historical public APK and desktop downloads remain 1.1.6. Android 12 is the minimum; Android 17 and Linux runtime acceptance remain pending. Four narrowly scoped captive-portal HTTP exceptions remain intentional. Automated report comparison and severity-based release gates are planned, not yet implemented; Windows/macOS security audits are pending. No active OVH API testing.
 
-## Unreleased — next platform release
+## Android 1.1.9+45 — validated release candidate
 
-- Correct Motorola and Crosscall profile descriptions across Android, Windows, macOS and Linux to reflect manufacturer-provided OTA/FOTA endpoints in signed catalogue v9; Motorola DNS/TCP 443 and 8443, Crosscall active DNS/TCP reachability only. Select Android separately for shared services. Fairphone remains unchanged. These are not OTA transactions or a complete vendor firewall policy. Updated source is not yet a verified published binary.
+Android **1.1.9+45** (25 November 2026): signed APK and AAB builds, Flutter analysis and tests, signature verification, Android backup-policy check (APK), local MobSF scans and OWASP CI succeeded. The maintainer confirmed APK functional testing. Motorola and Crosscall manufacturer-provided OTA/FOTA profile descriptions are corrected; catalogue v9 remains unchanged (522 records, 18 categories). Detailed MobSF findings comparison against 1.1.8 remains pending; scan completion does not imply zero vulnerabilities. Google Play production remains 1.1.8+44 (maintainer-confirmed); 1.1.9 rollout is not confirmed. Public GitHub APK and desktop releases remain 1.1.6; desktop 1.1.9 builds have not been launched.
 
-- Android release CI requires local MobSF 4.6.9 static analysis of signed APK/AAB before distribution; successful APK/AAB scans completed; detailed findings review and automated comparison remain pending.
-- Desktop platforms retain their platform-specific security and integrity checks. No iOS IPA is distributed.
+## Unreleased — desktop 1.1.9
+
+- Windows, macOS and Linux builds and platform-specific validation pending. No iOS IPA is distributed.
 
 ## 1.1.7+43 — security validation (source, 25 November 2026)
 
