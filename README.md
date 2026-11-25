@@ -6,7 +6,7 @@
 
 ## Android security and release status — 1.1.8
 
-Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK and AAB builds completed with local MobSF analysis; the maintainer reviewed the APK report and reports that it matches 1.1.7. Google Play submission is in progress (maintainer-confirmed, 25 November 2026); public availability is not yet confirmed. Historical public APK and desktop downloads remain 1.1.6. Android 12 is the minimum; Android 17 and Linux runtime acceptance remain pending. Four narrowly scoped captive-portal HTTP exceptions remain intentional. Automated report comparison and severity-based release gates are planned, not yet implemented; Windows/macOS security audits are pending. No active OVH API testing.
+Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK and AAB builds completed with local MobSF analysis; the maintainer reviewed the APK report and reports that it matches 1.1.7. Google Play production availability of Android 1.1.8+44 is confirmed by the maintainer on 25 November 2026. Historical public APK and desktop downloads remain 1.1.6. Android 12 is the minimum; Android 17 and Linux runtime acceptance remain pending. Four narrowly scoped captive-portal HTTP exceptions remain intentional. Automated report comparison and severity-based release gates are planned, not yet implemented; Windows/macOS security audits are pending. No active OVH API testing.
 
 Network connectivity and EMM/MDM troubleshooting for Android, Windows, macOS and Linux. Checks run from the device running MDM SystemCheck. They **do not** prove MDM enrollment, server authentication, application updates or receipt of push notifications.
 
