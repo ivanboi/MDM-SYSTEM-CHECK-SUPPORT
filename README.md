@@ -1,5 +1,9 @@
 # MDM SystemCheck — Official Downloads and Support
 
+## Pending next release — OEM profile display
+
+- Correct Motorola and Crosscall profile descriptions across Android, Windows, macOS and Linux to reflect manufacturer-provided OTA/FOTA endpoints in signed catalogue v9; Motorola DNS/TCP 443 and 8443, Crosscall active DNS/TCP reachability only. Select Android separately for shared services. Fairphone remains unchanged. These are not OTA transactions or a complete vendor firewall policy. Updated source is not yet a verified published binary.
+
 ## Android security and release status — 1.1.8
 
 Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK and AAB builds completed with local MobSF analysis; the maintainer reviewed the APK report and reports that it matches 1.1.7. Google Play submission is in progress (maintainer-confirmed, 25 November 2026); public availability is not yet confirmed. Historical public APK and desktop downloads remain 1.1.6. Android 12 is the minimum; Android 17 and Linux runtime acceptance remain pending. Four narrowly scoped captive-portal HTTP exceptions remain intentional. Automated report comparison and severity-based release gates are planned, not yet implemented; Windows/macOS security audits are pending. No active OVH API testing.
@@ -22,7 +26,7 @@ Only a published release with its downloadable assets is an installable version.
 
 - **Android**: common Google/Android Enterprise network dependencies, maintained under `device:android`.
 - **Samsung**: common Android dependencies plus Samsung Knox manufacturer services (`device:samsung`).
-- **Motorola (specific servers)**: community-documented Motorola OTA CDS DNS/TCP 443 test (`device:motorola`); select Android separately for common Google requirements.
+- **Motorola (specific servers)**: manufacturer-provided Motorola OTA DNS/TCP 443 and 8443 checks (`device:motorola`); select Android separately for common Google requirements.
 - **Crosscall (specific servers)**: two active maintainer-provided FOTA endpoints and two historical references (`device:crosscall`). Select Android separately for shared services.
 - **ChromeOS (specific servers)**: Google-documented enterprise management, attestation, Omaha update and download hosts (`device:chromeos`), tested as remote network paths from the active device.
 - **Fairphone (specific servers)**: current Gen. 6 OTA hostnames are not verified, so no unsubstantiated OEM-only test is executed (`device:fairphone`, documentation-only).
@@ -30,7 +34,7 @@ Only a published release with its downloadable assets is an installable version.
 
 **Samsung Knox Manage** is an independent MDM product (`mdm:knox-manage`), **not** part of the standard Samsung device services. Other supported MDM profiles: Microsoft Intune, Omnissa Workspace ONE, Ivanti, Cisco Meraki Systems Manager, Citrix Endpoint Management and BlackBerry UEM.
 
-The Motorola OTA endpoint `moto-cds.appspot.com` (TCP 443) is documented by a third-party community project, **not** an official Motorola firewall policy. Only the network path is checked: no firmware update check POST or identifying payload is sent. Optional OEM or region-specific services should not be treated as mandatory connectivity requirements.
+The Motorola OTA endpoint `moto-cds.appspot.com` (TCP 443) is included among manufacturer-provided endpoints supplied by the maintainer; the catalogue is not a complete vendor firewall policy. Only the network path is checked: no firmware update check POST or identifying payload is sent. Optional OEM or region-specific services should not be treated as mandatory connectivity requirements.
 
 ## Version 1.1.5 and catalogue v9
 
