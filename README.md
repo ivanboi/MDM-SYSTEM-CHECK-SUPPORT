@@ -1,5 +1,9 @@
 # MDM SystemCheck — Official Downloads and Support
 
+## Android security validation — 1.1.7 and later
+
+Source version 1.1.7+43 is under security validation; public downloads remain 1.1.6 until new assets are verified. Android 12 is the new minimum; Android 17 runtime compatibility is not yet confirmed. Future signed APK/AAB builds require local MobSF static analysis before artifact distribution. Analysis results are reviewed privately; static analysis is not a security certification. Windows, macOS and Linux retain platform-specific checks; no iOS IPA is published.
+
 Network connectivity and EMM/MDM troubleshooting for Android, Windows, macOS and Linux. Checks run from the device running MDM SystemCheck. They **do not** prove MDM enrollment, server authentication, application updates or receipt of push notifications.
 
 ## Official downloads
