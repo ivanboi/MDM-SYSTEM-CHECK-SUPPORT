@@ -77,3 +77,11 @@ Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically sig
 ## Linux OpenPGP release signing
 
 The dedicated Ed25519 public release key and its primary fingerprint (`22DDA2AC2133E3A88761A375F4A9039C27F8CCEA`) are available in [security/](security/README.md). The Linux signing pipeline has passed private validation. The original public Linux 1.1.6 packages remain byte-for-byte unchanged. The detached checksum signature and public key are published and verified. See the [verification instructions](security/README.md).
+
+## Android 1.1.7 static security assessment — 25 November 2026
+
+The signed Android 1.1.7 (43) candidate scored 71/100 (grade A, low risk) in MobSF 4.6.9. The report confirms minSdk 31, targetSdk 36, no maximum SDK, and default cleartext denial with four intentional captive-portal exceptions. HTTP probe responses are unauthenticated and must not be treated as trusted data or used to transmit credentials. This is an accepted diagnostic limitation, not a false positive.
+
+The remaining static findings require contextual review: AndroidX ProfileInstallReceiver is guarded by the platform DUMP permission; ordinary third-party applications cannot normally obtain it. The application-owned Play Integrity request identifier uses SecureRandom. CSV sharing uses app-owned temporary directories with cleanup of old shares; explicit exports use the system document picker. The source now additionally validates native CSV filenames and MIME types and returns a generic verification failure message; these changes are not yet validated in a new APK. Clipboard, dependency logging, obfuscated RNG and storage call sites, and native library hardening remain under review. The four reported numeric secret candidates match public Ed25519 constants, not private credentials; binary provenance remains to be verified. Static behavior matches for SMS and contacts do not establish actual access; the candidate declares no corresponding permissions.
+
+This assessment is not a penetration-test certification or proof of absence of vulnerabilities. Android 17 and Linux functional acceptance remain pending. The Android 1.1.7 candidate is not confirmed as published to Google Play. No active OVH API testing was performed.
