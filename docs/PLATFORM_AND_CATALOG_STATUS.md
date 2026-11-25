@@ -1,13 +1,16 @@
 # Platform and signed catalogue status
 
-_Last reviewed: 24 November 2026._
+_Last reviewed: 25 November 2026._
 
-| Platform | Public stable | Distribution |
+| Platform | Current version | Distribution |
 | --- | --- | --- |
-| Android | [1.1.5 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.5) | APK + SHA-256; AAB generated privately, Google Play rollout **not confirmed** |
-| Windows | [1.1.5 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.5) | ZIP + SHA-256; unsigned executable, **no MSIX or Microsoft Store** |
-| macOS | [1.1.5 universal portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.5) | ZIP + SHA-256; not Developer ID signed or notarized |
-| iOS | Not published | iOS/iPadOS network destinations are profile references, not a native iOS application |
+| Android | 1.1.8+44 | Google Play submission in progress; availability not confirmed. [Historical public APK 1.1.6](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6). |
+| Windows | [1.1.6 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6) | SHA-256; unsigned executable; no MSIX or Microsoft Store. |
+| macOS | [1.1.6 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6) | SHA-256; not Developer ID signed or notarized. |
+| Linux | [1.1.6 x64](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6) | AppImage, DEB, TAR.GZ; OpenPGP-signed checksum manifest; runtime acceptance pending. |
+| iOS | Not published | Network profile references only. |
+
+Android 1.1.8 includes cumulative 1.1.7 security fixes and signed APK/AAB release-candidate MobSF scanning. Android 12 minimum; Android 17 runtime acceptance pending. The maintainer confirms Play submission is in progress on 25 November 2026. Detailed AAB findings review and automated regression gates remain pending.
 
 ## Active signed network catalogue
 
@@ -48,7 +51,7 @@ Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically sig
 
 ## Linux x86-64 stable (1.1.6+42)
 
-The initial isolated Linux build was superseded by the successful build on private `main`. It does not change the Android, Windows or macOS release channels. Published assets: AppImage, Debian package and portable tar.gz bundle with SHA-256 checksums. Packages are unsigned; GPG signing is not yet configured. CI publication and stable promotion succeeded; manual Linux validation remains pending. Check [public releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=linux-v) before downloading. Ubuntu 22.04+ and compatible Debian/Linux Mint x86-64 environments are initial test targets, not certified compatibility. Verify checksums using `sha256sum -c SHA256SUMS-linux.txt`; run AppImage after `chmod +x`, or install the DEB with `sudo apt install ./MDM-SystemCheck-Linux-x64.deb`. Google Play Integrity and embedded VirusTotal are Android-only. Linux CSV export, catalogue v9 retrieval and desktop functionality remain to be tested. No Linux-specific device catalogue changes are included.
+The initial isolated Linux build was superseded by the successful build on private `main`. It does not change the Android, Windows or macOS release channels. Published assets: AppImage, Debian package and portable tar.gz bundle with SHA-256 checksums. The original packages are unchanged; the checksum manifest now has a published OpenPGP detached signature. See [verification instructions](../security/README.md). CI publication and stable promotion succeeded; manual Linux validation remains pending. Check [public releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases?q=linux-v) before downloading. Ubuntu 22.04+ and compatible Debian/Linux Mint x86-64 environments are initial test targets, not certified compatibility. Verify checksums using `sha256sum -c SHA256SUMS-linux.txt`; run AppImage after `chmod +x`, or install the DEB with `sudo apt install ./MDM-SystemCheck-Linux-x64.deb`. Google Play Integrity and embedded VirusTotal are Android-only. Linux CSV export, catalogue v9 retrieval and desktop functionality remain to be tested. No Linux-specific device catalogue changes are included.
 
 ## Platform release workflow split
 
@@ -56,9 +59,9 @@ The private main branch contains a manual Release Manager (`.github/workflows/re
 
 Verified public 1.1.6 downloads: [Android APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6), [Windows ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6), [macOS ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6). Signed Android AAB is available in the private CI artifact; Play Store rollout is separate. Linux stable publication succeeded; manual validation remains pending. Existing stable releases and catalogue v9 are unchanged.
 
-## Current release status — 1.1.6+42 (24 November 2026)
+## Historical release baseline — 1.1.6+42 (24 November 2026)
 
-Android, Windows, macOS and Linux stable 1.1.6 releases are verified on GitHub. Linux x86-64 1.1.6 preview has passed analysis, tests, native build, packaging and publication; its AppImage, DEB, portable tar.gz and SHA-256 file are available. Stable promotion succeeded using the same verified binaries without rebuilding; the stable tag and all four assets are verified. Linux packages are unsigned and manual desktop compatibility, CSV export and catalogue retrieval remain unverified.
+Android, Windows, macOS and Linux stable 1.1.6 releases are verified on GitHub. Linux x86-64 1.1.6 preview has passed analysis, tests, native build, packaging and publication; its AppImage, DEB, portable tar.gz and SHA-256 file are available. Stable promotion succeeded using the same verified binaries without rebuilding; the stable tag and all four assets are verified. The Linux checksum manifest is now OpenPGP signed; manual desktop compatibility, CSV export and catalogue retrieval remain unverified.
 
 | Platform | Verified download |
 | --- | --- |
@@ -72,7 +75,7 @@ Android AAB is signed and available privately from CI run 45411459034; Google Pl
 
 ## Maintainer validation and CI status
 
-The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 retrieval on macOS (24 November 2026). Linux desktop acceptance remains pending. The release manager now supports independent APK and AAB inputs, dynamic Linux version and development/stable channels, and optional Linux publication (default false); no platform distribution builds are triggered by ordinary pushes. Linux validation-only and separate Android APK/AAB workflows passed. Future Linux publication remains to be tested. The public [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records verified stable public assets; it has a metadata-only refresh workflow, pending first execution, and existing clients are unchanged.
+The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 retrieval on macOS (24 November 2026). Linux desktop acceptance remains pending. The release manager now supports independent APK and AAB inputs, dynamic Linux version and development/stable channels, and optional Linux publication (default false); no platform distribution builds are triggered by ordinary pushes. Linux validation-only and separate Android APK/AAB workflows passed. Future Linux publication remains to be tested. The public [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records verified stable public assets; it has a metadata-only refresh workflow, successfully executed, and existing clients are unchanged.
 
 
 ## Android distribution policy — 24 November 2026
