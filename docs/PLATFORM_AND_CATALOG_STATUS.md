@@ -1,16 +1,20 @@
 # Platform and signed catalogue status
 
+## Android 1.1.9+45 — validated release candidate
+
+Signed APK and AAB builds, signature verification, Flutter tests and analysis, APK backup-policy check, local MobSF scans and OWASP CI passed on 25 November 2026. APK functional validation is maintainer-confirmed. Motorola and Crosscall manufacturer-provided OTA/FOTA descriptions are corrected; signed catalogue v9 is unchanged. Detailed MobSF comparison with 1.1.8 remains pending. Google Play 1.1.8+44 is confirmed; 1.1.9 rollout is pending. Public GitHub APK and desktop releases remain 1.1.6; desktop 1.1.9 builds have not been launched.
+
 _Last reviewed: 25 November 2026._
 
 | Platform | Current version | Distribution |
 | --- | --- | --- |
-| Android | 1.1.8+44 | Google Play submission in progress; availability not confirmed. [Historical public APK 1.1.6](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6). |
+| Android | 1.1.8+44 (Play); 1.1.9+45 (validated private build) | Google Play 1.1.8 confirmed; 1.1.9 rollout pending. [Historical public APK 1.1.6](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6). |
 | Windows | [1.1.6 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6) | SHA-256; unsigned executable; no MSIX or Microsoft Store. |
 | macOS | [1.1.6 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6) | SHA-256; not Developer ID signed or notarized. |
 | Linux | [1.1.6 x64](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6) | AppImage, DEB, TAR.GZ; OpenPGP-signed checksum manifest; runtime acceptance pending. |
 | iOS | Not published | Network profile references only. |
 
-Android 1.1.8 includes cumulative 1.1.7 security fixes and signed APK/AAB release-candidate MobSF scanning. Android 12 minimum; Android 17 runtime acceptance pending. The maintainer confirms Play submission is in progress on 25 November 2026. Detailed AAB findings review and automated regression gates remain pending.
+Android 1.1.8 includes cumulative 1.1.7 security fixes and signed APK/AAB release-candidate MobSF scanning. Android 12 minimum; Android 17 runtime acceptance pending. The maintainer confirms Play 1.1.8 production availability on 25 November 2026. Detailed AAB findings review and automated regression gates remain pending.
 
 ## Active signed network catalogue
 
@@ -20,7 +24,7 @@ For new Motorola, Crosscall, Samsung or other vendor flows, see [single-source C
 
 ## Security and limits
 
-Tests originate on the actual device running SystemCheck; a reachable TCP port does not validate OS compliance, MDM enrollment, push delivery or firmware availability. No OTA API POST or identifying payload is sent to the community-sourced Motorola CDS host. Optional Android Google Play Integrity uses the OVH verifier when initiated. The app does not automatically upload diagnostic results. User-selected local CSV imports are not cryptographically authenticated.
+Tests originate on the actual device running SystemCheck; a reachable TCP port does not validate OS compliance, MDM enrollment, push delivery or firmware availability. No OTA API POST or identifying payload is sent to the manufacturer-provided Motorola CDS host. Optional Android Google Play Integrity uses the OVH verifier when initiated. The app does not automatically upload diagnostic results. User-selected local CSV imports are not cryptographically authenticated.
 
 Maintain historical stable releases and checksums for rollback; do not revive deprecated MSIX or claim a Google Play rollout from GitHub publication.
 
