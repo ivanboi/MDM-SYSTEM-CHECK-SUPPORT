@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — next platform release
+
+- Android release CI requires local MobSF 4.6.9 static analysis of signed APK/AAB before distribution; first successful run and findings review pending.
+- Desktop platforms retain their platform-specific security and integrity checks. No iOS IPA is distributed.
+
+## 1.1.7+43 — security validation (source, 25 November 2026)
+
+- Android 12 minimum; Android 17 compatibility remains a runtime validation target.
+- Harden diagnostic export filenames, exception handling and Android backup/device-transfer exclusions; preserve intentional captive-portal HTTP probes.
+- Public 1.1.7 assets and Google Play rollout are not confirmed; verified public downloads remain 1.1.6.
+
 ## Network catalogue v9 — 24 November 2026 (data-only)
 
 Catalogue v9 (24 November 2026): 522 records in 18 categories, automatically signed and published using the existing Ed25519 key. Retrieval confirmed by the maintainer on Android APK and Windows Win32. Native macOS retrieval is maintainer-confirmed; post-update APNs/enrollment connectivity tests remain pending. Six legacy APNs gateway records are documentation-only and 15 records were added, including fallback, provider-only references and macOS enrollment paths. The v8 Motorola and Crosscall additions remain available. Network reachability does not prove enrollment, OTA availability or push delivery. Source version 1.1.6+42 includes cache bypass, one checksum-mismatch retry and detailed sync errors; Android, Windows and macOS public 1.1.6 binaries are confirmed; Google Play rollout is separate.
