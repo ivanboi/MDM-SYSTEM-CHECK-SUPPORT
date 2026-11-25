@@ -1,8 +1,12 @@
 # Changelog
 
+## Current status — 25 November 2026
+
+Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK and AAB builds completed with local MobSF analysis; the maintainer reviewed the APK report and reports that it matches 1.1.7. Google Play submission is in progress (maintainer-confirmed, 25 November 2026); public availability is not yet confirmed. Historical public APK and desktop downloads remain 1.1.6. Android 12 is the minimum; Android 17 and Linux runtime acceptance remain pending. Four narrowly scoped captive-portal HTTP exceptions remain intentional. Automated report comparison and severity-based release gates are planned, not yet implemented; Windows/macOS security audits are pending. No active OVH API testing.
+
 ## Unreleased — next platform release
 
-- Android release CI requires local MobSF 4.6.9 static analysis of signed APK/AAB before distribution; first successful run and findings review pending.
+- Android release CI requires local MobSF 4.6.9 static analysis of signed APK/AAB before distribution; successful APK/AAB scans completed; detailed findings review and automated comparison remain pending.
 - Desktop platforms retain their platform-specific security and integrity checks. No iOS IPA is distributed.
 
 ## 1.1.7+43 — security validation (source, 25 November 2026)
@@ -218,7 +222,7 @@ Android AAB is signed and available privately from CI run 45411459034; Google Pl
 
 ## Maintainer validation and CI status
 
-The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 retrieval on macOS (24 November 2026). Linux desktop acceptance remains pending. The release manager now supports independent APK and AAB inputs, dynamic Linux version and development/stable channels, and optional Linux publication (default false); no platform distribution builds are triggered by ordinary pushes. Linux validation-only and separate Android APK/AAB workflows passed. Future Linux publication remains to be tested. The public [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records verified stable public assets; it has a metadata-only refresh workflow, pending first execution, and existing clients are unchanged.
+The maintainer confirms Google Play publication of 1.1.6+42 and catalogue v9 retrieval on macOS (24 November 2026). Linux desktop acceptance remains pending. The release manager now supports independent APK and AAB inputs, dynamic Linux version and development/stable channels, and optional Linux publication (default false); no platform distribution builds are triggered by ordinary pushes. Linux validation-only and separate Android APK/AAB workflows passed. Future Linux publication remains to be tested. The public [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records verified stable public assets; it has a metadata-only refresh workflow, successfully executed, and existing clients are unchanged.
 
 
 ## Android distribution policy — 24 November 2026
