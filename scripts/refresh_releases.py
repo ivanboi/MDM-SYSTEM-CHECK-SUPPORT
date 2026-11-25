@@ -32,6 +32,9 @@ def refresh(current, releases):
         if version(v) < version(old["version"]):
             continue
         assets = {a["name"]: a for a in release["assets"]}
+        # Android releases use one of two historical APK filenames.
+        if platform == "android" and "MDM-SystemCheck.apk" not in assets and "app-release.apk" in assets:
+            required = (required - {"MDM-SystemCheck.apk"}) | {"app-release.apk"}
         if not required <= assets.keys():
             raise ValueError(f"Incomplete stable release: {release['tag_name']}")
         selected = []
