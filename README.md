@@ -1,5 +1,18 @@
 # MDM SystemCheck — Official Downloads and Support
 
+## Current release status — 28 November 2026
+
+| Platform | Stable version | Distribution |
+| --- | --- | --- |
+| Android | 1.1.9+45 | [APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.9); Google Play updated per maintainer confirmation |
+| Windows | 1.1.9+45 | [Portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.9); unsigned, no MSIX |
+| macOS | 1.1.9+45 | [Portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.9); not Developer ID signed or notarized |
+| Linux | 1.1.10+46 | [AppImage, DEB, TAR.GZ](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.10); detached OpenPGP checksum signature |
+
+Linux 1.1.9 was tested on Linux Mint by the maintainer: launch and network diagnostics worked in AppImage and DEB; window title, icon and export destination needed correction. Linux 1.1.10 includes GTK title/icon changes and native CSV Save As starting in the configured Downloads directory, displaying the saved path. The release is published; retesting these fixes on Linux Mint is pending. AppImage requires no administrator privileges; DEB installation uses sudo, but normal execution does not. Verify the signed checksum manifest using the independently authenticated public key before installation. Android 17 runtime acceptance, detailed MobSF regression comparison and complete Windows/macOS security audits remain unconfirmed.
+
+The [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records the current public assets. Older release notes below are historical snapshots, not current status.
+
 ## Pending next release — OEM profile display
 
 - Correct Motorola and Crosscall profile descriptions across Android, Windows, macOS and Linux to reflect manufacturer-provided OTA/FOTA endpoints in signed catalogue v9; Motorola DNS/TCP 443 and 8443, Crosscall active DNS/TCP reachability only. Select Android separately for shared services. Fairphone remains unchanged. These are not OTA transactions or a complete vendor firewall policy. Updated source is not yet a verified published binary.
@@ -14,10 +27,10 @@ Network connectivity and EMM/MDM troubleshooting for Android, Windows, macOS and
 
 | Platform | Download | Important |
 | --- | --- | --- |
-| Android | [1.1.6 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.6) | SHA-256 provided; Google Play publication is managed separately. |
-| Windows | [1.1.6 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.6) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
-| macOS | [1.1.6 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.6) | Not Apple Developer ID signed or notarized. |
-| Linux | [1.1.6 x64 stable](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.6) | AppImage, DEB and TAR.GZ; OpenPGP-signed checksum manifest; manual validation pending. |
+| Android | [1.1.9 signed APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.9) | SHA-256 provided; Google Play publication is managed separately. |
+| Windows | [1.1.9 x64 portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.9) | Extract all files. Unsigned executable; **no MSIX / Microsoft Store**. |
+| macOS | [1.1.9 ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.9) | Not Apple Developer ID signed or notarized. |
+| Linux | [1.1.10 x64 stable](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.10) | AppImage, DEB and TAR.GZ; OpenPGP-signed checksum manifest; manual validation pending. |
 | Development | [All releases](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases) | Prereleases may be unstable. |
 
 Only a published release with its downloadable assets is an installable version. GitHub source commits and successful CI tests alone do not confirm an app-store rollout. Check the [platform status](docs/PLATFORM_AND_CATALOG_STATUS.md).
@@ -60,7 +73,7 @@ To add flows in the future, see [Network catalogue maintenance](data/network/REA
 
 - DNS, TCP, HTTP(S) and NTP probes; optional indicative VoWiFi/ePDG UDP 500/4500 transmission (not an IPsec handshake).
 - Guided checks for the selected manufacturer or MDM; users can configure tenant-specific endpoints.
-- Local diagnostic history and CSV export. Windows/macOS use a native Save As dialog.
+- Local diagnostic history and CSV export. Windows/macOS and Linux 1.1.10 use a native Save As dialog.
 - Android-only optional Google Play Integrity check through the OVH verifier, and VirusTotal WebView upload when explicitly requested. Network diagnostic reports are **not** automatically uploaded.
 
 ## Support, privacy and security
