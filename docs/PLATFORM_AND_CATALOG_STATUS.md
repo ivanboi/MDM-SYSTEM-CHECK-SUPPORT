@@ -1,5 +1,18 @@
 # Platform and signed catalogue status
 
+## Current release status — 28 November 2026
+
+| Platform | Stable version | Distribution |
+| --- | --- | --- |
+| Android | 1.1.9+45 | [APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.9); Google Play updated per maintainer confirmation |
+| Windows | 1.1.9+45 | [Portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.9); unsigned, no MSIX |
+| macOS | 1.1.9+45 | [Portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.9); not Developer ID signed or notarized |
+| Linux | 1.1.10+46 | [AppImage, DEB, TAR.GZ](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.10); detached OpenPGP checksum signature |
+
+Linux 1.1.9 was tested on Linux Mint by the maintainer: launch and network diagnostics worked in AppImage and DEB; window title, icon and export destination needed correction. Linux 1.1.10 includes GTK title/icon changes and native CSV Save As starting in the configured Downloads directory, displaying the saved path. The release is published; retesting these fixes on Linux Mint is pending. AppImage requires no administrator privileges; DEB installation uses sudo, but normal execution does not. Verify the signed checksum manifest using the independently authenticated public key before installation. Android 17 runtime acceptance, detailed MobSF regression comparison and complete Windows/macOS security audits remain unconfirmed.
+
+The [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records the current public assets. Older release notes below are historical snapshots, not current status.
+
 ## Android 1.1.9+45 — validated release candidate
 
 Signed APK and AAB builds, signature verification, Flutter tests and analysis, APK backup-policy check, local MobSF scans and OWASP CI passed on 25 November 2026. APK functional validation is maintainer-confirmed. Motorola and Crosscall manufacturer-provided OTA/FOTA descriptions are corrected; signed catalogue v9 is unchanged. Detailed MobSF comparison with 1.1.8 remains pending. Google Play 1.1.8+44 is confirmed; 1.1.9 rollout is pending. Public GitHub APK and desktop releases remain 1.1.6; desktop 1.1.9 builds have not been launched.
