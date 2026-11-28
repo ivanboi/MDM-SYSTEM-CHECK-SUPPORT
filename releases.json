@@ -63,46 +63,46 @@
       ]
     },
     "linux": {
-      "version": "1.1.9",
-      "build": 45,
-      "tag": "linux-v1.1.9",
-      "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.9",
+      "version": "1.1.10",
+      "build": 46,
+      "tag": "linux-v1.1.10",
+      "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.10",
       "assets": [
         {
           "name": "MDM-SystemCheck-Linux-x64.AppImage",
-          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.9/MDM-SystemCheck-Linux-x64.AppImage",
-          "size": 10549752,
-          "digest": "sha256:28c72747dd5e1468fa78381824df79a009a96172879990ef108ec2f91ac55bf6"
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.10/MDM-SystemCheck-Linux-x64.AppImage",
+          "size": 10557944,
+          "digest": "sha256:63da47f707c7fada27aea28eebc2ec2f3a285581718a419dd1af852a5406f1ca"
         },
         {
           "name": "MDM-SystemCheck-Linux-x64.deb",
-          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.9/MDM-SystemCheck-Linux-x64.deb",
-          "size": 8904194,
-          "digest": "sha256:e40fe0839785a98a734867bb42f1db06053e3297f8d07d4cdc81424d600c829e"
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.10/MDM-SystemCheck-Linux-x64.deb",
+          "size": 8916550,
+          "digest": "sha256:a749f00ce8b39625b75bf6e4d717e869d8fa526be7ba0299e7fa5ebb26cc9c37"
         },
         {
           "name": "MDM-SystemCheck-Linux-x64.tar.gz",
-          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.9/MDM-SystemCheck-Linux-x64.tar.gz",
-          "size": 10513191,
-          "digest": "sha256:7d0a62c8e5bd4fe3a3e568c1b55719772b54dc181a34949abcf07302ac1946e6"
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.10/MDM-SystemCheck-Linux-x64.tar.gz",
+          "size": 10788512,
+          "digest": "sha256:648795d533bb7143a7bff762223b0711a7913a215d5acd0365d72a4cce9ad6ab"
         },
         {
           "name": "MDM-SystemCheck-public.asc",
-          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.9/MDM-SystemCheck-public.asc",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.10/MDM-SystemCheck-public.asc",
           "size": 803,
           "digest": "sha256:25092e3de5dd280ec891ea21b40e2484ddc1f95626b1ae3aa2f921de17ccf0d2"
         },
         {
           "name": "SHA256SUMS-linux.txt",
-          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.9/SHA256SUMS-linux.txt",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.10/SHA256SUMS-linux.txt",
           "size": 296,
-          "digest": "sha256:74eb3fd191e026e0ccff3ac3c97482c0f6a4c49345be0647faba954634f4bf68"
+          "digest": "sha256:53cbc233f32b604e39b5deabf0b2c4a953018161530b043f6914f62f62665cf0"
         },
         {
           "name": "SHA256SUMS-linux.txt.asc",
-          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.9/SHA256SUMS-linux.txt.asc",
+          "url": "https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/download/linux-v1.1.10/SHA256SUMS-linux.txt.asc",
           "size": 228,
-          "digest": "sha256:6f8b3fc3b1b733a46e03ecfd7ba1e9bcd18baf189d87f376bf5212a01014b69f"
+          "digest": "sha256:1c8fd52ca1f7f7dbd48f34f7e00d1a8b288c8a5b96826628bc4f2fce545779ab"
         }
       ]
     }
