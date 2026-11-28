@@ -1,5 +1,18 @@
 # Changelog
 
+## Current release status — 28 November 2026
+
+| Platform | Stable version | Distribution |
+| --- | --- | --- |
+| Android | 1.1.9+45 | [APK](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/v1.1.9); Google Play updated per maintainer confirmation |
+| Windows | 1.1.9+45 | [Portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/windows-v1.1.9); unsigned, no MSIX |
+| macOS | 1.1.9+45 | [Portable ZIP](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/macos-v1.1.9); not Developer ID signed or notarized |
+| Linux | 1.1.10+46 | [AppImage, DEB, TAR.GZ](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/releases/tag/linux-v1.1.10); detached OpenPGP checksum signature |
+
+Linux 1.1.9 was tested on Linux Mint by the maintainer: launch and network diagnostics worked in AppImage and DEB; window title, icon and export destination needed correction. Linux 1.1.10 includes GTK title/icon changes and native CSV Save As starting in the configured Downloads directory, displaying the saved path. The release is published; retesting these fixes on Linux Mint is pending. AppImage requires no administrator privileges; DEB installation uses sudo, but normal execution does not. Verify the signed checksum manifest using the independently authenticated public key before installation. Android 17 runtime acceptance, detailed MobSF regression comparison and complete Windows/macOS security audits remain unconfirmed.
+
+The [release manifest](https://github.com/ivanboi/MDM-SYSTEM-CHECK-SUPPORT/blob/main/releases.json) records the current public assets. Older release notes below are historical snapshots, not current status.
+
 ## Current status — 25 November 2026
 
 Android 1.1.8+44 incorporates the cumulative 1.1.7 security fixes. Signed APK and AAB builds completed with local MobSF analysis; the maintainer reviewed the APK report and reports that it matches 1.1.7. Google Play production availability of Android 1.1.8+44 is confirmed by the maintainer on 25 November 2026. Historical public APK and desktop downloads remain 1.1.6. Android 12 is the minimum; Android 17 and Linux runtime acceptance remain pending. Four narrowly scoped captive-portal HTTP exceptions remain intentional. Automated report comparison and severity-based release gates are planned, not yet implemented; Windows/macOS security audits are pending. No active OVH API testing.
